@@ -4,10 +4,11 @@ $theme_uri = get_stylesheet_directory_uri();
 $kicker        = get_field('hero_kicker');
 $title         = get_field('hero_title');
 $text          = get_field('hero_text');
-$cta_primary   = get_field('hero_cta_primary');
-$cta_secondary = get_field('hero_cta_secondary');
+$cta_primary   = acharp_link(get_field('hero_cta_primary'), '#', 'Candidater');
+$cta_secondary = acharp_link(get_field('hero_cta_secondary'), '#', 'Découvrir nos formations');
 $image_id      = get_field('hero_image');
 $push          = get_field('hero_push');
+$push          = is_array($push) ? $push : array();
 
 if (!$kicker) {
     $kicker = 'École d’architecture intérieure & design à Paris';
@@ -28,22 +29,6 @@ if (!$title) {
 
 if (!$text) {
     $text = 'Depuis plus de 60 ans, l’Académie Charpentier forme à Paris les futurs professionnels de l’architecture intérieure et du design.';
-}
-
-if (!$cta_primary) {
-    $cta_primary = array(
-        'url'    => '#',
-        'title'  => 'Candidater',
-        'target' => '',
-    );
-}
-
-if (!$cta_secondary) {
-    $cta_secondary = array(
-        'url'    => '#',
-        'title'  => 'Découvrir nos formations',
-        'target' => '',
-    );
 }
 
 $arrow = '<span class="btn__icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 8h10M9.5 4.5 13 8l-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>';
@@ -84,7 +69,7 @@ if (!$show_push && !$image_id) {
                                     class="btn btn--primary"
                                     <?= !empty($cta_primary['target']) ? 'target="' . esc_attr($cta_primary['target']) . '" rel="noopener"' : ''; ?>
                                 >
-                                    <?= esc_html($cta_primary['title'] ?: 'Candidater'); ?>
+                                    <?= esc_html($cta_primary['title']); ?>
                                     <?= $arrow; ?>
                                 </a>
                             <?php endif; ?>
@@ -95,7 +80,7 @@ if (!$show_push && !$image_id) {
                                     class="btn btn--outline"
                                     <?= !empty($cta_secondary['target']) ? 'target="' . esc_attr($cta_secondary['target']) . '" rel="noopener"' : ''; ?>
                                 >
-                                    <?= esc_html($cta_secondary['title'] ?: 'Découvrir nos formations'); ?>
+                                    <?= esc_html($cta_secondary['title']); ?>
                                     <?= $arrow; ?>
                                 </a>
                             <?php endif; ?>
@@ -123,8 +108,9 @@ if (!$show_push && !$image_id) {
 
                         <?php if ($show_push) : ?>
                             <?php
-                            $push_url    = $push['link']['url'] ?? '#';
-                            $push_target = $push['link']['target'] ?? '';
+                            $push_link   = acharp_link($push['link'] ?? array(), '#');
+                            $push_url    = $push_link['url'];
+                            $push_target = $push_link['target'];
                             $push_date   = $push['date'] ?? '';
                             $push_title  = $push['title'] ?? '';
                             $push_excerpt = $push['excerpt'] ?? '';

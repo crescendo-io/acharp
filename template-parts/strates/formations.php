@@ -1,96 +1,55 @@
 <?php
-$theme_uri = get_stylesheet_directory_uri();
-$arrow = '<span class="formations__arrow" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 8h10M9.5 4.5 13 8l-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>';
+$kicker = get_field('formations_kicker') ?: 'Nos formations';
+$title  = acharp_inline_html(get_field('formations_title'));
+$all    = acharp_link(get_field('formations_all'), get_post_type_archive_link('cursus') ?: '#', 'Voir toutes les formations');
+$cards  = acharp_get_formation_cards();
+$arrow  = acharp_arrow('formations__arrow');
+
+if (!$title) {
+    $title = 'Trouvez le parcours<br> qui <strong>vous ressemble</strong>';
+}
 ?>
 
 <section class="formations">
     <div class="container-fluid">
         <div class="formations__header">
             <div class="formations__intro">
-                <p class="formations__kicker">Nos formations</p>
-                <h2 class="formations__title">
-                    Trouvez le parcours<br>
-                    qui <strong>vous ressemble</strong>
-                </h2>
+                <?php if ($kicker) : ?>
+                    <p class="formations__kicker"><?= esc_html($kicker); ?></p>
+                <?php endif; ?>
+                <h2 class="formations__title"><?= $title; ?></h2>
             </div>
-            <a href="#" class="formations__all">
-                Voir toutes les formations
+            <a <?= acharp_link_attrs($all); ?> class="formations__all">
+                <?= esc_html($all['title']); ?>
                 <?= $arrow; ?>
             </a>
         </div>
 
         <div class="row">
-            <div class="col-12 col-lg-4">
-                <article class="formations__card">
-                    <figure class="formations__media">
-                        <img
-                            src="<?= esc_url($theme_uri . '/images/formation-prepa.jpg'); ?>"
-                            alt="Travail de maquette en classe préparatoire"
-                            width="1600"
-                            height="1067"
-                        >
-                    </figure>
-                    <div class="formations__body">
-                        <h3 class="formations__name">Classe préparatoire</h3>
-                        <p class="formations__meta">post-bac — 1 ou 2 ans</p>
-                        <p class="formations__text">
-                            Se préparer aux études supérieures en architecture intérieure, design et métiers de l’espace.
-                        </p>
-                        <a href="#" class="formations__link">
-                            Découvrir nos formations
-                            <?= $arrow; ?>
-                        </a>
-                    </div>
-                </article>
-            </div>
-
-            <div class="col-12 col-lg-4">
-                <article class="formations__card">
-                    <figure class="formations__media">
-                        <img
-                            src="<?= esc_url($theme_uri . '/images/formation-bachelor.jpg'); ?>"
-                            alt="Étudiants autour d’une maquette d’architecture"
-                            width="1600"
-                            height="1067"
-                        >
-                    </figure>
-                    <div class="formations__body">
-                        <h3 class="formations__name">Bachelor</h3>
-                        <p class="formations__meta">post-bac — 3 ans</p>
-                        <p class="formations__text">
-                            Acquérir les fondamentaux du design et de l’architecture intérieure par la pratique et les projets.
-                        </p>
-                        <a href="#" class="formations__link">
-                            Découvrir nos formations
-                            <?= $arrow; ?>
-                        </a>
-                    </div>
-                </article>
-            </div>
-
-            <div class="col-12 col-lg-4">
-                <article class="formations__card">
-                    <figure class="formations__media">
-                        <img
-                            src="<?= esc_url($theme_uri . '/images/formation-master.jpg'); ?>"
-                            alt="Maquette architecturale éclairée"
-                            width="1600"
-                            height="1067"
-                        >
-                    </figure>
-                    <div class="formations__body">
-                        <h3 class="formations__name">Master</h3>
-                        <p class="formations__meta">bac+3 — 2 ans</p>
-                        <p class="formations__text">
-                            Se spécialiser et développer une expertise pour concevoir des projets complexes.
-                        </p>
-                        <a href="#" class="formations__link">
-                            Découvrir nos formations
-                            <?= $arrow; ?>
-                        </a>
-                    </div>
-                </article>
-            </div>
+            <?php foreach ($cards as $card) : ?>
+                <div class="col-12 col-lg-4">
+                    <article class="formations__card">
+                        <?php if (!empty($card['image'])) : ?>
+                            <figure class="formations__media">
+                                <?= $card['image']; ?>
+                            </figure>
+                        <?php endif; ?>
+                        <div class="formations__body">
+                            <h3 class="formations__name"><?= esc_html($card['title']); ?></h3>
+                            <?php if (!empty($card['meta'])) : ?>
+                                <p class="formations__meta"><?= esc_html($card['meta']); ?></p>
+                            <?php endif; ?>
+                            <?php if (!empty($card['text'])) : ?>
+                                <p class="formations__text"><?= esc_html($card['text']); ?></p>
+                            <?php endif; ?>
+                            <a href="<?= esc_url($card['url'] ?: '#'); ?>" class="formations__link">
+                                Découvrir nos formations
+                                <?= $arrow; ?>
+                            </a>
+                        </div>
+                    </article>
+                </div>
+            <?php endforeach; ?>
         </div>
     </div>
 </section>

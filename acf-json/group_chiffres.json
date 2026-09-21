@@ -1,0 +1,143 @@
+{
+    "key": "group_chiffres",
+    "title": "Strate — Chiffres clés",
+    "fields": [
+        {
+            "key": "field_chiffres_intro",
+            "label": "Accroche",
+            "name": "chiffres_intro",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "rows": 2,
+            "new_lines": "br"
+        },
+        {
+            "key": "field_chiffres_items",
+            "label": "Chiffres",
+            "name": "chiffres_items",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "row",
+            "min": 0,
+            "max": 4,
+            "button_label": "Ajouter un chiffre",
+            "sub_fields": [
+                {
+                    "key": "field_chiffres_item_value",
+                    "label": "Valeur",
+                    "name": "value",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "20",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_chiffres_item_label",
+                    "label": "Libellé",
+                    "name": "label",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "40",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_chiffres_item_shape",
+                    "label": "Forme",
+                    "name": "shape",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "20",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "triangle": "Triangle",
+                        "half": "Demi-cercle",
+                        "three-quarter": "Trois-quarts"
+                    },
+                    "default_value": "triangle"
+                },
+                {
+                    "key": "field_chiffres_item_color",
+                    "label": "Couleur",
+                    "name": "color",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "20",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "pink": "Rose",
+                        "green": "Vert",
+                        "blue": "Bleu",
+                        "orange": "Orange"
+                    },
+                    "default_value": "pink"
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_type",
+                "operator": "==",
+                "value": "front_page"
+            }
+        ],
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "page-accueil.php"
+            }
+        ]
+    ],
+    "menu_order": 10,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1758465600
+}

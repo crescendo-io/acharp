@@ -1,0 +1,236 @@
+{
+    "key": "group_actualites",
+    "title": "Strate — Actualités",
+    "fields": [
+        {
+            "key": "field_actu_kicker",
+            "label": "Surtitre",
+            "name": "actualites_kicker",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_actu_title",
+            "label": "Titre",
+            "name": "actualites_title",
+            "aria-label": "",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "tabs": "visual",
+            "toolbar": "basic",
+            "media_upload": 0,
+            "delay": 0
+        },
+        {
+            "key": "field_actu_all",
+            "label": "Lien « voir tout »",
+            "name": "actualites_all",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array"
+        },
+        {
+            "key": "field_actu_mode",
+            "label": "Source des cartes",
+            "name": "actualites_mode",
+            "aria-label": "",
+            "type": "button_group",
+            "instructions": "Automatique : les 3 derniers articles. Personnalisé : liez un article et surchargez si besoin, ou saisissez tout à la main.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "auto": "Derniers articles",
+                "custom": "Liste personnalisée"
+            },
+            "default_value": "auto",
+            "layout": "horizontal"
+        },
+        {
+            "key": "field_actu_cards",
+            "label": "Cartes",
+            "name": "actualites_cards",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_actu_mode",
+                        "operator": "==",
+                        "value": "custom"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "button_label": "Ajouter une actualité",
+            "min": 0,
+            "max": 3,
+            "sub_fields": [
+                {
+                    "key": "field_actu_card_article",
+                    "label": "Article lié",
+                    "name": "article",
+                    "aria-label": "",
+                    "type": "post_object",
+                    "instructions": "Laissez vide pour une carte 100 % manuelle.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "post_type": [
+                        "articles"
+                    ],
+                    "return_format": "object",
+                    "allow_null": 1,
+                    "ui": 1
+                },
+                {
+                    "key": "field_actu_card_image",
+                    "label": "Surcharge image",
+                    "name": "image",
+                    "aria-label": "",
+                    "type": "image",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "id",
+                    "preview_size": "medium",
+                    "library": "all"
+                },
+                {
+                    "key": "field_actu_card_title",
+                    "label": "Surcharge titre",
+                    "name": "title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_actu_card_date",
+                    "label": "Surcharge date",
+                    "name": "date",
+                    "aria-label": "",
+                    "type": "date_picker",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "display_format": "d F Y",
+                    "return_format": "Y-m-d",
+                    "first_day": 1
+                },
+                {
+                    "key": "field_actu_card_text",
+                    "label": "Surcharge extrait",
+                    "name": "text",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "rows": 2
+                },
+                {
+                    "key": "field_actu_card_link",
+                    "label": "Surcharge lien",
+                    "name": "link",
+                    "aria-label": "",
+                    "type": "link",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array"
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_type",
+                "operator": "==",
+                "value": "front_page"
+            }
+        ],
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "page-accueil.php"
+            }
+        ]
+    ],
+    "menu_order": 70,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1758465600
+}

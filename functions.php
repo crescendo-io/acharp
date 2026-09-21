@@ -1,5 +1,16 @@
 <?php
 
+require_once get_stylesheet_directory() . '/inc/content.php';
+
+add_filter('acf/settings/save_json', function () {
+    return get_stylesheet_directory() . '/acf-json';
+});
+
+add_filter('acf/settings/load_json', function ($paths) {
+    $paths[] = get_stylesheet_directory() . '/acf-json';
+    return $paths;
+});
+
 
 function add_hreflang_tags() {
     // Définir l'URL de la version par défaut (x-default) du site
@@ -105,7 +116,7 @@ function egp_custom_post_type() {
         'label'               => __( 'Article', 'lsd_lang'),
         'description'         => __( 'Article', 'lsd_lang'),
         'labels'              => $labels,
-        'supports'            => array( 'title', 'author', 'revisions', 'custom-fields', 'thumbnail'),
+        'supports'            => array( 'title', 'excerpt', 'author', 'revisions', 'custom-fields', 'thumbnail'),
         'show_in_rest'        => false,
         'menu_icon'           => 'dashicons-admin-home',
         'hierarchical'        => true,
@@ -138,7 +149,7 @@ function egp_custom_post_type() {
         'label'               => __( 'Cursus', 'lsd_lang' ),
         'description'         => __( 'Parcours de formation', 'lsd_lang' ),
         'labels'              => $labels,
-        'supports'            => array( 'title', 'excerpt', 'thumbnail', 'revisions', 'custom-fields' ),
+        'supports'            => array( 'title', 'excerpt', 'thumbnail', 'revisions', 'custom-fields', 'page-attributes' ),
         'show_in_rest'        => true,
         'menu_icon'           => 'dashicons-welcome-learn-more',
         'hierarchical'        => false,

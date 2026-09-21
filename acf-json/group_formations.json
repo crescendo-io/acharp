@@ -1,0 +1,240 @@
+{
+    "key": "group_formations",
+    "title": "Strate — Formations",
+    "fields": [
+        {
+            "key": "field_formations_kicker",
+            "label": "Surtitre",
+            "name": "formations_kicker",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_formations_title",
+            "label": "Titre",
+            "name": "formations_title",
+            "aria-label": "",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "tabs": "visual",
+            "toolbar": "basic",
+            "media_upload": 0,
+            "delay": 0
+        },
+        {
+            "key": "field_formations_all",
+            "label": "Lien « voir tout »",
+            "name": "formations_all",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array"
+        },
+        {
+            "key": "field_formations_mode",
+            "label": "Source des cartes",
+            "name": "formations_mode",
+            "aria-label": "",
+            "type": "button_group",
+            "instructions": "Automatique : les 3 premiers cursus publiés. Personnalisé : choisissez un cursus par carte et surchargez titre, visuel ou texte si besoin.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "auto": "Cursus automatiques",
+                "custom": "Liste personnalisée"
+            },
+            "default_value": "auto",
+            "layout": "horizontal"
+        },
+        {
+            "key": "field_formations_cards",
+            "label": "Cartes",
+            "name": "formations_cards",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_formations_mode",
+                        "operator": "==",
+                        "value": "custom"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "button_label": "Ajouter une formation",
+            "min": 0,
+            "max": 3,
+            "sub_fields": [
+                {
+                    "key": "field_formations_card_cursus",
+                    "label": "Cursus lié",
+                    "name": "cursus",
+                    "aria-label": "",
+                    "type": "post_object",
+                    "instructions": "Laissez vide pour une carte 100 % manuelle.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "post_type": [
+                        "cursus"
+                    ],
+                    "return_format": "object",
+                    "allow_null": 1,
+                    "ui": 1
+                },
+                {
+                    "key": "field_formations_card_image",
+                    "label": "Surcharge image",
+                    "name": "image",
+                    "aria-label": "",
+                    "type": "image",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "id",
+                    "preview_size": "medium",
+                    "library": "all"
+                },
+                {
+                    "key": "field_formations_card_title",
+                    "label": "Surcharge titre",
+                    "name": "title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_formations_card_meta",
+                    "label": "Surcharge durée / mention",
+                    "name": "meta",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_formations_card_text",
+                    "label": "Surcharge texte",
+                    "name": "text",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "rows": 2
+                },
+                {
+                    "key": "field_formations_card_link",
+                    "label": "Surcharge lien",
+                    "name": "link",
+                    "aria-label": "",
+                    "type": "link",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array"
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_type",
+                "operator": "==",
+                "value": "front_page"
+            }
+        ],
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "page-accueil.php"
+            }
+        ],
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "page-academie.php"
+            }
+        ]
+    ],
+    "menu_order": 30,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1758465600
+}
