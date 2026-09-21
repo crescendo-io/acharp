@@ -1,40 +1,63 @@
 <?php
-$arrow = '<span class="campus-raisons__arrow" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 8h10M9.5 4.5 13 8l-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>';
+$kicker  = get_field('campus_raisons_kicker') ?: 'Le campus';
+$title   = acharp_inline_html(get_field('campus_raisons_title'));
+$items   = acharp_rows(get_field('campus_raisons_items'));
+$archive = get_post_type_archive_link('cursus') ?: '#';
 
-$raisons = array(
-    array(
-        'title' => 'Un espace pensé pour<br>l’enseignement créatif',
-        'text'  => 'Entièrement repensé, le nouveau campus offre des ateliers, studios, et espaces de travail rénovés pour favoriser la créativité, l’immersion et l’inspiration.',
-    ),
-    array(
-        'title' => 'Un cadre central et accessible',
-        'text'  => 'Situé en bords de Seine, le campus bénéficie d’un emplacement idéal pour les étudiants : accès facile en métro ou RER, proximité immédiate de la vie parisienne et du centre commercial Beaugrenelle, offrant de nombreuses commodités : boutiques, restaurants et supermarchés.',
-    ),
-    array(
-        'title' => 'Un renouveau symbolique et pédagogique',
-        'text'  => 'Ce déménagement marque une nouvelle étape dans l’histoire de l’école : modernisation des infrastructures, meilleure visibilité, et ambition renouvelée pour offrir une formation de haut niveau, en phase avec les enjeux contemporains du design et de l’architecture intérieure.',
-    ),
-);
+if (!$title) {
+    $title = 'Pourquoi ce nouveau <strong>campus</strong> ?';
+}
+
+if (!$items) {
+    $items = array(
+        array(
+            'title' => 'Un espace pensé pour<br>l’enseignement créatif',
+            'text'  => 'Entièrement repensé, le nouveau campus offre des ateliers, studios, et espaces de travail rénovés pour favoriser la créativité, l’immersion et l’inspiration.',
+            'link'  => array('url' => $archive, 'title' => 'Découvrir nos formations'),
+        ),
+        array(
+            'title' => 'Un cadre central et accessible',
+            'text'  => 'Situé en bords de Seine, le campus bénéficie d’un emplacement idéal pour les étudiants : accès facile en métro ou RER, proximité immédiate de la vie parisienne et du centre commercial Beaugrenelle, offrant de nombreuses commodités : boutiques, restaurants et supermarchés.',
+            'link'  => array('url' => $archive, 'title' => 'Découvrir nos formations'),
+        ),
+        array(
+            'title' => 'Un renouveau symbolique et pédagogique',
+            'text'  => 'Ce déménagement marque une nouvelle étape dans l’histoire de l’école : modernisation des infrastructures, meilleure visibilité, et ambition renouvelée pour offrir une formation de haut niveau, en phase avec les enjeux contemporains du design et de l’architecture intérieure.',
+            'link'  => array('url' => $archive, 'title' => 'Découvrir nos formations'),
+        ),
+    );
+}
 ?>
 
 <section class="campus-raisons">
     <div class="container-fluid">
         <header class="campus-raisons__header">
-            <p class="campus-raisons__kicker">Le campus</p>
-            <h2 class="campus-raisons__title">
-                Pourquoi ce nouveau <strong>campus</strong> ?
-            </h2>
+            <?php if ($kicker) : ?>
+                <p class="campus-raisons__kicker"><?= esc_html($kicker); ?></p>
+            <?php endif; ?>
+            <h2 class="campus-raisons__title"><?= $title; ?></h2>
         </header>
 
         <div class="row">
-            <?php foreach ($raisons as $raison) : ?>
+            <?php foreach ($items as $item) : ?>
+                <?php
+                $related = $item['cursus'] ?? null;
+                $id      = $related ? (is_object($related) ? $related->ID : (int) $related) : 0;
+                $link    = acharp_link(
+                    $item['link'] ?? array(),
+                    $id ? get_permalink($id) : $archive,
+                    'Découvrir nos formations'
+                );
+                ?>
                 <div class="col-12 col-lg-4">
                     <article class="campus-raisons__item">
-                        <h3 class="campus-raisons__name"><?= $raison['title']; ?></h3>
-                        <p class="campus-raisons__text"><?= $raison['text']; ?></p>
-                        <a href="#" class="campus-raisons__link">
-                            Découvrir nos formations
-                            <?= $arrow; ?>
+                        <h3 class="campus-raisons__name"><?= acharp_inline_html($item['title'] ?? ''); ?></h3>
+                        <?php if (!empty($item['text'])) : ?>
+                            <p class="campus-raisons__text"><?= esc_html($item['text']); ?></p>
+                        <?php endif; ?>
+                        <a <?= acharp_link_attrs($link); ?> class="campus-raisons__link">
+                            <?= esc_html($link['title']); ?>
+                            <?= acharp_arrow('campus-raisons__arrow'); ?>
                         </a>
                     </article>
                 </div>

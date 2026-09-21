@@ -1,0 +1,152 @@
+{
+    "key": "group_campus_raisons",
+    "title": "Strate — Pourquoi ce campus",
+    "fields": [
+        {
+            "key": "field_raisons_kicker",
+            "label": "Surtitre",
+            "name": "campus_raisons_kicker",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_raisons_title",
+            "label": "Titre",
+            "name": "campus_raisons_title",
+            "aria-label": "",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "tabs": "visual",
+            "toolbar": "basic",
+            "media_upload": 0,
+            "delay": 0
+        },
+        {
+            "key": "field_raisons_items",
+            "label": "Raisons",
+            "name": "campus_raisons_items",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Le lien peut pointer vers un cursus, l’archive formations, ou un texte libre.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "min": 0,
+            "max": 3,
+            "button_label": "Ajouter une raison",
+            "sub_fields": [
+                {
+                    "key": "field_raisons_item_title",
+                    "label": "Titre",
+                    "name": "title",
+                    "aria-label": "",
+                    "type": "wysiwyg",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "tabs": "visual",
+                    "toolbar": "basic",
+                    "media_upload": 0,
+                    "delay": 0
+                },
+                {
+                    "key": "field_raisons_item_text",
+                    "label": "Texte",
+                    "name": "text",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "rows": 3
+                },
+                {
+                    "key": "field_raisons_item_cursus",
+                    "label": "Cursus lié",
+                    "name": "cursus",
+                    "aria-label": "",
+                    "type": "post_object",
+                    "instructions": "Optionnel. Le bouton pointe vers ce cursus si aucun lien n’est saisi.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "post_type": [
+                        "cursus"
+                    ],
+                    "return_format": "object",
+                    "allow_null": 1,
+                    "ui": 1
+                },
+                {
+                    "key": "field_raisons_item_link",
+                    "label": "Surcharge lien",
+                    "name": "link",
+                    "aria-label": "",
+                    "type": "link",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array"
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "page-academie.php"
+            }
+        ]
+    ],
+    "menu_order": 60,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1758468000
+}

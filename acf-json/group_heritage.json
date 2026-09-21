@@ -1,0 +1,141 @@
+{
+    "key": "group_heritage",
+    "title": "Strate — Héritage",
+    "fields": [
+        {
+            "key": "field_heritage_steps",
+            "label": "Étapes",
+            "name": "heritage_steps",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Chaque étape colle son titre et son texte à gauche, l’image à droite. Cochez « visuel d’archive » pour le traitement photo historique.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "min": 0,
+            "max": 6,
+            "button_label": "Ajouter une étape",
+            "collapsed": "field_heritage_step_title",
+            "sub_fields": [
+                {
+                    "key": "field_heritage_step_title",
+                    "label": "Titre",
+                    "name": "title",
+                    "aria-label": "",
+                    "type": "wysiwyg",
+                    "instructions": "Mettez en gras les mots à mettre en avant.",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "tabs": "visual",
+                    "toolbar": "basic",
+                    "media_upload": 0,
+                    "delay": 0
+                },
+                {
+                    "key": "field_heritage_step_archive",
+                    "label": "Visuel d’archive",
+                    "name": "archive",
+                    "aria-label": "",
+                    "type": "true_false",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "30",
+                        "class": "",
+                        "id": ""
+                    },
+                    "message": "Appliquer le traitement photo historique",
+                    "default_value": 0,
+                    "ui": 1
+                },
+                {
+                    "key": "field_heritage_step_image",
+                    "label": "Image",
+                    "name": "image",
+                    "aria-label": "",
+                    "type": "image",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "70",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "id",
+                    "preview_size": "medium",
+                    "library": "all"
+                },
+                {
+                    "key": "field_heritage_step_texts",
+                    "label": "Paragraphes",
+                    "name": "texts",
+                    "aria-label": "",
+                    "type": "repeater",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "layout": "row",
+                    "min": 0,
+                    "button_label": "Ajouter un paragraphe",
+                    "sub_fields": [
+                        {
+                            "key": "field_heritage_step_text",
+                            "label": "Texte",
+                            "name": "text",
+                            "aria-label": "",
+                            "type": "wysiwyg",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "tabs": "visual",
+                            "toolbar": "basic",
+                            "media_upload": 0,
+                            "delay": 0
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "page-academie.php"
+            }
+        ]
+    ],
+    "menu_order": 10,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1758468000
+}

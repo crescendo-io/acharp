@@ -1,22 +1,38 @@
+<?php
+$title = get_field('handicap_title') ?: 'Guide de sensibilisation au handicap';
+$text  = acharp_inline_html(get_field('handicap_text'));
+$file  = get_field('handicap_file');
+$cta   = acharp_link(get_field('handicap_cta'), '', 'Télécharger le guide de sensibilisation au handicap');
+
+if (is_array($file) && !empty($file['url'])) {
+    $cta = acharp_link(array(
+        'url'    => $file['url'],
+        'title'  => $cta['title'] ?: 'Télécharger le guide de sensibilisation au handicap',
+        'target' => '_blank',
+    ));
+}
+
+if (!$cta['url']) {
+    $cta = acharp_link(array(), '#', 'Télécharger le guide de sensibilisation au handicap');
+}
+
+if (!$text) {
+    $text = 'Dans le cadre de sa démarche qualité, l’Académie Charpentier désormais certifiée Qualiopi, est soucieuse de sensibiliser l’ensemble de ses partenaires aux handicaps. Nous souhaitons partager nos connaissances avec vous, étudiants, salariés ou enseignants.';
+}
+?>
+
 <section class="guide-handicap">
     <div class="container-fluid">
         <div class="guide-handicap__card">
-            <h2 class="guide-handicap__title">Guide de sensibilisation au handicap</h2>
+            <h2 class="guide-handicap__title"><?= esc_html($title); ?></h2>
 
-            <p class="guide-handicap__text">
-                Dans le cadre de sa démarche qualité, l’Académie Charpentier désormais certifiée
-                Qualiopi, est soucieuse de sensibiliser l’ensemble de ses partenaires aux handicaps.
-                Nous souhaitons partager nos connaissances avec vous, étudiants, salariés ou
-                enseignants.
-            </p>
+            <?php if ($text) : ?>
+                <p class="guide-handicap__text"><?= $text; ?></p>
+            <?php endif; ?>
 
-            <a href="#" class="btn btn--primary guide-handicap__cta">
-                Télécharger le guide de sensibilisation au handicap
-                <span class="btn__icon" aria-hidden="true">
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M3 8h10M9.5 4.5 13 8l-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </span>
+            <a <?= acharp_link_attrs($cta); ?> class="btn btn--primary guide-handicap__cta">
+                <?= esc_html($cta['title']); ?>
+                <?= acharp_arrow(); ?>
             </a>
         </div>
     </div>

@@ -298,3 +298,23 @@ function acharp_get_actualite_cards() {
 
     return $cards ?: $defaults;
 }
+
+function acharp_icon($name, $set = 'campus') {
+    $icons = array(
+        'campus' => array(
+            'pin'   => '<svg width="16" height="22" viewBox="0 0 16 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14 12.4c0 4.6-6 10.1-6 10.1s-6-5.5-6-10.1a6 6 0 1 1 12 0Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><circle cx="8" cy="12.2" r="2.2" stroke="currentColor" stroke-width="1.3"/></svg>',
+            'metro' => '<svg width="16" height="22" viewBox="0 0 16 22" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2.6" y="2.6" width="10.8" height="13.4" rx="3.2" stroke="currentColor" stroke-width="1.3"/><path d="M2.6 11.4h10.8M5.6 19.4l2.4-3.4M10.4 19.4 8 16" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><circle cx="5.6" cy="13.6" r="0.9" fill="currentColor"/><circle cx="10.4" cy="13.6" r="0.9" fill="currentColor"/></svg>',
+            'city'  => '<svg width="16" height="22" viewBox="0 0 16 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.6 19.4V7.2l5.2-2.6v14.8M7.8 19.4h5.6V10L7.8 7.6" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M4.8 9.6v1.2M4.8 13v1.2M10.4 12.4v1.2M10.4 15.6v1.2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>',
+        ),
+        'eco' => array(
+            'leaf'   => '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 19c0-7 4.6-11.5 14-12 .5 6.6-2.6 13-10 13a5.4 5.4 0 0 1-4-1Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M5 19c1.4-3.8 4.2-7 8.4-9.2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>',
+            'people' => '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="8.4" r="2.8" stroke="currentColor" stroke-width="1.4"/><path d="M7.2 18c0-2.6 2.1-4.4 4.8-4.4s4.8 1.8 4.8 4.4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><circle cx="4.9" cy="10" r="2" stroke="currentColor" stroke-width="1.4"/><circle cx="19.1" cy="10" r="2" stroke="currentColor" stroke-width="1.4"/><path d="M2 17c0-2 1.3-3.4 3.2-3.4M22 17c0-2-1.3-3.4-3.2-3.4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>',
+            'globe'  => '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="8.4" stroke="currentColor" stroke-width="1.4"/><path d="M3.6 12h16.8M12 3.6c2.2 2.3 3.4 5.2 3.4 8.4 0 3.2-1.2 6.1-3.4 8.4-2.2-2.3-3.4-5.2-3.4-8.4 0-3.2 1.2-6.1 3.4-8.4Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>',
+        ),
+    );
+
+    $set_icons = $icons[$set] ?? array();
+    $first     = reset($set_icons);
+
+    return $set_icons[$name] ?? $first ?: '';
+}

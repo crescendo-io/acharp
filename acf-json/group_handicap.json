@@ -1,0 +1,93 @@
+{
+    "key": "group_handicap",
+    "title": "Strate — Guide handicap",
+    "fields": [
+        {
+            "key": "field_handicap_title",
+            "label": "Titre",
+            "name": "handicap_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_handicap_text",
+            "label": "Texte",
+            "name": "handicap_text",
+            "aria-label": "",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "tabs": "visual",
+            "toolbar": "basic",
+            "media_upload": 0,
+            "delay": 0
+        },
+        {
+            "key": "field_handicap_file",
+            "label": "Fichier à télécharger",
+            "name": "handicap_file",
+            "aria-label": "",
+            "type": "file",
+            "instructions": "Prioritaire si renseigné.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "library": "all",
+            "mime_types": "pdf"
+        },
+        {
+            "key": "field_handicap_cta",
+            "label": "Lien de secours",
+            "name": "handicap_cta",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "Utilisé seulement s’il n’y a pas de fichier.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "page-academie.php"
+            }
+        ]
+    ],
+    "menu_order": 80,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1758468000
+}
