@@ -119,9 +119,62 @@ function egp_custom_post_type() {
 
     register_post_type( 'articles', $args );
 
+    $labels = array(
+        'name'               => __( 'Cursus', 'lsd_lang' ),
+        'singular_name'      => __( 'Cursus', 'lsd_lang' ),
+        'menu_name'          => __( 'Cursus', 'lsd_lang' ),
+        'all_items'          => __( 'Tous les cursus', 'lsd_lang' ),
+        'view_item'          => __( 'Voir le cursus', 'lsd_lang' ),
+        'add_new_item'       => __( 'Ajouter un cursus', 'lsd_lang' ),
+        'add_new'            => __( 'Ajouter', 'lsd_lang' ),
+        'edit_item'          => __( 'Modifier le cursus', 'lsd_lang' ),
+        'update_item'        => __( 'Mettre à jour le cursus', 'lsd_lang' ),
+        'search_items'       => __( 'Rechercher un cursus', 'lsd_lang' ),
+        'not_found'          => __( 'Aucun cursus trouvé', 'lsd_lang' ),
+        'not_found_in_trash' => __( 'Aucun cursus dans la corbeille', 'lsd_lang' ),
+    );
+
+    $args = array(
+        'label'               => __( 'Cursus', 'lsd_lang' ),
+        'description'         => __( 'Parcours de formation', 'lsd_lang' ),
+        'labels'              => $labels,
+        'supports'            => array( 'title', 'excerpt', 'thumbnail', 'revisions', 'custom-fields' ),
+        'show_in_rest'        => true,
+        'menu_icon'           => 'dashicons-welcome-learn-more',
+        'hierarchical'        => false,
+        'public'              => true,
+        'publicly_queryable'  => true,
+        'has_archive'         => 'cursus',
+        'rewrite'             => array(
+            'slug'       => 'cursus',
+            'with_front' => false,
+        ),
+    );
+
+    register_post_type( 'cursus', $args );
+
 }
 
 add_action( 'init', 'egp_custom_post_type', 0 );
+
+function acharp_cursus_archive_query( $query ) {
+    if ( is_admin() || ! $query->is_main_query() ) {
+        return;
+    }
+
+    if ( $query->is_post_type_archive( 'cursus' ) ) {
+        $query->set( 'posts_per_page', -1 );
+        $query->set( 'orderby', 'menu_order title' );
+        $query->set( 'order', 'ASC' );
+    }
+}
+add_action( 'pre_get_posts', 'acharp_cursus_archive_query' );
+
+function acharp_flush_rewrite_on_switch() {
+    egp_custom_post_type();
+    flush_rewrite_rules();
+}
+add_action( 'after_switch_theme', 'acharp_flush_rewrite_on_switch' );
 
 
 

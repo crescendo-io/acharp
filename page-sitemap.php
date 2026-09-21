@@ -38,6 +38,17 @@ get_header(); ?>
                 <?php endwhile; wp_reset_postdata(); ?>
             </ul>
         </div>
+
+        <div class="col-sm-4 mx-auto">
+            <h2>Cursus</h2>
+            <ul>
+                <?php
+                $cursus = new WP_Query( array( 'post_type' => 'cursus', 'posts_per_page' => -1 ) );
+                while ( $cursus->have_posts() ) : $cursus->the_post(); ?>
+                    <li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
+                <?php endwhile; wp_reset_postdata(); ?>
+            </ul>
+        </div>
     </div>
 
 </div>
