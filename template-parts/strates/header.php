@@ -111,15 +111,11 @@ $header_cta = acharp_link(
         <a href="<?= esc_url(home_url('/')); ?>" class="site-header__brand" aria-label="Académie Charpentier, retour à l’accueil">
             <img
                 class="site-header__mark"
-                src="<?= esc_url($theme_uri . '/images/logo-acharp-mark.png'); ?>"
+                src="<?= esc_url($theme_uri . '/styles/img/logo.png'); ?>"
                 alt=""
                 width="240"
                 height="73"
             >
-            <span class="site-header__wordmark">
-                Académie<br>
-                Charpentier
-            </span>
         </a>
 
         <button type="button" class="site-header__burger" aria-expanded="false" aria-controls="site-nav" aria-label="Ouvrir le menu">
