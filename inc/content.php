@@ -257,7 +257,7 @@ function acharp_get_actualite_cards() {
         $cards = array();
 
         foreach ($rows as $row) {
-            $related = $row['article'] ?? null;
+            $related = $row['actualite'] ?? ($row['article'] ?? null);
             $id      = $related ? (is_object($related) ? $related->ID : (int) $related) : 0;
             $link    = acharp_link($row['link'] ?? array(), $id ? get_permalink($id) : '#');
             $date    = $row['date'] ?: ($id ? get_the_date('Y-m-d', $id) : '');
@@ -278,7 +278,7 @@ function acharp_get_actualite_cards() {
     }
 
     $query = new WP_Query(array(
-        'post_type'      => 'articles',
+        'post_type'      => 'actualite',
         'posts_per_page' => 3,
         'post_status'    => 'publish',
     ));
@@ -299,6 +299,98 @@ function acharp_get_actualite_cards() {
     }
 
     return $cards ?: $defaults;
+}
+
+/**
+ * Étiquette d’une actualité : premier terme de la taxonomie.
+ */
+function acharp_actualite_type($post_id = null) {
+    $terms = get_the_terms($post_id ?: get_the_ID(), 'type_actualite');
+
+    if (is_wp_error($terms) || empty($terms)) {
+        return null;
+    }
+
+    return reset($terms);
+}
+
+/**
+ * Filtres de l’archive actualités : « Tout » + les étiquettes utilisées.
+ */
+function acharp_actualite_filters() {
+    $terms = get_terms(array(
+        'taxonomy'   => 'type_actualite',
+        'hide_empty' => true,
+    ));
+
+    if (is_wp_error($terms)) {
+        return array();
+    }
+
+    $current = is_tax('type_actualite') ? (int) get_queried_object_id() : 0;
+
+    $filters = array(
+        array(
+            'label'  => 'Tout',
+            'slug'   => '',
+            'url'    => get_post_type_archive_link('actualite') ?: home_url('/'),
+            'active' => !$current,
+        ),
+    );
+
+    foreach ($terms as $term) {
+        $filters[] = array(
+            'label'  => $term->name,
+            'slug'   => $term->slug,
+            'url'    => get_term_link($term),
+            'active' => $current === (int) $term->term_id,
+            'count'  => (int) $term->count,
+        );
+    }
+
+    return $filters;
+}
+
+/**
+ * Terme d’étiquette actuellement filtré, sur l’archive comme en AJAX.
+ */
+function acharp_actualite_current_term() {
+    if (is_tax('type_actualite')) {
+        $term = get_queried_object();
+
+        return ($term && !is_wp_error($term)) ? $term : null;
+    }
+
+    return null;
+}
+
+/**
+ * Pagination d’une liste d’actualités, indépendante de la requête principale
+ * pour pouvoir être régénérée en AJAX.
+ */
+function acharp_actualite_pagination($query, $base_url, $current = 1) {
+    $total = (int) $query->max_num_pages;
+
+    if ($total < 2) {
+        return '';
+    }
+
+    $links = paginate_links(array(
+        'base'      => trailingslashit($base_url) . 'page/%#%/',
+        'format'    => '',
+        'total'     => $total,
+        'current'   => max(1, (int) $current),
+        'mid_size'  => 1,
+        'prev_text' => 'Précédent',
+        'next_text' => 'Suivant',
+        'type'      => 'plain',
+    ));
+
+    if (!$links) {
+        return '';
+    }
+
+    return '<nav class="actu-pagination" aria-label="Pagination des actualités"><div class="nav-links">' . $links . '</div></nav>';
 }
 
 function acharp_icon($name, $set = 'campus') {

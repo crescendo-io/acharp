@@ -1,7 +1,7 @@
 <?php
 $kicker = get_field('actualites_kicker') ?: 'Actualités & évènements';
 $title  = acharp_inline_html(get_field('actualites_title'));
-$all    = acharp_link(get_field('actualites_all'), get_post_type_archive_link('articles') ?: '#', 'Voir toutes nos actualités');
+$all    = acharp_link(get_field('actualites_all'), get_post_type_archive_link('actualite') ?: '#', 'Voir toutes nos actualités');
 $cards  = acharp_get_actualite_cards();
 $arrow  = acharp_arrow('actualites__arrow');
 

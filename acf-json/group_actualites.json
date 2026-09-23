@@ -58,7 +58,7 @@
             "name": "actualites_mode",
             "aria-label": "",
             "type": "button_group",
-            "instructions": "Automatique : les 3 derniers articles. Personnalisé : liez un article et surchargez si besoin, ou saisissez tout à la main.",
+            "instructions": "Automatique : les 3 dernières actualités. Personnalisé : liez une actualité et surchargez si besoin, ou saisissez tout à la main.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -67,7 +67,7 @@
                 "id": ""
             },
             "choices": {
-                "auto": "Derniers articles",
+                "auto": "Dernières actualités",
                 "custom": "Liste personnalisée"
             },
             "default_value": "auto",
@@ -102,8 +102,8 @@
             "sub_fields": [
                 {
                     "key": "field_actu_card_article",
-                    "label": "Article lié",
-                    "name": "article",
+                    "label": "Actualité liée",
+                    "name": "actualite",
                     "aria-label": "",
                     "type": "post_object",
                     "instructions": "Laissez vide pour une carte 100 % manuelle.",
@@ -115,7 +115,7 @@
                         "id": ""
                     },
                     "post_type": [
-                        "articles"
+                        "actualite"
                     ],
                     "return_format": "object",
                     "allow_null": 1,
@@ -232,5 +232,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1758465600
+    "modified": 1758618000
 }

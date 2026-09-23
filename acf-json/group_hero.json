@@ -105,8 +105,8 @@
             "name": "hero_image",
             "aria-label": "",
             "type": "image",
-            "instructions": "",
-            "required": 1,
+            "instructions": "Sans image, le visuel par défaut du thème est utilisé.",
+            "required": 0,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
@@ -323,6 +323,13 @@
                 "operator": "==",
                 "value": "cursus"
             }
+        ],
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "acharp-actualites-archive"
+            }
         ]
     ],
     "menu_order": 0,
@@ -335,5 +342,5 @@
     "description": "Hero présent sur toutes les pages.",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1758463200
+    "modified": 1758618600
 }

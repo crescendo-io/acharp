@@ -59,6 +59,21 @@ function wpm_enqueue_styles(){
         filemtime( get_stylesheet_directory() . '/js/script.js' ), // Version du script (cache busting)
         true // Charger dans le footer (true) ou dans le header (false)
     );
+
+    if ( is_post_type_archive( 'actualite' ) || is_tax( 'type_actualite' ) ) {
+        wp_enqueue_script(
+            'acharp-actualites',
+            get_stylesheet_directory_uri() . '/js/actualites.js',
+            array(),
+            filemtime( get_stylesheet_directory() . '/js/actualites.js' ),
+            true
+        );
+
+        wp_localize_script( 'acharp-actualites', 'acharpActualites', array(
+            'ajaxUrl' => admin_url( 'admin-ajax.php' ),
+            'nonce'   => wp_create_nonce( 'acharp_actualites' ),
+        ) );
+    }
 }
 
 
@@ -99,36 +114,70 @@ function egp_custom_post_type() {
 
 
     $labels = array(
-        'name'                => __( 'Articles', 'lsd_lang'),
-        'singular_name'       => __( 'Article', 'lsd_lang'),
-        'menu_name'           => __( 'Articles', 'lsd_lang'),
-        'all_items'           => __( 'Tous les types de Articles', 'lsd_lang'),
-        'view_item'           => __( 'Voir tous les types de Articles', 'lsd_lang'),
-        'add_new_item'        => __( 'Ajouter un Article', 'lsd_lang'),
-        'add_new'             => __( 'Ajouter', 'lsd_lang'),
-        'edit_item'           => __( 'Editer un type la Article', 'lsd_lang'),
-        'update_item'         => __( 'Modifier un type la Article', 'lsd_lang'),
-        'not_found'           => __( 'Non trouvée', 'lsd_lang'),
-        'not_found_in_trash'  => __( 'Non trouvée dans la corbeille', 'lsd_lang'),
+        'name'               => __( 'Actualités', 'lsd_lang' ),
+        'singular_name'      => __( 'Actualité', 'lsd_lang' ),
+        'menu_name'          => __( 'Actualités', 'lsd_lang' ),
+        'all_items'          => __( 'Toutes les actualités', 'lsd_lang' ),
+        'view_item'          => __( 'Voir l’actualité', 'lsd_lang' ),
+        'add_new_item'       => __( 'Ajouter une actualité', 'lsd_lang' ),
+        'add_new'            => __( 'Ajouter', 'lsd_lang' ),
+        'edit_item'          => __( 'Modifier l’actualité', 'lsd_lang' ),
+        'update_item'        => __( 'Mettre à jour l’actualité', 'lsd_lang' ),
+        'search_items'       => __( 'Rechercher une actualité', 'lsd_lang' ),
+        'not_found'          => __( 'Aucune actualité trouvée', 'lsd_lang' ),
+        'not_found_in_trash' => __( 'Aucune actualité dans la corbeille', 'lsd_lang' ),
     );
 
     $args = array(
-        'label'               => __( 'Article', 'lsd_lang'),
-        'description'         => __( 'Article', 'lsd_lang'),
+        'label'               => __( 'Actualités', 'lsd_lang' ),
+        'description'         => __( 'Actualités et évènements', 'lsd_lang' ),
         'labels'              => $labels,
-        'supports'            => array( 'title', 'excerpt', 'author', 'revisions', 'custom-fields', 'thumbnail'),
-        'show_in_rest'        => false,
-        'menu_icon'           => 'dashicons-admin-home',
-        'hierarchical'        => true,
+        'supports'            => array( 'title', 'editor', 'excerpt', 'thumbnail', 'revisions', 'custom-fields' ),
+        'show_in_rest'        => true,
+        'menu_icon'           => 'dashicons-megaphone',
+        'hierarchical'        => false,
         'public'              => true,
-        'publicly_queryable' => true,
-        'has_archive'         => true,
-        'rewrite' => array(
-            'with_front' => true,
+        'publicly_queryable'  => true,
+        'has_archive'         => 'actualites',
+        'rewrite'             => array(
+            'slug'       => 'actualites',
+            'with_front' => false,
+        ),
+    );
+
+    /**
+     * Enregistrée avant le type : l’URL des étiquettes est imbriquée sous
+     * /actualites/, et les règles de réécriture sont générées dans l’ordre
+     * d’enregistrement. Après le type, les règles de pièce jointe du CPT
+     * captureraient /actualites/type/xxx avant la taxonomie.
+     */
+    register_taxonomy(
+        'type_actualite',
+        'actualite',
+        array(
+            'label'             => __( 'Étiquettes', 'lsd_lang' ),
+            'labels'            => array(
+                'name'          => __( 'Étiquettes', 'lsd_lang' ),
+                'singular_name' => __( 'Étiquette', 'lsd_lang' ),
+                'all_items'     => __( 'Toutes les étiquettes', 'lsd_lang' ),
+                'add_new_item'  => __( 'Ajouter une étiquette', 'lsd_lang' ),
+                'edit_item'     => __( 'Modifier l’étiquette', 'lsd_lang' ),
+                'search_items'  => __( 'Rechercher une étiquette', 'lsd_lang' ),
+                'not_found'     => __( 'Aucune étiquette trouvée', 'lsd_lang' ),
+            ),
+            'hierarchical'      => false,
+            'public'            => true,
+            'show_admin_column' => true,
+            'show_in_rest'      => true,
+            'query_var'         => true,
+            'rewrite'           => array(
+                'slug'       => 'actualites/type',
+                'with_front' => false,
+            ),
         )
     );
 
-    register_post_type( 'articles', $args );
+    register_post_type( 'actualite', $args );
 
     $labels = array(
         'name'               => __( 'Cursus', 'lsd_lang' ),
@@ -178,8 +227,95 @@ function acharp_cursus_archive_query( $query ) {
         $query->set( 'orderby', 'menu_order title' );
         $query->set( 'order', 'ASC' );
     }
+
+    if ( $query->is_post_type_archive( 'actualite' ) || $query->is_tax( 'type_actualite' ) ) {
+        $query->set( 'posts_per_page', 9 );
+        $query->set( 'orderby', 'date' );
+        $query->set( 'order', 'DESC' );
+    }
 }
 add_action( 'pre_get_posts', 'acharp_cursus_archive_query' );
+
+/**
+ * Filtrage AJAX de la liste des actualités. Rend exactement le même partiel
+ * que le serveur, pour garantir un rendu identique.
+ */
+function acharp_ajax_filter_actualites() {
+    check_ajax_referer( 'acharp_actualites', 'nonce' );
+
+    $slug  = isset( $_POST['term'] ) ? sanitize_title( wp_unslash( $_POST['term'] ) ) : '';
+    $paged = isset( $_POST['paged'] ) ? max( 1, (int) $_POST['paged'] ) : 1;
+
+    $query_args = array(
+        'post_type'      => 'actualite',
+        'post_status'    => 'publish',
+        'posts_per_page' => 9,
+        'paged'          => $paged,
+        'orderby'        => 'date',
+        'order'          => 'DESC',
+    );
+
+    $term = $slug ? get_term_by( 'slug', $slug, 'type_actualite' ) : null;
+
+    if ( $slug && ! $term ) {
+        wp_send_json_error( array( 'message' => 'Étiquette inconnue.' ), 404 );
+    }
+
+    if ( $term ) {
+        $query_args['tax_query'] = array(
+            array(
+                'taxonomy' => 'type_actualite',
+                'field'    => 'term_id',
+                'terms'    => $term->term_id,
+            ),
+        );
+    }
+
+    $query    = new WP_Query( $query_args );
+    $base_url = $term ? get_term_link( $term ) : get_post_type_archive_link( 'actualite' );
+
+    if ( is_wp_error( $base_url ) || ! $base_url ) {
+        $base_url = get_post_type_archive_link( 'actualite' ) ?: home_url( '/' );
+    }
+
+    ob_start();
+    get_template_part( 'template-parts/general/resultats-actualites', null, array(
+        'query'    => $query,
+        'base_url' => $base_url,
+        'paged'    => $paged,
+    ) );
+
+    wp_send_json_success( array(
+        'html'  => ob_get_clean(),
+        'url'   => $paged > 1 ? trailingslashit( $base_url ) . 'page/' . $paged . '/' : $base_url,
+        'title' => $term ? $term->name : 'Actualités',
+        'found' => (int) $query->found_posts,
+    ) );
+}
+add_action( 'wp_ajax_acharp_filter_actualites', 'acharp_ajax_filter_actualites' );
+add_action( 'wp_ajax_nopriv_acharp_filter_actualites', 'acharp_ajax_filter_actualites' );
+
+/**
+ * Une archive n’a pas de champs propres : le hero de /actualites/ est piloté
+ * depuis cette page d’options, lue par la strate via post_id.
+ */
+function acharp_acf_options_pages() {
+    if ( ! function_exists( 'acf_add_options_sub_page' ) ) {
+        return;
+    }
+
+    acf_add_options_sub_page( array(
+        'page_title'      => __( 'Hero de l’archive', 'lsd_lang' ),
+        'menu_title'      => __( 'Hero de l’archive', 'lsd_lang' ),
+        'menu_slug'       => 'acharp-actualites-archive',
+        'parent_slug'     => 'edit.php?post_type=actualite',
+        'post_id'         => 'actualite_archive',
+        'capability'      => 'edit_posts',
+        'update_button'   => __( 'Enregistrer', 'lsd_lang' ),
+        'updated_message' => __( 'Hero mis à jour.', 'lsd_lang' ),
+    ) );
+}
+add_action( 'acf/init', 'acharp_acf_options_pages' );
 
 function acharp_flush_rewrite_on_switch() {
     egp_custom_post_type();

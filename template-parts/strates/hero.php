@@ -1,21 +1,33 @@
 <?php
 $theme_uri = get_stylesheet_directory_uri();
 
-$kicker        = get_field('hero_kicker');
-$title         = get_field('hero_title');
-$text          = get_field('hero_text');
-$cta_primary   = acharp_link(get_field('hero_cta_primary'), '#', 'Candidater');
-$cta_secondary = acharp_link(get_field('hero_cta_secondary'), '#', 'Découvrir nos formations');
-$image_id      = get_field('hero_image');
-$push          = get_field('hero_push');
+/**
+ * $args permet de réutiliser le hero hors du contexte d’un post :
+ *   post_id           : source ACF (page d’options, autre contenu…)
+ *   kicker/title/text : contenus de repli propres au contexte
+ *   overrides         : mêmes clés, mais prioritaires sur les valeurs ACF
+ *   push_fallback     : autorise la carte actualité de démonstration
+ */
+$args          = isset($args) && is_array($args) ? $args : array();
+$acf_id        = $args['post_id'] ?? false;
+$push_fallback = $args['push_fallback'] ?? true;
+$overrides     = isset($args['overrides']) && is_array($args['overrides']) ? $args['overrides'] : array();
+
+$kicker        = $overrides['kicker'] ?? get_field('hero_kicker', $acf_id);
+$title         = $overrides['title'] ?? get_field('hero_title', $acf_id);
+$text          = $overrides['text'] ?? get_field('hero_text', $acf_id);
+$cta_primary   = acharp_link(get_field('hero_cta_primary', $acf_id), '#', 'Candidater');
+$cta_secondary = acharp_link(get_field('hero_cta_secondary', $acf_id), '#', 'Découvrir nos formations');
+$image_id      = get_field('hero_image', $acf_id);
+$push          = get_field('hero_push', $acf_id);
 $push          = is_array($push) ? $push : array();
 
 if (!$kicker) {
-    $kicker = 'École d’architecture intérieure & design à Paris';
+    $kicker = $args['kicker'] ?? 'École d’architecture intérieure & design à Paris';
 }
 
 if (!$title) {
-    $title = 'Imaginez les espaces de <strong>demain</strong>';
+    $title = $args['title'] ?? 'Imaginez les espaces de <strong>demain</strong>';
 } else {
     $title = wp_kses($title, array(
         'strong' => array(),
@@ -28,13 +40,13 @@ if (!$title) {
 }
 
 if (!$text) {
-    $text = 'Depuis plus de 60 ans, l’Académie Charpentier forme à Paris les futurs professionnels de l’architecture intérieure et du design.';
+    $text = $args['text'] ?? 'Depuis plus de 60 ans, l’Académie Charpentier forme à Paris les futurs professionnels de l’architecture intérieure et du design.';
 }
 
 $arrow = '<span class="btn__icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 8h10M9.5 4.5 13 8l-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>';
 
 $show_push = !empty($push['show']);
-if (!$show_push && !$image_id) {
+if (!$show_push && !$image_id && $push_fallback) {
     $show_push = true;
     $push = array(
         'link'    => array('url' => '#', 'title' => '', 'target' => ''),

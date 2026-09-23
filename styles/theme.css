@@ -4464,3 +4464,579 @@ body.page-template-styleguide {
         font-size: 1.4rem;
     }
 }
+
+/* -------------------------------------------------------------------------
+   Actualités — liste (archive + bloc « autres actualités »)
+   ------------------------------------------------------------------------- */
+.actu-list {
+    background: var(--color-cream);
+    padding: 6rem 0 8rem;
+}
+
+.actu-list .container-fluid {
+    max-width: var(--container-max);
+    padding-left: 7rem;
+    padding-right: 4rem;
+}
+
+.actu-list--related {
+    border-top: 1px solid rgba(17, 17, 17, 0.08);
+}
+
+.actu-list__header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1.6rem 3.2rem;
+    margin-bottom: 3.2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(17, 17, 17, 0.08);
+}
+
+.actu-list__heading {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: clamp(2.4rem, 2.2vw, 3.2rem);
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    line-height: 1.1;
+    text-transform: uppercase;
+}
+
+.actu-list__all {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-family: var(--font-sans);
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--color-black);
+    white-space: nowrap;
+}
+
+.actu-list__all:hover,
+.actu-list__all:focus {
+    color: var(--color-black);
+    text-decoration: none;
+}
+
+.actu-list__arrow,
+.actu-card__arrow {
+    display: inline-flex;
+    width: 1.6rem;
+    height: 1.6rem;
+}
+
+.actu-list__arrow svg,
+.actu-card__arrow svg {
+    width: 100%;
+    height: 100%;
+}
+
+.actu-list .row {
+    margin-left: -1.2rem;
+    margin-right: -1.2rem;
+}
+
+.actu-list [class*="col-"] {
+    padding-left: 1.2rem;
+    padding-right: 1.2rem;
+    margin-bottom: 2.4rem;
+}
+
+.actu-list__empty {
+    margin: 0;
+    color: var(--color-muted);
+}
+
+/* Filtres par étiquette */
+.actu-filters {
+    margin-bottom: 3.2rem;
+    padding-bottom: 2.4rem;
+    border-bottom: 1px solid rgba(17, 17, 17, 0.08);
+}
+
+.actu-filters__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.actu-filters__item {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.9rem 1.8rem;
+    font-family: var(--font-sans);
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    line-height: 1;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--color-black);
+    background: var(--color-white);
+    border: 1px solid rgba(17, 17, 17, 0.12);
+    border-radius: 999rem;
+    transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+}
+
+.actu-filters__item:hover,
+.actu-filters__item:focus {
+    text-decoration: none;
+    color: var(--color-black);
+    border-color: var(--color-black);
+}
+
+.actu-filters__item.is-active {
+    color: var(--color-white);
+    background: var(--color-black);
+    border-color: var(--color-black);
+}
+
+.actu-filters__item.is-active:hover,
+.actu-filters__item.is-active:focus {
+    color: var(--color-white);
+}
+
+.actu-list__results {
+    position: relative;
+    transition: opacity 0.2s ease;
+}
+
+.actu-list__results.is-loading {
+    opacity: 0.45;
+    pointer-events: none;
+}
+
+.actu-list__results.is-loading::after {
+    content: "";
+    position: absolute;
+    top: 4rem;
+    left: 50%;
+    width: 3.2rem;
+    height: 3.2rem;
+    margin-left: -1.6rem;
+    border: 2px solid rgba(17, 17, 17, 0.15);
+    border-top-color: var(--color-black);
+    border-radius: 50%;
+    animation: actu-spin 0.7s linear infinite;
+}
+
+@keyframes actu-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Vignette actualité */
+.actu-card {
+    height: 100%;
+    overflow: hidden;
+    background: var(--color-white);
+    border: 1px solid rgba(17, 17, 17, 0.06);
+    border-radius: var(--radius-card);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.actu-card:hover {
+    transform: translateY(-0.4rem);
+    box-shadow: 0 1.2rem 3.2rem rgba(17, 17, 17, 0.1);
+}
+
+.actu-card__link {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    text-decoration: none;
+    color: inherit;
+}
+
+.actu-card__link:hover,
+.actu-card__link:focus {
+    text-decoration: none;
+    color: inherit;
+}
+
+.actu-card__media {
+    position: relative;
+    margin: 0;
+    overflow: hidden;
+    aspect-ratio: 3 / 2;
+    background: #e7e0d6;
+}
+
+.actu-card__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.actu-card__tag {
+    position: absolute;
+    top: 1.2rem;
+    left: 1.2rem;
+    padding: 0.5rem 1rem;
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-black);
+    background: var(--color-white);
+    border-radius: var(--radius-btn);
+}
+
+.actu-card__body {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    padding: 2rem 2.2rem 2.2rem;
+}
+
+.actu-card__date {
+    display: block;
+    margin-bottom: 0.8rem;
+    font-size: 1.1rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #8a8a8a;
+}
+
+.actu-card__title {
+    margin: 0 0 0.8rem;
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+}
+
+.actu-card__text {
+    margin: 0 0 1.8rem;
+    font-size: var(--text-body-size);
+    letter-spacing: var(--text-body-tracking);
+    line-height: 1.45;
+    color: var(--color-muted);
+}
+
+.actu-card__more {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-top: auto;
+    font-family: var(--font-sans);
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+/* Pagination */
+.actu-pagination {
+    margin-top: 2.4rem;
+}
+
+.actu-pagination .nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+}
+
+.actu-pagination .page-numbers {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 4rem;
+    height: 4rem;
+    padding: 0 1.2rem;
+    font-family: var(--font-sans);
+    font-size: 1.3rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--color-black);
+    background: var(--color-white);
+    border: 1px solid rgba(17, 17, 17, 0.12);
+    border-radius: var(--radius-btn);
+}
+
+.actu-pagination .page-numbers:hover,
+.actu-pagination .page-numbers:focus {
+    text-decoration: none;
+    border-color: var(--color-black);
+}
+
+.actu-pagination .page-numbers.current {
+    color: var(--color-white);
+    background: var(--color-black);
+    border-color: var(--color-black);
+}
+
+.actu-pagination .page-numbers.dots {
+    background: transparent;
+    border-color: transparent;
+}
+
+/* -------------------------------------------------------------------------
+   Actualité — fiche
+   ------------------------------------------------------------------------- */
+.actu-single__header,
+.actu-single__cover,
+.actu-single__content {
+    background: var(--color-cream);
+}
+
+.actu-single .container-fluid {
+    max-width: var(--container-max);
+    padding-left: 7rem;
+    padding-right: 4rem;
+}
+
+.actu-single__header {
+    padding: 5rem 0 3.2rem;
+}
+
+.actu-single__back {
+    display: inline-flex;
+    margin-bottom: 2.4rem;
+    font-family: var(--font-sans);
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--color-muted);
+}
+
+.actu-single__back:hover,
+.actu-single__back:focus {
+    color: var(--color-black);
+    text-decoration: none;
+}
+
+.actu-single__meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1.2rem;
+    margin: 0 0 1.6rem;
+    font-family: var(--font-sans);
+    font-size: 1.2rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #8a8a8a;
+}
+
+.actu-single__type {
+    padding: 0.5rem 1rem;
+    font-weight: 600;
+    color: var(--color-black);
+    background: var(--color-white);
+    border-radius: var(--radius-btn);
+}
+
+.actu-single__title {
+    max-width: 90rem;
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: clamp(3.6rem, 4.4vw, 6.4rem);
+    font-weight: 400;
+    letter-spacing: -0.04em;
+    line-height: 1.02;
+}
+
+.actu-single__chapo {
+    max-width: 72rem;
+    margin: 2.4rem 0 0;
+    font-size: 2rem;
+    line-height: 1.5;
+    color: var(--color-muted);
+}
+
+.actu-single__cover {
+    margin: 0;
+    padding-bottom: 4rem;
+}
+
+.actu-single__cover img {
+    width: 100%;
+    height: auto;
+    max-height: 62rem;
+    object-fit: cover;
+    border-radius: var(--radius-card);
+}
+
+.actu-single__content {
+    padding-bottom: 8rem;
+}
+
+.actu-single__prose {
+    max-width: 78rem;
+    font-size: var(--text-body-size);
+    line-height: 1.7;
+    color: var(--color-muted);
+}
+
+.actu-single__prose > *:first-child {
+    margin-top: 0;
+}
+
+.actu-single__prose h2,
+.actu-single__prose h3 {
+    margin: 4rem 0 1.6rem;
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    color: var(--color-black);
+}
+
+.actu-single__prose h2 {
+    font-size: 3.2rem;
+}
+
+.actu-single__prose h3 {
+    font-size: 2.4rem;
+}
+
+.actu-single__prose p,
+.actu-single__prose ul,
+.actu-single__prose ol {
+    margin: 0 0 2rem;
+}
+
+.actu-single__prose ul,
+.actu-single__prose ol {
+    padding-left: 2.4rem;
+}
+
+.actu-single__prose li {
+    margin-bottom: 0.8rem;
+}
+
+.actu-single__prose img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--radius-card);
+}
+
+.actu-single__prose blockquote {
+    margin: 3.2rem 0;
+    padding-left: 2.4rem;
+    font-family: var(--font-display);
+    font-size: 2.2rem;
+    line-height: 1.35;
+    color: var(--color-black);
+    border-left: 2px solid var(--color-black);
+}
+
+.actu-single__prose a {
+    color: var(--color-black);
+    text-decoration: underline;
+}
+
+/* Encart informations pratiques */
+.actu-infos {
+    position: sticky;
+    top: 3.2rem;
+    padding: 2.8rem;
+    background: var(--color-white);
+    border: 1px solid rgba(17, 17, 17, 0.08);
+    border-radius: var(--radius-card);
+}
+
+.actu-infos__title {
+    margin: 0 0 2rem;
+    font-family: var(--font-sans);
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.actu-infos__list {
+    margin: 0 0 2.4rem;
+}
+
+.actu-infos__row {
+    padding: 1.4rem 0;
+    border-top: 1px solid rgba(17, 17, 17, 0.08);
+}
+
+.actu-infos__row:first-child {
+    padding-top: 0;
+    border-top: 0;
+}
+
+.actu-infos__row dt {
+    margin-bottom: 0.4rem;
+    font-family: var(--font-sans);
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #8a8a8a;
+}
+
+.actu-infos__row dd {
+    margin: 0;
+    font-size: 1.7rem;
+    line-height: 1.4;
+    color: var(--color-black);
+}
+
+.actu-infos .btn {
+    width: 100%;
+    justify-content: center;
+}
+
+@media (max-width: 1199.98px) {
+    .actu-list .container-fluid,
+    .actu-single .container-fluid {
+        padding-left: 4rem;
+        padding-right: 4rem;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .actu-list {
+        padding: 4.8rem 0 6rem;
+    }
+
+    .actu-single__header {
+        padding: 3.2rem 0 2.4rem;
+    }
+
+    .actu-single__content {
+        padding-bottom: 5.6rem;
+    }
+
+    .actu-infos {
+        position: static;
+        margin-top: 3.2rem;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .actu-list .container-fluid,
+    .actu-single .container-fluid {
+        padding-left: 2.4rem;
+        padding-right: 2.4rem;
+    }
+
+    .actu-single__chapo {
+        font-size: 1.8rem;
+    }
+
+    .actu-single__prose h2 {
+        font-size: 2.6rem;
+    }
+}

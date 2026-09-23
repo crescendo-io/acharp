@@ -1,0 +1,143 @@
+{
+    "key": "group_actualite",
+    "title": "Actualité",
+    "fields": [
+        {
+            "key": "field_actualite_chapo",
+            "label": "Chapô",
+            "name": "actualite_chapo",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Laissez vide pour reprendre l’extrait de l’article.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "rows": 3
+        },
+        {
+            "key": "field_actualite_infos",
+            "label": "Informations pratiques",
+            "name": "actualite_infos",
+            "aria-label": "",
+            "type": "group",
+            "instructions": "Renseignez ce bloc pour un évènement. Vide, l’encart n’apparaît pas.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_actualite_date_start",
+                    "label": "Date de début",
+                    "name": "date_start",
+                    "aria-label": "",
+                    "type": "date_picker",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "33",
+                        "class": "",
+                        "id": ""
+                    },
+                    "display_format": "d F Y",
+                    "return_format": "Y-m-d",
+                    "first_day": 1
+                },
+                {
+                    "key": "field_actualite_date_end",
+                    "label": "Date de fin",
+                    "name": "date_end",
+                    "aria-label": "",
+                    "type": "date_picker",
+                    "instructions": "Uniquement si l’évènement dure plusieurs jours.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "33",
+                        "class": "",
+                        "id": ""
+                    },
+                    "display_format": "d F Y",
+                    "return_format": "Y-m-d",
+                    "first_day": 1
+                },
+                {
+                    "key": "field_actualite_schedule",
+                    "label": "Horaires",
+                    "name": "schedule",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "34",
+                        "class": "",
+                        "id": ""
+                    },
+                    "placeholder": "10h — 18h"
+                },
+                {
+                    "key": "field_actualite_place",
+                    "label": "Lieu",
+                    "name": "place",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "placeholder": "Académie Charpentier, 4 rue Jules Chaplain, Paris 6e"
+                },
+                {
+                    "key": "field_actualite_cta",
+                    "label": "Bouton",
+                    "name": "cta",
+                    "aria-label": "",
+                    "type": "link",
+                    "instructions": "Inscription, billetterie, formulaire…",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array"
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "actualite"
+            }
+        ]
+    ],
+    "menu_order": 10,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1758620400
+}
