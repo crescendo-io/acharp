@@ -486,7 +486,7 @@ img {
 
 .hero__text {
     margin: 0 0 3.2rem;
-    max-width: 38rem;
+    max-width: 100%;
     font-size: var(--text-body-size);
     letter-spacing: var(--text-body-tracking);
     font-weight: 400;
