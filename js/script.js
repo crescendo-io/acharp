@@ -143,6 +143,52 @@ $(function () {
 });
 
 $(function () {
+    // Survoler une entrée du méga-menu bascule le visuel de gauche.
+    $('[data-submenu]').each(function () {
+        var $item = $(this);
+        var $links = $item.find('[data-submenu-target]');
+        var $visuals = $item.find('[data-submenu-visual]');
+        var $trigger = $item.children('.site-header__link');
+
+        function activate(index) {
+            $links.each(function () {
+                $(this).toggleClass('is-active', $(this).data('submenu-target') === index);
+            });
+
+            $visuals.each(function () {
+                $(this).toggleClass('is-active', $(this).data('submenu-visual') === index);
+            });
+        }
+
+        $links.on('mouseenter focus', function () {
+            activate($(this).data('submenu-target'));
+        });
+
+        $item.on('mouseenter focusin', function () {
+            $item.addClass('is-open');
+            $trigger.attr('aria-expanded', 'true');
+        });
+
+        $item.on('mouseleave focusout', function () {
+            if ($item.has(document.activeElement).length) {
+                return;
+            }
+
+            $item.removeClass('is-open');
+            $trigger.attr('aria-expanded', 'false');
+            activate(0);
+        });
+
+        $item.on('keydown', function (event) {
+            if (event.key === 'Escape') {
+                $item.removeClass('is-open');
+                $trigger.attr('aria-expanded', 'false').focus();
+            }
+        });
+    });
+});
+
+$(function () {
     // Les cartes de gauche et les onglets de droite pilotent le même panneau d'année.
     $('[data-programme]').each(function () {
         var $section = $(this);

@@ -207,6 +207,180 @@ img {
     text-underline-offset: 0.4rem;
 }
 
+/* Méga-menu des cursus */
+.site-header__item--has-sub > .site-header__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.site-header__item--has-sub > .site-header__link .site-header__chevron {
+    transition: transform 0.2s ease;
+}
+
+.site-header__item--has-sub.is-open > .site-header__link .site-header__chevron {
+    transform: rotate(180deg);
+}
+
+.submenu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 30;
+    padding: 4rem 4rem 4rem 7rem;
+    background: var(--color-cream);
+    border-bottom: 1px solid #e0d6d6;
+    box-shadow: 0 2.4rem 4rem rgba(17, 17, 17, 0.08);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-0.8rem);
+    transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s;
+}
+
+.site-header__item--has-sub:hover > .submenu,
+.site-header__item--has-sub:focus-within > .submenu,
+.site-header__item--has-sub.is-open > .submenu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.submenu__inner {
+    display: grid;
+    grid-template-columns: minmax(0, 34rem) minmax(0, 1fr);
+    gap: 4.8rem;
+    align-items: stretch;
+    max-width: var(--container-max);
+    margin: 0 auto;
+}
+
+/* Le visuel suit la hauteur de la liste : le panneau reste équilibré
+   quel que soit le nombre de cursus publiés. */
+.submenu__visual {
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+    min-height: 26rem;
+    background: #e7e0d6;
+    border-radius: var(--radius-card);
+}
+
+.submenu__image {
+    position: absolute;
+    inset: 0;
+    margin: 0;
+    opacity: 0;
+    transform: scale(1.03);
+    transition: opacity 0.35s ease, transform 0.6s ease;
+}
+
+.submenu__image.is-active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.submenu__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.submenu__list {
+    display: flex;
+    flex-direction: column;
+    max-width: 64rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.submenu__link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2.4rem;
+    padding: 1.8rem 0;
+    text-decoration: none;
+    color: var(--color-black);
+    border-bottom: 1px solid rgba(17, 17, 17, 0.1);
+    transition: padding-left 0.22s ease, color 0.2s ease;
+}
+
+.submenu__link:hover,
+.submenu__link:focus,
+.submenu__link.is-active {
+    padding-left: 1.2rem;
+    text-decoration: none;
+    color: var(--color-black);
+}
+
+.submenu__body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.submenu__name {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 1.8vw, 2.8rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+}
+
+.submenu__meta {
+    font-family: var(--font-sans);
+    font-size: 1.2rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #8a8a8a;
+}
+
+.submenu__arrow {
+    display: inline-flex;
+    flex: 0 0 auto;
+    width: 1.8rem;
+    height: 1.8rem;
+    opacity: 0;
+    transform: translateX(-0.6rem);
+    transition: opacity 0.22s ease, transform 0.22s ease;
+}
+
+.submenu__arrow svg {
+    width: 100%;
+    height: 100%;
+}
+
+.submenu__link:hover .submenu__arrow,
+.submenu__link:focus .submenu__arrow,
+.submenu__link.is-active .submenu__arrow,
+.submenu__all .submenu__arrow {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.submenu__all {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-top: 2.4rem;
+    font-family: var(--font-sans);
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--color-black);
+}
+
+.submenu__all:hover,
+.submenu__all:focus {
+    color: var(--color-black);
+    text-decoration: underline;
+    text-underline-offset: 0.4rem;
+}
+
 .site-header__actions {
     display: flex;
     flex: 1 1 0;
@@ -3529,6 +3703,46 @@ body.page-template-styleguide {
 
     .site-header__link {
         font-size: 1.4rem;
+    }
+
+    .site-header__item--has-sub {
+        width: 100%;
+    }
+
+    .site-header__item--has-sub > .site-header__link .site-header__chevron {
+        display: none;
+    }
+
+    .submenu {
+        position: static;
+        padding: 1.2rem 0 0;
+        background: transparent;
+        border: 0;
+        box-shadow: none;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+    }
+
+    .submenu__inner {
+        display: block;
+    }
+
+    .submenu__visual {
+        display: none;
+    }
+
+    .submenu__link {
+        padding: 1.2rem 0 1.2rem 1.6rem;
+    }
+
+    .submenu__name {
+        font-size: 1.6rem;
+    }
+
+    .submenu__all {
+        margin-top: 1.6rem;
+        padding-left: 1.6rem;
     }
 
     .btn:not(.site-header__cta) {

@@ -1,0 +1,238 @@
+{
+    "key": "group_header_navigation",
+    "title": "Navigation principale",
+    "fields": [
+        {
+            "key": "field_header_menu",
+            "label": "Entrées principales",
+            "name": "header_menu",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Chaque entrée peut être un lien simple, afficher tous les cursus, ou contenir un sous-menu personnalisé.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "button_label": "Ajouter une entrée",
+            "min": 0,
+            "max": 0,
+            "collapsed": "field_header_item_label",
+            "sub_fields": [
+                {
+                    "key": "field_header_item_label",
+                    "label": "Libellé",
+                    "name": "label",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "35",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_header_item_link",
+                    "label": "Lien principal",
+                    "name": "link",
+                    "aria-label": "",
+                    "type": "link",
+                    "instructions": "Facultatif si le sous-menu affiche automatiquement les cursus.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "40",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array"
+                },
+                {
+                    "key": "field_header_item_submenu_mode",
+                    "label": "Sous-menu",
+                    "name": "submenu_mode",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "25",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "none": "Aucun",
+                        "manual": "Personnalisé",
+                        "cursus": "Tous les cursus"
+                    },
+                    "default_value": "none",
+                    "allow_null": 0,
+                    "multiple": 0,
+                    "ui": 0,
+                    "return_format": "value"
+                },
+                {
+                    "key": "field_header_item_submenu_items",
+                    "label": "Éléments du sous-menu",
+                    "name": "submenu_items",
+                    "aria-label": "",
+                    "type": "repeater",
+                    "instructions": "Au survol d’un élément, son image apparaît dans la colonne de gauche.",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_header_item_submenu_mode",
+                                "operator": "==",
+                                "value": "manual"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "layout": "block",
+                    "button_label": "Ajouter un élément",
+                    "min": 1,
+                    "max": 0,
+                    "collapsed": "field_header_subitem_label",
+                    "sub_fields": [
+                        {
+                            "key": "field_header_subitem_label",
+                            "label": "Libellé",
+                            "name": "label",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "30",
+                                "class": "",
+                                "id": ""
+                            }
+                        },
+                        {
+                            "key": "field_header_subitem_meta",
+                            "label": "Sous-titre",
+                            "name": "meta",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "25",
+                                "class": "",
+                                "id": ""
+                            },
+                            "placeholder": "Information complémentaire"
+                        },
+                        {
+                            "key": "field_header_subitem_link",
+                            "label": "Lien",
+                            "name": "link",
+                            "aria-label": "",
+                            "type": "link",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "45",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "array"
+                        },
+                        {
+                            "key": "field_header_subitem_image",
+                            "label": "Image au survol",
+                            "name": "image",
+                            "aria-label": "",
+                            "type": "image",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "id",
+                            "preview_size": "medium",
+                            "library": "all"
+                        }
+                    ]
+                },
+                {
+                    "key": "field_header_item_submenu_all",
+                    "label": "Lien de bas de sous-menu",
+                    "name": "submenu_all",
+                    "aria-label": "",
+                    "type": "link",
+                    "instructions": "Ex. : Voir toutes les formations. Facultatif.",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_header_item_submenu_mode",
+                                "operator": "!=",
+                                "value": "none"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array"
+                }
+            ]
+        },
+        {
+            "key": "field_header_cta",
+            "label": "Bouton principal",
+            "name": "header_cta",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "Bouton affiché à droite du header.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "acharp-header-navigation"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Administration du menu principal et de ses méga-menus.",
+    "show_in_rest": 0,
+    "modified": 1758635700
+}

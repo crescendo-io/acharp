@@ -305,6 +305,17 @@ function acharp_acf_options_pages() {
     }
 
     acf_add_options_sub_page( array(
+        'page_title'      => __( 'Navigation du site', 'lsd_lang' ),
+        'menu_title'      => __( 'Navigation du site', 'lsd_lang' ),
+        'menu_slug'       => 'acharp-header-navigation',
+        'parent_slug'     => 'themes.php',
+        'post_id'         => 'header_options',
+        'capability'      => 'edit_theme_options',
+        'update_button'   => __( 'Enregistrer la navigation', 'lsd_lang' ),
+        'updated_message' => __( 'Navigation mise à jour.', 'lsd_lang' ),
+    ) );
+
+    acf_add_options_sub_page( array(
         'page_title'      => __( 'Hero de l’archive', 'lsd_lang' ),
         'menu_title'      => __( 'Hero de l’archive', 'lsd_lang' ),
         'menu_slug'       => 'acharp-actualites-archive',
