@@ -28,26 +28,9 @@ if (!$title) {
         <div class="row">
             <?php foreach ($cards as $card) : ?>
                 <div class="col-12 col-lg-4">
-                    <article class="formations__card">
-                        <?php if (!empty($card['image'])) : ?>
-                            <figure class="formations__media">
-                                <?= $card['image']; ?>
-                            </figure>
-                        <?php endif; ?>
-                        <div class="formations__body">
-                            <h3 class="formations__name"><?= esc_html($card['title']); ?></h3>
-                            <?php if (!empty($card['meta'])) : ?>
-                                <p class="formations__meta"><?= esc_html($card['meta']); ?></p>
-                            <?php endif; ?>
-                            <?php if (!empty($card['text'])) : ?>
-                                <p class="formations__text"><?= esc_html($card['text']); ?></p>
-                            <?php endif; ?>
-                            <a href="<?= esc_url($card['url'] ?: '#'); ?>" class="formations__link">
-                                Découvrir nos formations
-                                <?= $arrow; ?>
-                            </a>
-                        </div>
-                    </article>
+                    <?php get_template_part('template-parts/general/card-cursus', null, array(
+                        'card' => $card,
+                    )); ?>
                 </div>
             <?php endforeach; ?>
         </div>

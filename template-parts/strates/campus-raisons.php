@@ -43,10 +43,11 @@ if (!$items) {
                 <?php
                 $related = $item['cursus'] ?? null;
                 $id      = $related ? (is_object($related) ? $related->ID : (int) $related) : 0;
+                $card    = $id ? acharp_cursus_card($id) : array();
                 $link    = acharp_link(
                     $item['link'] ?? array(),
-                    $id ? get_permalink($id) : $archive,
-                    'Découvrir nos formations'
+                    $card['url'] ?? $archive,
+                    $card['link_label'] ?? 'Découvrir nos formations'
                 );
                 ?>
                 <div class="col-12 col-lg-4">

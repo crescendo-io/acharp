@@ -5,8 +5,9 @@ if ($show === false || $show === 0 || $show === '0') {
 }
 
 $theme_uri = get_stylesheet_directory_uri();
-$related   = get_field('prepa_cursus');
+$related    = get_field('prepa_cursus');
 $related_id = $related ? (is_object($related) ? $related->ID : (int) $related) : 0;
+$related_card = $related_id ? acharp_cursus_card($related_id) : array();
 
 $kicker = get_field('prepa_kicker') ?: 'Une année pour se préparer';
 $title  = acharp_inline_html(get_field('prepa_title'));
@@ -14,8 +15,8 @@ $texts  = acharp_rows(get_field('prepa_texts'));
 $image  = get_field('prepa_image');
 $cta    = acharp_link(
     get_field('prepa_cta'),
-    $related_id ? get_permalink($related_id) : '#',
-    'Découvrir l’année prépa'
+    $related_card['url'] ?? '#',
+    $related_card['link_label'] ?? 'Découvrir l’année prépa'
 );
 
 if (!$title) {
@@ -28,8 +29,8 @@ if (!$title) {
 }
 
 if (!$texts) {
-    if ($related_id && has_excerpt($related_id)) {
-        $texts = array(array('text' => get_the_excerpt($related_id)));
+    if (!empty($related_card['text'])) {
+        $texts = array(array('text' => $related_card['text']));
     } else {
         $texts = array(
             array('text' => 'L’année préparatoire permet de découvrir les fondamentaux des arts appliqués, d’expérimenter différentes pratiques créatives et de construire progressivement son univers personnel.'),
@@ -39,7 +40,7 @@ if (!$texts) {
 }
 
 if (!$image && $related_id) {
-    $image = get_post_thumbnail_id($related_id);
+    $image = get_field('cursus_card_image', $related_id) ?: get_post_thumbnail_id($related_id);
 }
 ?>
 

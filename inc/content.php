@@ -112,6 +112,34 @@ function acharp_rows($value) {
 }
 
 /**
+ * Carte d’un cursus, telle qu’attendue par les strates de relation.
+ * Les champs ACF priment, avec repli sur l’image à la une et l’extrait.
+ */
+function acharp_cursus_card($post_id) {
+    $post_id = (int) $post_id;
+
+    if (!$post_id) {
+        return array();
+    }
+
+    $image_id = get_field('cursus_card_image', $post_id) ?: get_post_thumbnail_id($post_id);
+    $text     = get_field('cursus_card_text', $post_id);
+
+    if (!$text && has_excerpt($post_id)) {
+        $text = get_the_excerpt($post_id);
+    }
+
+    return array(
+        'title'      => get_the_title($post_id),
+        'meta'       => get_field('cursus_meta', $post_id) ?: '',
+        'text'       => $text ?: '',
+        'url'        => get_permalink($post_id),
+        'link_label' => get_field('cursus_card_link_label', $post_id) ?: 'Découvrir nos formations',
+        'image'      => acharp_image_html($image_id, 'large'),
+    );
+}
+
+/**
  * Cartes formations : liste auto des cursus, ou ligne par ligne
  * (relation vers un cursus + champs de surcharge optionnels).
  */
@@ -164,16 +192,18 @@ function acharp_get_formation_cards() {
         foreach ($rows as $row) {
             $related = $row['cursus'] ?? null;
             $id      = $related ? (is_object($related) ? $related->ID : (int) $related) : 0;
-            $link    = acharp_link($row['link'] ?? array(), $id ? get_permalink($id) : '#');
+            $base    = $id ? acharp_cursus_card($id) : array();
+            $link    = acharp_link($row['link'] ?? array(), $base['url'] ?? '#');
 
             $cards[] = array(
-                'title' => $row['title'] ?: ($id ? get_the_title($id) : ''),
-                'meta'  => $row['meta'] ?: ($id ? (get_field('cursus_meta', $id) ?: '') : ''),
-                'text'  => $row['text'] ?: ($id && has_excerpt($id) ? get_the_excerpt($id) : ''),
-                'url'   => $link['url'],
-                'image' => !empty($row['image'])
+                'title'      => ($row['title'] ?? '') ?: ($base['title'] ?? ''),
+                'meta'       => ($row['meta'] ?? '') ?: ($base['meta'] ?? ''),
+                'text'       => ($row['text'] ?? '') ?: ($base['text'] ?? ''),
+                'url'        => $link['url'],
+                'link_label' => $link['title'] ?: ($base['link_label'] ?? 'Découvrir nos formations'),
+                'image'      => !empty($row['image'])
                     ? acharp_image_html($row['image'], 'large')
-                    : ($id ? get_the_post_thumbnail($id, 'large') : ''),
+                    : ($base['image'] ?? ''),
             );
         }
 
@@ -191,14 +221,7 @@ function acharp_get_formation_cards() {
     $cards = array();
 
     foreach ($query->posts as $post) {
-        $id = $post->ID;
-        $cards[] = array(
-            'title' => get_the_title($id),
-            'meta'  => get_field('cursus_meta', $id) ?: '',
-            'text'  => has_excerpt($id) ? get_the_excerpt($id) : '',
-            'url'   => get_permalink($id),
-            'image' => get_the_post_thumbnail($id, 'large'),
-        );
+        $cards[] = acharp_cursus_card($post->ID);
     }
 
     return $cards ?: $defaults;

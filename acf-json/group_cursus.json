@@ -3,19 +3,70 @@
     "title": "Cursus — Carte",
     "fields": [
         {
+            "key": "field_cursus_card_image",
+            "label": "Visuel de la carte",
+            "name": "cursus_card_image",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "Laissez vide pour utiliser l’image à la une du cursus.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "preview_size": "medium",
+            "library": "all"
+        },
+        {
             "key": "field_cursus_meta",
             "label": "Durée / mention",
             "name": "cursus_meta",
             "aria-label": "",
             "type": "text",
-            "instructions": "Ex. : post-bac — 3 ans. Affiché sur les cartes formations.",
+            "instructions": "Ex. : post-bac — 3 ans. Affiché sous le titre de la carte.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "placeholder": "post-bac — 3 ans"
+        },
+        {
+            "key": "field_cursus_card_text",
+            "label": "Accroche de la carte",
+            "name": "cursus_card_text",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Laissez vide pour reprendre l’extrait du cursus.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
                 "class": "",
                 "id": ""
-            }
+            },
+            "rows": 3
+        },
+        {
+            "key": "field_cursus_card_link_label",
+            "label": "Libellé du lien",
+            "name": "cursus_card_link_label",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Laissez vide pour « Découvrir nos formations ».",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placeholder": "Découvrir nos formations"
         }
     ],
     "location": [
@@ -34,7 +85,7 @@
     "instruction_placement": "label",
     "hide_on_screen": "",
     "active": true,
-    "description": "",
+    "description": "Alimente les cartes cursus affichées dans les strates de relation.",
     "show_in_rest": 0,
-    "modified": 1758465600
+    "modified": 1758628800
 }
