@@ -80,9 +80,10 @@ function acharp_image_html($image_id, $size = 'large', $fallback = array()) {
     }
 
     $image_id = (int) $image_id;
+    $class    = $fallback['class'] ?? '';
 
     if ($image_id) {
-        return wp_get_attachment_image($image_id, $size);
+        return wp_get_attachment_image($image_id, $size, false, $class ? array('class' => $class) : array());
     }
 
     if (empty($fallback['src'])) {
@@ -90,11 +91,12 @@ function acharp_image_html($image_id, $size = 'large', $fallback = array()) {
     }
 
     return sprintf(
-        '<img src="%s" alt="%s" width="%s" height="%s">',
+        '<img src="%s" alt="%s"%s%s%s>',
         esc_url($fallback['src']),
         esc_attr($fallback['alt'] ?? ''),
-        esc_attr($fallback['width'] ?? ''),
-        esc_attr($fallback['height'] ?? '')
+        !empty($fallback['width']) ? ' width="' . esc_attr($fallback['width']) . '"' : '',
+        !empty($fallback['height']) ? ' height="' . esc_attr($fallback['height']) . '"' : '',
+        $class ? ' class="' . esc_attr($class) . '"' : ''
     );
 }
 
@@ -311,10 +313,38 @@ function acharp_icon($name, $set = 'campus') {
             'people' => '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="8.4" r="2.8" stroke="currentColor" stroke-width="1.4"/><path d="M7.2 18c0-2.6 2.1-4.4 4.8-4.4s4.8 1.8 4.8 4.4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><circle cx="4.9" cy="10" r="2" stroke="currentColor" stroke-width="1.4"/><circle cx="19.1" cy="10" r="2" stroke="currentColor" stroke-width="1.4"/><path d="M2 17c0-2 1.3-3.4 3.2-3.4M22 17c0-2-1.3-3.4-3.2-3.4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>',
             'globe'  => '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="8.4" stroke="currentColor" stroke-width="1.4"/><path d="M3.6 12h16.8M12 3.6c2.2 2.3 3.4 5.2 3.4 8.4 0 3.2-1.2 6.1-3.4 8.4-2.2-2.3-3.4-5.2-3.4-8.4 0-3.2 1.2-6.1 3.4-8.4Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>',
         ),
+        'admissions' => array(
+            'file'    => '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 3h7l4 4v14H7V3Z" stroke="currentColor" stroke-width="1.5"/><path d="M14 3v5h4M10 12h5M10 16h5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>',
+            'mail'    => '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1" stroke="currentColor" stroke-width="1.5"/><path d="m4 7 8 6 8-6" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>',
+            'image'   => '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="1.5" stroke="currentColor" stroke-width="1.5"/><circle cx="8.5" cy="9" r="1.5" stroke="currentColor" stroke-width="1.5"/><path d="m5 18 5-5 3 3 2-2 4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+            'diploma' => '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 3h7l4 4v14H7V3Z" stroke="currentColor" stroke-width="1.5"/><path d="M14 3v5h4M10 12h5M10 15h5M10 18h3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>',
+        ),
     );
 
     $set_icons = $icons[$set] ?? array();
     $first     = reset($set_icons);
 
     return $set_icons[$name] ?? $first ?: '';
+}
+
+function acharp_file_or_link($file, $link, $fallback_url = '#', $fallback_title = '') {
+    $link = acharp_link($link, '', $fallback_title);
+
+    if (is_array($file) && !empty($file['url'])) {
+        return acharp_link(array(
+            'url'    => $file['url'],
+            'title'  => $link['title'] ?: $fallback_title,
+            'target' => '_blank',
+        ));
+    }
+
+    if (!$link['url']) {
+        $link['url'] = $fallback_url;
+    }
+
+    if (!$link['title']) {
+        $link['title'] = $fallback_title;
+    }
+
+    return $link;
 }
