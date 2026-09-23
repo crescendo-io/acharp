@@ -1,0 +1,119 @@
+{
+    "key": "group_realisations_diplomes",
+    "title": "Strate — Réalisations des diplômés",
+    "fields": [
+        {
+            "key": "field_realisations_items",
+            "label": "Visuels",
+            "name": "realisations_items",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Les visuels se placent en masonry : chaque image garde ses proportions d’origine, aucune n’est recadrée.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "min": 0,
+            "button_label": "Ajouter un visuel",
+            "collapsed": "field_realisations_item_image",
+            "max": 0,
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_realisations_item_image",
+                    "label": "Visuel",
+                    "name": "image",
+                    "aria-label": "",
+                    "type": "image",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "40",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "id",
+                    "preview_size": "medium",
+                    "library": "all",
+                    "min_width": 0,
+                    "min_height": 0,
+                    "min_size": 0,
+                    "max_width": 0,
+                    "max_height": 0,
+                    "max_size": 0,
+                    "mime_types": "",
+                    "parent_repeater": "field_realisations_items"
+                },
+                {
+                    "key": "field_realisations_item_title",
+                    "label": "Titre du projet",
+                    "name": "title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "30",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_realisations_items"
+                },
+                {
+                    "key": "field_realisations_item_graduate",
+                    "label": "Diplômé(e) \/ promotion",
+                    "name": "graduate",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Ex. : Camille Dubois — Promotion 2026.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "30",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_realisations_items"
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "page-realisations-diplomes.php"
+            }
+        ]
+    ],
+    "menu_order": 10,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "display_title": "",
+    "allow_ai_access": false,
+    "ai_description": "",
+    "modified": 1790155743
+}
