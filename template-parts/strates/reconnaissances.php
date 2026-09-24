@@ -12,7 +12,7 @@ $defaults = array(
 );
 ?>
 
-<section class="reconnaissances" aria-labelledby="reconnaissances-title">
+<section id="reconnaissances" class="reconnaissances" aria-labelledby="reconnaissances-title">
     <div class="reconnaissances__line" aria-hidden="true"></div>
     <h2 id="reconnaissances-title" class="reconnaissances__title">
         <?= esc_html($title); ?>

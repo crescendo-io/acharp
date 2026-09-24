@@ -13,7 +13,7 @@ if (!$text) {
 }
 ?>
 
-<section class="pedagogie">
+<section id="pedagogie" class="pedagogie">
     <span class="pedagogie__shape pedagogie__shape--triangle" aria-hidden="true"></span>
     <span class="pedagogie__shape pedagogie__shape--circle" aria-hidden="true"></span>
 

@@ -29,7 +29,7 @@ if (!$items) {
 }
 ?>
 
-<section class="campus-raisons">
+<section id="campus-raisons" class="campus-raisons">
     <div class="container-fluid">
         <header class="campus-raisons__header">
             <?php if ($kicker) : ?>

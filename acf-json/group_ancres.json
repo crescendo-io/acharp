@@ -1,0 +1,113 @@
+{
+    "key": "group_ancres",
+    "title": "Menu d’ancres",
+    "fields": [
+        {
+            "key": "field_anchors_enable",
+            "label": "Afficher le menu d’ancres",
+            "name": "anchors_enable",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Le menu s’affiche sous le hero. Chaque lien scrolle vers une strate de la page.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "ui": 1,
+            "ui_on_text": "Oui",
+            "ui_off_text": "Non",
+            "default_value": 0,
+            "message": ""
+        },
+        {
+            "key": "field_anchors_items",
+            "label": "Liens",
+            "name": "anchors_items",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_anchors_enable",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "table",
+            "button_label": "Ajouter un lien",
+            "min": 1,
+            "max": 0,
+            "collapsed": "field_anchors_item_label",
+            "sub_fields": [
+                {
+                    "key": "field_anchors_item_label",
+                    "label": "Libellé",
+                    "name": "label",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_anchors_item_target",
+                    "label": "Ancre",
+                    "name": "target",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Identifiant de la strate, avec ou sans #. Ex. : #heritage",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "placeholder": "#heritage"
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "page"
+            }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "cursus"
+            }
+        ]
+    ],
+    "menu_order": 2,
+    "position": "side",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Navigation interne sous le hero.",
+    "show_in_rest": 0,
+    "modified": 1758642600
+}

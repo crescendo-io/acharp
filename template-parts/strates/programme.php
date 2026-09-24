@@ -138,7 +138,7 @@ if ($years) {
 }
 ?>
 
-<section class="programme" data-programme>
+<section id="programme" class="programme" data-programme>
     <div class="container-fluid">
         <div class="programme__grid">
             <div class="programme__side">

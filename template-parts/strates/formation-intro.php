@@ -17,7 +17,7 @@ if (!$texts) {
 }
 ?>
 
-<section class="formation-intro">
+<section id="formation-intro" class="formation-intro">
     <div class="container-fluid">
         <div class="formation-intro__grid">
             <figure class="formation-intro__media">

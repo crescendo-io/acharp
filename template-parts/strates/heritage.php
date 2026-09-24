@@ -48,7 +48,7 @@ if (!$steps) {
 }
 ?>
 
-<section class="heritage" data-heritage>
+<section id="heritage" class="heritage" data-heritage>
     <div class="heritage__inner">
         <div class="heritage__steps">
             <?php foreach ($steps as $index => $step) : ?>

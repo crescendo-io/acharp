@@ -32,7 +32,7 @@ if (!$slides) {
 }
 ?>
 
-<section class="campus">
+<section id="campus" class="campus">
     <div class="campus__grid">
         <div class="campus__content">
             <div class="campus__inner">

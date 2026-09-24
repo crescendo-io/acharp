@@ -59,7 +59,7 @@ if (!$process) {
 }
 ?>
 
-<section class="admissions">
+<section id="admissions" class="admissions">
     <div class="container-fluid">
         <div class="admissions__grid">
             <div class="admissions__main">

@@ -121,6 +121,62 @@ img {
     border-bottom: 1px solid #E0D6D6;
 }
 
+/* -------------------------------------------------------------------------
+   Menu d’ancres (sous le hero)
+   ------------------------------------------------------------------------- */
+.ancres {
+    position: sticky;
+    top: 0;
+    z-index: 18;
+    background: var(--color-cream);
+    border-bottom: 1px solid #e0d6d6;
+    border-top: 1px solid #e0d6d6;
+}
+
+.ancres__inner {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 4rem 0 7rem;
+}
+
+.ancres__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0 3.2rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.ancres__link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 5.6rem;
+    padding: 0.4rem 0;
+    font-family: var(--font-sans);
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    line-height: 1.2;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--color-black);
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.2s ease;
+}
+
+.ancres__link:hover,
+.ancres__link:focus {
+    color: var(--color-black);
+    text-decoration: none;
+    border-bottom-color: rgba(17, 17, 17, 0.25);
+}
+
+.ancres__link.is-active {
+    border-bottom-color: var(--color-black);
+}
+
 .site-header__inner {
     display: flex;
     align-items: center;
@@ -3665,6 +3721,23 @@ body.page-template-styleguide {
     .site-header__inner {
         flex-wrap: wrap;
         padding: 1.2rem 2.4rem;
+    }
+
+    .ancres__inner {
+        padding: 0 2.4rem;
+        overflow-x: auto;
+    }
+
+    .ancres__list {
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        gap: 0 2rem;
+    }
+
+    .ancres__link {
+        min-height: 4.8rem;
+        white-space: nowrap;
+        font-size: 1rem;
     }
 
     .site-header__brand {

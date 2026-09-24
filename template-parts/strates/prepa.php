@@ -44,7 +44,7 @@ if (!$image && $related_id) {
 }
 ?>
 
-<section class="prepa">
+<section id="prepa" class="prepa">
     <div class="container-fluid">
         <div class="prepa__grid">
             <figure class="prepa__media">

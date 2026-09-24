@@ -18,7 +18,7 @@ if (!$items) {
 }
 ?>
 
-<section class="chiffres-cles">
+<section id="chiffres-cles" class="chiffres-cles">
     <div class="container-fluid">
         <div class="row align-items-center">
             <div class="col-12 col-lg">

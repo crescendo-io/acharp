@@ -10,7 +10,7 @@ if (!$title) {
 }
 ?>
 
-<section class="actualites">
+<section id="actualites" class="actualites">
     <div class="container-fluid">
         <div class="actualites__header">
             <div class="actualites__intro">

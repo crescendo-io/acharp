@@ -22,7 +22,7 @@ if (!$stats) {
 }
 ?>
 
-<section class="diplome">
+<section id="diplome" class="diplome">
     <div class="container-fluid">
         <div class="diplome__grid">
             <div class="diplome__content">

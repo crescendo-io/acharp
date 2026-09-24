@@ -15,7 +15,7 @@ if (!$text) {
 
 ?>
 
-<section class="histoire">
+<section id="histoire" class="histoire">
     <div class="container-fluid">
         <div class="row align-items-center">
             <div class="col-lg-7 histoire__mosaic-col">

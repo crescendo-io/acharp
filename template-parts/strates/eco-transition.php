@@ -41,7 +41,7 @@ if (!$banner) {
 }
 ?>
 
-<section class="eco">
+<section id="eco" class="eco">
     <div class="container-fluid">
         <div class="eco__content">
             <?php if ($kicker) : ?>

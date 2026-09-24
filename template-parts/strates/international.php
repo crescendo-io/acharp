@@ -15,7 +15,7 @@ if (!$text) {
 
 ?>
 
-<section class="international">
+<section id="international" class="international">
     <div class="international__grid">
         <figure class="international__media">
             <?= acharp_image_html(get_field('international_image'), 'large', array(

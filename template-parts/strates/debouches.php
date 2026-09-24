@@ -17,7 +17,7 @@ if (!$items) {
 }
 ?>
 
-<section class="debouches">
+<section id="debouches" class="debouches">
     <div class="container-fluid">
         <header class="debouches__header">
             <?php if ($kicker) : ?>

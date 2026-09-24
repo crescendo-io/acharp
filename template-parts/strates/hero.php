@@ -173,3 +173,5 @@ if (!$show_push && !$image_id && $push_fallback) {
         </div>
     </div>
 </section>
+
+<?php get_template_part('template-parts/strates/ancres'); ?>

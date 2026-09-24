@@ -27,7 +27,7 @@ if (!$tiles) {
 }
 ?>
 
-<section class="vie-ecole">
+<section id="vie-ecole" class="vie-ecole">
     <div class="vie-ecole__grid">
         <div class="vie-ecole__intro">
             <div class="vie-ecole__content">

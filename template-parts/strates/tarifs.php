@@ -29,7 +29,7 @@ if (!$steps) {
 $tuition_parts = explode(' / ', $tuition_value, 2);
 ?>
 
-<section class="tarifs">
+<section id="tarifs" class="tarifs">
     <div class="container-fluid">
         <header class="tarifs__header">
             <?php if ($kicker) : ?>

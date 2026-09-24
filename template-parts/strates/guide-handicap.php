@@ -21,7 +21,7 @@ if (!$text) {
 }
 ?>
 
-<section class="guide-handicap">
+<section id="guide-handicap" class="guide-handicap">
     <div class="container-fluid">
         <div class="guide-handicap__card">
             <h2 class="guide-handicap__title"><?= esc_html($title); ?></h2>
