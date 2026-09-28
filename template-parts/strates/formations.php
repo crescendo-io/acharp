@@ -1,7 +1,7 @@
 <?php
-$kicker = get_field('formations_kicker') ?: 'Nos formations';
-$title  = acharp_inline_html(get_field('formations_title'));
-$all    = acharp_link(get_field('formations_all'), get_post_type_archive_link('cursus') ?: '#', 'Voir toutes les formations');
+$kicker = acharp_field('formations_kicker') ?: 'Nos formations';
+$title  = acharp_inline_html(acharp_field('formations_title'));
+$all    = acharp_link(acharp_field('formations_all'), get_post_type_archive_link('cursus') ?: '#', 'Voir toutes les formations');
 $cards  = acharp_get_formation_cards();
 $arrow  = acharp_arrow('formations__arrow');
 

@@ -1,7 +1,7 @@
 <?php
-$kicker = get_field('debouches_kicker') ?: 'Débouchés et poursuite d’études';
-$title  = acharp_inline_html(get_field('debouches_title'));
-$items  = acharp_rows(get_field('debouches_items'));
+$kicker = acharp_field('debouches_kicker') ?: 'Débouchés et poursuite d’études';
+$title  = acharp_inline_html(acharp_field('debouches_title'));
+$items  = acharp_rows(acharp_field('debouches_items'));
 
 if (!$title) {
     $title = 'Une formation <strong>créative</strong> et<br> <strong>opérationnelle</strong>';

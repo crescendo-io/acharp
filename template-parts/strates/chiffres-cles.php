@@ -1,6 +1,6 @@
 <?php
-$intro = get_field('chiffres_intro');
-$items = acharp_rows(get_field('chiffres_items'));
+$intro = acharp_field('chiffres_intro');
+$items = acharp_rows(acharp_field('chiffres_items'));
 
 if (!$intro) {
     $intro = "Une école<br>à taille humaine";

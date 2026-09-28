@@ -1,9 +1,9 @@
 <?php
 $theme_uri = get_stylesheet_directory_uri();
-$kicker    = get_field('vie_kicker') ?: 'Vie à l’école';
-$title     = acharp_inline_html(get_field('vie_title'));
-$cta       = acharp_link(get_field('vie_cta'), '#', 'Découvrir l’académie');
-$tiles     = acharp_rows(get_field('vie_tiles'));
+$kicker    = acharp_field('vie_kicker') ?: 'Vie à l’école';
+$title     = acharp_inline_html(acharp_field('vie_title'));
+$cta       = acharp_link(acharp_field('vie_cta'), '#', 'Découvrir l’académie');
+$tiles     = acharp_rows(acharp_field('vie_tiles'));
 
 if (!$title) {
     $title = 'Découvrez l’univers<br> <strong>Charpentier</strong>';

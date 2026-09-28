@@ -1,11 +1,11 @@
 <?php
 $theme_uri = get_stylesheet_directory_uri();
-$kicker    = get_field('eco_kicker') ?: 'Éco-transition';
-$title     = acharp_inline_html(get_field('eco_title'));
-$text      = acharp_inline_html(get_field('eco_text'));
-$piliers   = acharp_rows(get_field('eco_piliers'));
-$banner    = acharp_inline_html(get_field('eco_banner_text'));
-$cta       = acharp_link(get_field('eco_banner_cta'), '#', 'Candidater');
+$kicker    = acharp_field('eco_kicker') ?: 'Éco-transition';
+$title     = acharp_inline_html(acharp_field('eco_title'));
+$text      = acharp_inline_html(acharp_field('eco_text'));
+$piliers   = acharp_rows(acharp_field('eco_piliers'));
+$banner    = acharp_inline_html(acharp_field('eco_banner_text'));
+$cta       = acharp_link(acharp_field('eco_banner_cta'), '#', 'Candidater');
 $leaf      = acharp_icon('leaf', 'eco');
 
 if (!$title) {
@@ -82,7 +82,7 @@ if (!$banner) {
     </div>
 
     <figure class="eco__media">
-        <?= acharp_image_html(get_field('eco_image'), 'large', array(
+        <?= acharp_image_html(acharp_field('eco_image'), 'large', array(
             'src'    => $theme_uri . '/images/vie-ateliers.jpg',
             'alt'    => 'Étudiante travaillant sur une planche de matériaux en atelier',
             'width'  => 1024,

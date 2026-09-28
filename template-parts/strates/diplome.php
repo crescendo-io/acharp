@@ -1,9 +1,9 @@
 <?php
 $theme_uri = get_stylesheet_directory_uri();
-$kicker    = get_field('diplome_kicker') ?: 'Un diplôme reconnu';
-$title     = acharp_inline_html(get_field('diplome_title'));
-$text      = acharp_inline_html(get_field('diplome_text'));
-$stats     = acharp_rows(get_field('diplome_stats'));
+$kicker    = acharp_field('diplome_kicker') ?: 'Un diplôme reconnu';
+$title     = acharp_inline_html(acharp_field('diplome_title'));
+$text      = acharp_inline_html(acharp_field('diplome_text'));
+$stats     = acharp_rows(acharp_field('diplome_stats'));
 
 if (!$title) {
     $title = 'Un tremplin vers <strong>votre avenir</strong>';
@@ -47,7 +47,7 @@ if (!$stats) {
             </div>
 
             <figure class="diplome__media">
-                <?= acharp_image_html(get_field('diplome_image'), 'large', array(
+                <?= acharp_image_html(acharp_field('diplome_image'), 'large', array(
                     'src' => $theme_uri . '/images/vie-realisations.jpg',
                     'alt' => 'Visite d’une exposition de projets étudiants à l’Académie Charpentier',
                 )); ?>

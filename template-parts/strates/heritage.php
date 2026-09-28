@@ -1,6 +1,6 @@
 <?php
 $theme_uri = get_stylesheet_directory_uri();
-$steps     = acharp_rows(get_field('heritage_steps'));
+$steps     = acharp_rows(acharp_field('heritage_steps'));
 
 if (!$steps) {
     $steps = array(

@@ -1,7 +1,7 @@
 <?php
 $theme_uri = get_stylesheet_directory_uri();
-$title     = get_field('reconnaissances_title') ?: 'Reconnaissances & accréditations';
-$logos     = acharp_rows(get_field('reconnaissances_logos'));
+$title     = acharp_field('reconnaissances_title') ?: 'Reconnaissances & accréditations';
+$logos     = acharp_rows(acharp_field('reconnaissances_logos'));
 
 $defaults = array(
     array('file' => '/images/logo-qualiopi.png', 'alt' => 'Qualiopi, processus certifié', 'width' => 92, 'height' => 40),

@@ -1,9 +1,9 @@
 <?php
 $theme_uri = get_stylesheet_directory_uri();
-$kicker    = get_field('intro_kicker') ?: 'La formation';
-$title     = acharp_inline_html(get_field('intro_title'));
-$texts     = acharp_rows(get_field('intro_texts'));
-$cta       = acharp_file_or_link(get_field('intro_file'), get_field('intro_cta'), '#', 'Télécharger la brochure');
+$kicker    = acharp_field('intro_kicker') ?: 'La formation';
+$title     = acharp_inline_html(acharp_field('intro_title'));
+$texts     = acharp_rows(acharp_field('intro_texts'));
+$cta       = acharp_file_or_link(acharp_field('intro_file'), acharp_field('intro_cta'), '#', 'Télécharger la brochure');
 
 if (!$title) {
     $title = 'Une formation <strong>créative</strong> et<br> <strong>opérationnelle</strong>';
@@ -21,7 +21,7 @@ if (!$texts) {
     <div class="container-fluid">
         <div class="formation-intro__grid">
             <figure class="formation-intro__media">
-                <?= acharp_image_html(get_field('intro_image'), 'large', array(
+                <?= acharp_image_html(acharp_field('intro_image'), 'large', array(
                     'src' => $theme_uri . '/images/vie-evenements.jpg',
                     'alt' => 'Visite d’atelier commentée par une étudiante de l’Académie Charpentier',
                 )); ?>

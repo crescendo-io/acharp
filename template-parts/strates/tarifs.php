@@ -1,17 +1,17 @@
 <?php
 $theme_uri = get_stylesheet_directory_uri();
-$kicker    = get_field('tarifs_kicker') ?: 'Tarifs';
-$title     = get_field('tarifs_title') ?: 'Tarifs 2026 / 2027';
-$intro     = acharp_inline_html(get_field('tarifs_intro'));
-$tuition_label = get_field('tarifs_tuition_label') ?: 'Frais de scolarité';
-$tuition_value = get_field('tarifs_tuition_value') ?: '9 800€ / an';
-$fee_label = get_field('tarifs_fee_label') ?: 'Frais d’inscription';
-$fee_value = get_field('tarifs_fee_value') ?: '490€';
-$notice    = get_field('tarifs_notice') ?: 'Les frais sont indiqués pour l’année N et peuvent être révisés chaque année.';
-$subtitle  = get_field('tarifs_subtitle') ?: 'Plan de paiement';
-$text      = get_field('tarifs_text') ?: 'Les frais de scolarité sont réglés selon l’échéancier suivant :';
-$steps     = acharp_rows(get_field('tarifs_steps'));
-$cta       = acharp_link(get_field('tarifs_cta'), '#', 'Candidater');
+$kicker    = acharp_field('tarifs_kicker') ?: 'Tarifs';
+$title     = acharp_field('tarifs_title') ?: 'Tarifs 2026 / 2027';
+$intro     = acharp_inline_html(acharp_field('tarifs_intro'));
+$tuition_label = acharp_field('tarifs_tuition_label') ?: 'Frais de scolarité';
+$tuition_value = acharp_field('tarifs_tuition_value') ?: '9 800€ / an';
+$fee_label = acharp_field('tarifs_fee_label') ?: 'Frais d’inscription';
+$fee_value = acharp_field('tarifs_fee_value') ?: '490€';
+$notice    = acharp_field('tarifs_notice') ?: 'Les frais sont indiqués pour l’année N et peuvent être révisés chaque année.';
+$subtitle  = acharp_field('tarifs_subtitle') ?: 'Plan de paiement';
+$text      = acharp_field('tarifs_text') ?: 'Les frais de scolarité sont réglés selon l’échéancier suivant :';
+$steps     = acharp_rows(acharp_field('tarifs_steps'));
+$cta       = acharp_link(acharp_field('tarifs_cta'), '#', 'Candidater');
 
 if (!$intro) {
     $intro = 'Une formation d’excellence, un accompagnement personnalisé et<br> des conditions d’admission claires.';
@@ -117,7 +117,7 @@ $tuition_parts = explode(' / ', $tuition_value, 2);
             </div>
 
             <figure class="tarifs__media">
-                <?= acharp_image_html(get_field('tarifs_image'), 'large', array(
+                <?= acharp_image_html(acharp_field('tarifs_image'), 'large', array(
                     'src' => $theme_uri . '/images/vie-ateliers.jpg',
                     'alt' => 'Maquette d’un phare présentée lors d’un atelier de l’Académie Charpentier',
                 )); ?>

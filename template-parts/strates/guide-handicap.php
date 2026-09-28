@@ -1,8 +1,8 @@
 <?php
-$title = get_field('handicap_title') ?: 'Guide de sensibilisation au handicap';
-$text  = acharp_inline_html(get_field('handicap_text'));
-$file  = get_field('handicap_file');
-$cta   = acharp_link(get_field('handicap_cta'), '', 'Télécharger le guide de sensibilisation au handicap');
+$title = acharp_field('handicap_title') ?: 'Guide de sensibilisation au handicap';
+$text  = acharp_inline_html(acharp_field('handicap_text'));
+$file  = acharp_field('handicap_file');
+$cta   = acharp_link(acharp_field('handicap_cta'), '', 'Télécharger le guide de sensibilisation au handicap');
 
 if (is_array($file) && !empty($file['url'])) {
     $cta = acharp_link(array(

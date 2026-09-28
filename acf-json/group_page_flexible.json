@@ -1,0 +1,717 @@
+{
+    "key": "group_page_flexible",
+    "title": "Contenu flexible",
+    "fields": [
+        {
+            "key": "field_page_flexible",
+            "label": "Strates",
+            "name": "page_flexible",
+            "aria-label": "",
+            "type": "flexible_content",
+            "instructions": "Ajoutez, réordonnez et composez les strates de la page. Le hero et le menu d’ancres restent au-dessus.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layouts": {
+                "chiffres_cles": {
+                    "key": "layout_chiffres_cles",
+                    "name": "chiffres_cles",
+                    "label": "Chiffres clés",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_flex_chiffres_cles_clone",
+                            "label": "Contenu",
+                            "name": "chiffres_cles_clone",
+                            "aria-label": "",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_chiffres"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "histoire": {
+                    "key": "layout_histoire",
+                    "name": "histoire",
+                    "label": "Histoire",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_flex_histoire_clone",
+                            "label": "Contenu",
+                            "name": "histoire_clone",
+                            "aria-label": "",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_histoire"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "formations": {
+                    "key": "layout_formations",
+                    "name": "formations",
+                    "label": "Formations",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_flex_formations_clone",
+                            "label": "Contenu",
+                            "name": "formations_clone",
+                            "aria-label": "",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_formations"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "reconnaissances": {
+                    "key": "layout_reconnaissances",
+                    "name": "reconnaissances",
+                    "label": "Reconnaissances",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_flex_reconnaissances_clone",
+                            "label": "Contenu",
+                            "name": "reconnaissances_clone",
+                            "aria-label": "",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_reconnaissances"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "vie_ecole": {
+                    "key": "layout_vie_ecole",
+                    "name": "vie_ecole",
+                    "label": "Vie à l’école",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_flex_vie_ecole_clone",
+                            "label": "Contenu",
+                            "name": "vie_ecole_clone",
+                            "aria-label": "",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_vie_ecole"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "international": {
+                    "key": "layout_international",
+                    "name": "international",
+                    "label": "International",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_flex_international_clone",
+                            "label": "Contenu",
+                            "name": "international_clone",
+                            "aria-label": "",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_international"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "actualites": {
+                    "key": "layout_actualites",
+                    "name": "actualites",
+                    "label": "Actualités",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_flex_actualites_clone",
+                            "label": "Contenu",
+                            "name": "actualites_clone",
+                            "aria-label": "",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_actualites"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "heritage": {
+                    "key": "layout_heritage",
+                    "name": "heritage",
+                    "label": "Histoire de l’académie",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_flex_heritage_clone",
+                            "label": "Contenu",
+                            "name": "heritage_clone",
+                            "aria-label": "",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_heritage"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "pedagogie": {
+                    "key": "layout_pedagogie",
+                    "name": "pedagogie",
+                    "label": "Pédagogie",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_flex_pedagogie_clone",
+                            "label": "Contenu",
+                            "name": "pedagogie_clone",
+                            "aria-label": "",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_pedagogie"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "campus": {
+                    "key": "layout_campus",
+                    "name": "campus",
+                    "label": "Campus",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_flex_campus_clone",
+                            "label": "Contenu",
+                            "name": "campus_clone",
+                            "aria-label": "",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_campus"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "campus_raisons": {
+                    "key": "layout_campus_raisons",
+                    "name": "campus_raisons",
+                    "label": "Pourquoi ce campus",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_flex_campus_raisons_clone",
+                            "label": "Contenu",
+                            "name": "campus_raisons_clone",
+                            "aria-label": "",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_campus_raisons"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "eco": {
+                    "key": "layout_eco",
+                    "name": "eco",
+                    "label": "Éco-transition",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_flex_eco_clone",
+                            "label": "Contenu",
+                            "name": "eco_clone",
+                            "aria-label": "",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_eco"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "handicap": {
+                    "key": "layout_handicap",
+                    "name": "handicap",
+                    "label": "Guide handicap",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_flex_handicap_clone",
+                            "label": "Contenu",
+                            "name": "handicap_clone",
+                            "aria-label": "",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_handicap"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "realisations": {
+                    "key": "layout_realisations",
+                    "name": "realisations",
+                    "label": "Réalisations des diplômés",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_flex_realisations_clone",
+                            "label": "Contenu",
+                            "name": "realisations_clone",
+                            "aria-label": "",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_realisations_diplomes"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "formation_intro": {
+                    "key": "layout_formation_intro",
+                    "name": "formation_intro",
+                    "label": "Introduction de formation",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_flex_formation_intro_clone",
+                            "label": "Contenu",
+                            "name": "formation_intro_clone",
+                            "aria-label": "",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_formation_intro"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "debouches": {
+                    "key": "layout_debouches",
+                    "name": "debouches",
+                    "label": "Débouchés",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_flex_debouches_clone",
+                            "label": "Contenu",
+                            "name": "debouches_clone",
+                            "aria-label": "",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_debouches"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "diplome": {
+                    "key": "layout_diplome",
+                    "name": "diplome",
+                    "label": "Diplôme",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_flex_diplome_clone",
+                            "label": "Contenu",
+                            "name": "diplome_clone",
+                            "aria-label": "",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_diplome"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "prepa": {
+                    "key": "layout_prepa",
+                    "name": "prepa",
+                    "label": "Année préparatoire",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_flex_prepa_clone",
+                            "label": "Contenu",
+                            "name": "prepa_clone",
+                            "aria-label": "",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_prepa"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "programme": {
+                    "key": "layout_programme",
+                    "name": "programme",
+                    "label": "Programme",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_flex_programme_clone",
+                            "label": "Contenu",
+                            "name": "programme_clone",
+                            "aria-label": "",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_programme"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "admissions": {
+                    "key": "layout_admissions",
+                    "name": "admissions",
+                    "label": "Admissions",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_flex_admissions_clone",
+                            "label": "Contenu",
+                            "name": "admissions_clone",
+                            "aria-label": "",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_admissions"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "tarifs": {
+                    "key": "layout_tarifs",
+                    "name": "tarifs",
+                    "label": "Tarifs",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_flex_tarifs_clone",
+                            "label": "Contenu",
+                            "name": "tarifs_clone",
+                            "aria-label": "",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_tarifs"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                }
+            },
+            "min": 0,
+            "max": 0,
+            "button_label": "Ajouter une strate"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "page-flexible.php"
+            }
+        ]
+    ],
+    "menu_order": 10,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Composition libre des strates de contenu.",
+    "show_in_rest": 0,
+    "modified": 1759050000
+}

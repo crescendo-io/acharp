@@ -1,15 +1,15 @@
 <?php
 $theme_uri = get_stylesheet_directory_uri();
-$kicker    = get_field('programme_kicker') ?: 'Détail du programme';
-$title     = acharp_inline_html(get_field('programme_title'));
-$text      = acharp_inline_html(get_field('programme_text'));
-$years     = acharp_rows(get_field('programme_years'));
-$push_kicker = get_field('programme_push_kicker') ?: 'Les moments clés';
-$push_title  = get_field('programme_push_title') ?: 'Projet interdisciplinaire';
-$push_text   = acharp_inline_html(get_field('programme_push_text'));
+$kicker    = acharp_field('programme_kicker') ?: 'Détail du programme';
+$title     = acharp_inline_html(acharp_field('programme_title'));
+$text      = acharp_inline_html(acharp_field('programme_text'));
+$years     = acharp_rows(acharp_field('programme_years'));
+$push_kicker = acharp_field('programme_push_kicker') ?: 'Les moments clés';
+$push_title  = acharp_field('programme_push_title') ?: 'Projet interdisciplinaire';
+$push_text   = acharp_inline_html(acharp_field('programme_push_text'));
 $push_cta    = acharp_file_or_link(
-    get_field('programme_push_file'),
-    get_field('programme_push_cta'),
+    acharp_field('programme_push_file'),
+    acharp_field('programme_push_cta'),
     '#',
     'Télécharger la brochure'
 );
@@ -174,7 +174,7 @@ if ($years) {
                 </div>
 
                 <article class="programme__push">
-                    <?= acharp_image_html(get_field('programme_push_image'), 'large', array(
+                    <?= acharp_image_html(acharp_field('programme_push_image'), 'large', array(
                         'src'   => $theme_uri . '/images/histoire-escalier.jpg',
                         'alt'   => '',
                         'class' => 'programme__push-media',

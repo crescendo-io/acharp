@@ -1,17 +1,17 @@
 <?php
 $theme_uri = get_stylesheet_directory_uri();
-$kicker    = get_field('admissions_kicker') ?: 'Admissions';
-$title     = get_field('admissions_title') ?: 'Modalités de candidatures';
-$intro     = acharp_inline_html(get_field('admissions_intro'));
-$prereq    = acharp_rows(get_field('admissions_prereq'));
-$docs_intro = get_field('admissions_docs_intro');
-$docs      = acharp_rows(get_field('admissions_docs'));
-$caption   = acharp_inline_html(get_field('admissions_caption'));
-$process_title = acharp_inline_html(get_field('admissions_process_title'));
-$process   = acharp_rows(get_field('admissions_process'));
-$deadline  = get_field('admissions_deadline') ?: '11 septembre 2026';
-$result    = get_field('admissions_result') ?: 'Communiqué dans un délai d’une semaine, à l’issue de l’étude du dossier ou, le cas échéant, après un entretien individuel.';
-$cta       = acharp_link(get_field('admissions_cta'), '#', 'Candidater');
+$kicker    = acharp_field('admissions_kicker') ?: 'Admissions';
+$title     = acharp_field('admissions_title') ?: 'Modalités de candidatures';
+$intro     = acharp_inline_html(acharp_field('admissions_intro'));
+$prereq    = acharp_rows(acharp_field('admissions_prereq'));
+$docs_intro = acharp_field('admissions_docs_intro');
+$docs      = acharp_rows(acharp_field('admissions_docs'));
+$caption   = acharp_inline_html(acharp_field('admissions_caption'));
+$process_title = acharp_inline_html(acharp_field('admissions_process_title'));
+$process   = acharp_rows(acharp_field('admissions_process'));
+$deadline  = acharp_field('admissions_deadline') ?: '11 septembre 2026';
+$result    = acharp_field('admissions_result') ?: 'Communiqué dans un délai d’une semaine, à l’issue de l’étude du dossier ou, le cas échéant, après un entretien individuel.';
+$cta       = acharp_link(acharp_field('admissions_cta'), '#', 'Candidater');
 
 if (!$intro) {
     $intro = 'Les admissions à l’Académie Charpentier se font hors Parcoursup, sur dossier de candidature, il n’y a pas de frais de candidature.';
@@ -104,7 +104,7 @@ if (!$process) {
 
             <aside class="admissions__aside">
                 <figure class="admissions__media">
-                    <?= acharp_image_html(get_field('admissions_image'), 'large', array(
+                    <?= acharp_image_html(acharp_field('admissions_image'), 'large', array(
                         'src' => $theme_uri . '/images/histoire-salon.jpg',
                         'alt' => 'Espace de travail de l’Académie Charpentier',
                     )); ?>

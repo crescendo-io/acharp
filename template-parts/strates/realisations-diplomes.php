@@ -1,9 +1,9 @@
 <?php
 $theme_uri = get_stylesheet_directory_uri();
-$kicker    = get_field('realisations_kicker') ?: 'Projets étudiants';
-$title     = acharp_inline_html(get_field('realisations_title'));
-$text      = acharp_inline_html(get_field('realisations_text'));
-$items     = acharp_rows(get_field('realisations_items'));
+$kicker    = acharp_field('realisations_kicker') ?: 'Projets étudiants';
+$title     = acharp_inline_html(acharp_field('realisations_title'));
+$text      = acharp_inline_html(acharp_field('realisations_text'));
+$items     = acharp_rows(acharp_field('realisations_items'));
 
 if (!$title) {
     $title = 'Les réalisations de nos <strong>diplômés</strong>';

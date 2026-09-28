@@ -112,6 +112,18 @@ function acharp_rows($value) {
 }
 
 /**
+ * Champ ACF : dans un layout flexible, lit le sous-champ du layout courant,
+ * sinon le champ de premier niveau du post.
+ */
+function acharp_field($selector, $post_id = false, $format_value = true) {
+    if ($post_id === false && function_exists('get_row') && get_row()) {
+        return get_sub_field($selector, $format_value);
+    }
+
+    return get_field($selector, $post_id, $format_value);
+}
+
+/**
  * Carte d’un cursus, telle qu’attendue par les strates de relation.
  * Les champs ACF priment, avec repli sur l’image à la une et l’extrait.
  */
@@ -145,7 +157,7 @@ function acharp_cursus_card($post_id) {
  */
 function acharp_get_formation_cards() {
     $theme_uri = get_stylesheet_directory_uri();
-    $mode      = get_field('formations_mode') ?: 'auto';
+    $mode      = acharp_field('formations_mode') ?: 'auto';
     $defaults  = array(
         array(
             'title' => 'Classe préparatoire',
@@ -186,7 +198,7 @@ function acharp_get_formation_cards() {
     );
 
     if ($mode === 'custom') {
-        $rows  = acharp_rows(get_field('formations_cards'));
+        $rows  = acharp_rows(acharp_field('formations_cards'));
         $cards = array();
 
         foreach ($rows as $row) {
@@ -232,7 +244,7 @@ function acharp_get_formation_cards() {
  */
 function acharp_get_actualite_cards() {
     $theme_uri = get_stylesheet_directory_uri();
-    $mode      = get_field('actualites_mode') ?: 'auto';
+    $mode      = acharp_field('actualites_mode') ?: 'auto';
     $defaults  = array(
         array(
             'url'        => '#',
@@ -276,7 +288,7 @@ function acharp_get_actualite_cards() {
     );
 
     if ($mode === 'custom') {
-        $rows  = acharp_rows(get_field('actualites_cards'));
+        $rows  = acharp_rows(acharp_field('actualites_cards'));
         $cards = array();
 
         foreach ($rows as $row) {

@@ -1,9 +1,9 @@
 <?php
 $theme_uri = get_stylesheet_directory_uri();
-$kicker    = get_field('histoire_kicker') ?: 'L’Académie Charpentier';
-$title     = acharp_inline_html(get_field('histoire_title'));
-$text      = acharp_inline_html(get_field('histoire_text'));
-$cta       = acharp_link(get_field('histoire_cta'), '#', 'Découvrir l’académie');
+$kicker    = acharp_field('histoire_kicker') ?: 'L’Académie Charpentier';
+$title     = acharp_inline_html(acharp_field('histoire_title'));
+$text      = acharp_inline_html(acharp_field('histoire_text'));
+$cta       = acharp_link(acharp_field('histoire_cta'), '#', 'Découvrir l’académie');
 
 if (!$title) {
     $title = 'Une histoire, une école,<br> une <strong>vision</strong>';
@@ -21,7 +21,7 @@ if (!$text) {
             <div class="col-lg-7 histoire__mosaic-col">
                 <div class="histoire__mosaic">
                     <figure class="histoire__mosaic-item histoire__mosaic-item--main">
-                        <?= acharp_image_html(get_field('histoire_image_main'), 'large', array(
+                        <?= acharp_image_html(acharp_field('histoire_image_main'), 'large', array(
                             'src'    => $theme_uri . '/images/histoire-facade.jpg',
                             'alt'    => 'Façade de l’Académie Charpentier',
                             'width'  => 1600,
@@ -29,7 +29,7 @@ if (!$text) {
                         )); ?>
                     </figure>
                     <figure class="histoire__mosaic-item histoire__mosaic-item--salon">
-                        <?= acharp_image_html(get_field('histoire_image_salon'), 'large', array(
+                        <?= acharp_image_html(acharp_field('histoire_image_salon'), 'large', array(
                             'src'    => $theme_uri . '/images/histoire-salon.jpg',
                             'alt'    => 'Espace de vie de l’école',
                             'width'  => 1600,
@@ -37,7 +37,7 @@ if (!$text) {
                         )); ?>
                     </figure>
                     <figure class="histoire__mosaic-item histoire__mosaic-item--escalier">
-                        <?= acharp_image_html(get_field('histoire_image_escalier'), 'large', array(
+                        <?= acharp_image_html(acharp_field('histoire_image_escalier'), 'large', array(
                             'src'    => $theme_uri . '/images/histoire-escalier.jpg',
                             'alt'    => 'Escalier intérieur de l’école',
                             'width'  => 1600,

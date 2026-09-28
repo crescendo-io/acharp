@@ -1,7 +1,7 @@
 <?php
-$kicker  = get_field('campus_raisons_kicker') ?: 'Le campus';
-$title   = acharp_inline_html(get_field('campus_raisons_title'));
-$items   = acharp_rows(get_field('campus_raisons_items'));
+$kicker  = acharp_field('campus_raisons_kicker') ?: 'Le campus';
+$title   = acharp_inline_html(acharp_field('campus_raisons_title'));
+$items   = acharp_rows(acharp_field('campus_raisons_items'));
 $archive = get_post_type_archive_link('cursus') ?: '#';
 
 if (!$title) {

@@ -1,9 +1,9 @@
 <?php
 $theme_uri = get_stylesheet_directory_uri();
-$kicker    = get_field('international_kicker') ?: 'International';
-$title     = acharp_inline_html(get_field('international_title'));
-$text      = get_field('international_text');
-$cta       = acharp_link(get_field('international_cta'), '#', 'En savoir plus');
+$kicker    = acharp_field('international_kicker') ?: 'International';
+$title     = acharp_inline_html(acharp_field('international_title'));
+$text      = acharp_field('international_text');
+$cta       = acharp_link(acharp_field('international_cta'), '#', 'En savoir plus');
 
 if (!$title) {
     $title = 'Étudier à&nbsp;<strong>Paris</strong>';
@@ -18,7 +18,7 @@ if (!$text) {
 <section id="international" class="international">
     <div class="international__grid">
         <figure class="international__media">
-            <?= acharp_image_html(get_field('international_image'), 'large', array(
+            <?= acharp_image_html(acharp_field('international_image'), 'large', array(
                 'src'    => $theme_uri . '/images/international-paris.jpg',
                 'alt'    => 'Vue sur les toits de Paris et la tour Eiffel',
                 'width'  => 1900,

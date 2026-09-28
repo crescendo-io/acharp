@@ -1,10 +1,10 @@
 <?php
 $theme_uri = get_stylesheet_directory_uri();
-$kicker    = get_field('campus_kicker') ?: 'Le campus';
-$title     = acharp_inline_html(get_field('campus_title'));
-$text      = acharp_inline_html(get_field('campus_text'));
-$atouts    = acharp_rows(get_field('campus_atouts'));
-$slides    = acharp_rows(get_field('campus_slides'));
+$kicker    = acharp_field('campus_kicker') ?: 'Le campus';
+$title     = acharp_inline_html(acharp_field('campus_title'));
+$text      = acharp_inline_html(acharp_field('campus_text'));
+$atouts    = acharp_rows(acharp_field('campus_atouts'));
+$slides    = acharp_rows(acharp_field('campus_slides'));
 
 if (!$title) {
     $title = 'Un nouveau campus<br> <strong>au cœur de Paris</strong>';

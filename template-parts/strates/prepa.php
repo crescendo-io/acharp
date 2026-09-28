@@ -1,20 +1,20 @@
 <?php
-$show = get_field('prepa_show');
+$show = acharp_field('prepa_show');
 if ($show === false || $show === 0 || $show === '0') {
     return;
 }
 
 $theme_uri = get_stylesheet_directory_uri();
-$related    = get_field('prepa_cursus');
+$related    = acharp_field('prepa_cursus');
 $related_id = $related ? (is_object($related) ? $related->ID : (int) $related) : 0;
 $related_card = $related_id ? acharp_cursus_card($related_id) : array();
 
-$kicker = get_field('prepa_kicker') ?: 'Une année pour se préparer';
-$title  = acharp_inline_html(get_field('prepa_title'));
-$texts  = acharp_rows(get_field('prepa_texts'));
-$image  = get_field('prepa_image');
+$kicker = acharp_field('prepa_kicker') ?: 'Une année pour se préparer';
+$title  = acharp_inline_html(acharp_field('prepa_title'));
+$texts  = acharp_rows(acharp_field('prepa_texts'));
+$image  = acharp_field('prepa_image');
 $cta    = acharp_link(
-    get_field('prepa_cta'),
+    acharp_field('prepa_cta'),
     $related_card['url'] ?? '#',
     $related_card['link_label'] ?? 'Découvrir l’année prépa'
 );
