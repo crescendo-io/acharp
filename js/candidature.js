@@ -246,7 +246,7 @@
             return;
         }
 
-        closeTimer = window.setTimeout(hideModal, 320);
+        closeTimer = window.setTimeout(hideModal, 380);
     }
 
     function isCandidatureTrigger(link) {
