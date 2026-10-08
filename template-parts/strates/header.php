@@ -101,7 +101,7 @@ if (!$menu) {
 
 $header_cta = acharp_link(
     get_field('header_cta', 'header_options'),
-    '#',
+    '#candidature',
     'Candidater'
 );
 ?>

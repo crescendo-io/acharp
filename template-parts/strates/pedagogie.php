@@ -2,7 +2,7 @@
 $kicker = acharp_field('pedagogie_kicker') ?: 'Notre pédagogie';
 $title  = acharp_inline_html(acharp_field('pedagogie_title'));
 $text   = acharp_inline_html(acharp_field('pedagogie_text'));
-$cta    = acharp_link(acharp_field('pedagogie_cta'), '#', 'Candidater');
+$cta    = acharp_link(acharp_field('pedagogie_cta'), '#candidature', 'Candidater');
 
 if (!$title) {
     $title = 'Une pédagogie à<br> <strong>taille humaine</strong> et tournée vers l’avenir';

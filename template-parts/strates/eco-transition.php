@@ -5,7 +5,7 @@ $title     = acharp_inline_html(acharp_field('eco_title'));
 $text      = acharp_inline_html(acharp_field('eco_text'));
 $piliers   = acharp_rows(acharp_field('eco_piliers'));
 $banner    = acharp_inline_html(acharp_field('eco_banner_text'));
-$cta       = acharp_link(acharp_field('eco_banner_cta'), '#', 'Candidater');
+$cta       = acharp_link(acharp_field('eco_banner_cta'), '#candidature', 'Candidater');
 $leaf      = acharp_icon('leaf', 'eco');
 
 if (!$title) {

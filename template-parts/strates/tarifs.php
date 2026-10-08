@@ -11,7 +11,7 @@ $notice    = acharp_field('tarifs_notice') ?: 'Les frais sont indiqués pour l�
 $subtitle  = acharp_field('tarifs_subtitle') ?: 'Plan de paiement';
 $text      = acharp_field('tarifs_text') ?: 'Les frais de scolarité sont réglés selon l’échéancier suivant :';
 $steps     = acharp_rows(acharp_field('tarifs_steps'));
-$cta       = acharp_link(acharp_field('tarifs_cta'), '#', 'Candidater');
+$cta       = acharp_link(acharp_field('tarifs_cta'), '#candidature', 'Candidater');
 
 if (!$intro) {
     $intro = 'Une formation d’excellence, un accompagnement personnalisé et<br> des conditions d’admission claires.';

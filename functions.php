@@ -1,6 +1,8 @@
 <?php
 
 require_once get_stylesheet_directory() . '/inc/content.php';
+require_once get_stylesheet_directory() . '/inc/candidatures.php';
+require_once get_stylesheet_directory() . '/inc/contact.php';
 
 add_filter('acf/settings/save_json', function () {
     return get_stylesheet_directory() . '/acf-json';

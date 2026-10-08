@@ -11,6 +11,7 @@ $raccourcis = array(
     array(
         'title' => 'Candidater',
         'text'  => 'Rejoignez-nous dès maintenant',
+        'url'   => '#candidature',
     ),
     array(
         'title' => 'Recevoir la brochure',
@@ -86,7 +87,7 @@ $legales = array('Mentions légales', 'Politique de confidentialité', 'Gestion 
             <ul class="site-footer__shortcuts">
                 <?php foreach ($raccourcis as $raccourci) : ?>
                     <li class="site-footer__shortcut">
-                        <a href="#" class="site-footer__shortcut-link">
+                        <a href="<?= esc_url($raccourci['url'] ?? '#'); ?>" class="site-footer__shortcut-link"<?= !empty($raccourci['url']) && $raccourci['url'] === '#candidature' ? ' data-open-candidature' : ''; ?>>
                             <?= $raccourci['title']; ?>
                             <?= $arrow; ?>
                         </a>

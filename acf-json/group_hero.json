@@ -315,6 +315,11 @@
                 "param": "post_type",
                 "operator": "==",
                 "value": "page"
+            },
+            {
+                "param": "page_template",
+                "operator": "!=",
+                "value": "page-contact.php"
             }
         ],
         [
@@ -342,5 +347,5 @@
     "description": "Hero présent sur toutes les pages.",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1758618600
+    "modified": 1759932000
 }

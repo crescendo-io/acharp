@@ -3,7 +3,7 @@
     $option_logo_footer = get_field('option_logo_footer', 'option');
     $option_logo_footer_array = get_custom_thumb($option_logo_footer, 'full');
 ?>
-        <footer>
+        <!--<footer>
             <div class="container">
                 <div class="row">
                     <div class="col-sm-3">
@@ -39,7 +39,7 @@
                     </div>
                 </div>
             </div>
-        </footer>
+        </footer> -->
 
 
         <?php

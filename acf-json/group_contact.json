@@ -1,0 +1,349 @@
+{
+    "key": "group_contact",
+    "title": "Page — Contact",
+    "fields": [
+        {
+            "key": "field_contact_kicker",
+            "label": "Surtitre",
+            "name": "contact_kicker",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "40",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Contact"
+        },
+        {
+            "key": "field_contact_title",
+            "label": "Titre",
+            "name": "contact_title",
+            "aria-label": "",
+            "type": "wysiwyg",
+            "instructions": "Mettez en gras les mots à mettre en avant.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "60",
+                "class": "",
+                "id": ""
+            },
+            "tabs": "visual",
+            "toolbar": "basic",
+            "media_upload": 0,
+            "delay": 0
+        },
+        {
+            "key": "field_contact_intro",
+            "label": "Introduction",
+            "name": "contact_intro",
+            "aria-label": "",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "tabs": "visual",
+            "toolbar": "basic",
+            "media_upload": 0,
+            "delay": 0
+        },
+        {
+            "key": "field_contact_phone",
+            "label": "Téléphone affiché",
+            "name": "contact_phone",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Numéro public, distinct des destinataires des motifs.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "01 43 54 31 12"
+        },
+        {
+            "key": "field_contact_email",
+            "label": "E-mail affiché",
+            "name": "contact_email",
+            "aria-label": "",
+            "type": "email",
+            "instructions": "Adresse publique uniquement. Les destinataires des motifs sont ci-dessous.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "contact@academiecharpentier.fr"
+        },
+        {
+            "key": "field_contact_address",
+            "label": "Adresse",
+            "name": "contact_address",
+            "aria-label": "",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "34",
+                "class": "",
+                "id": ""
+            },
+            "tabs": "visual",
+            "toolbar": "basic",
+            "media_upload": 0,
+            "delay": 0
+        },
+        {
+            "key": "field_contact_hours",
+            "label": "Horaires",
+            "name": "contact_hours",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "layout": "table",
+            "min": 0,
+            "button_label": "Ajouter un horaire",
+            "sub_fields": [
+                {
+                    "key": "field_contact_hours_label",
+                    "label": "Jour",
+                    "name": "label",
+                    "aria-label": "",
+                    "type": "text",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_contact_hours_value",
+                    "label": "Horaire",
+                    "name": "value",
+                    "aria-label": "",
+                    "type": "text",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    }
+                }
+            ]
+        },
+        {
+            "key": "field_contact_access",
+            "label": "Accès",
+            "name": "contact_access",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "layout": "table",
+            "min": 0,
+            "button_label": "Ajouter un accès",
+            "sub_fields": [
+                {
+                    "key": "field_contact_access_label",
+                    "label": "Libellé",
+                    "name": "label",
+                    "aria-label": "",
+                    "type": "text",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                }
+            ]
+        },
+        {
+            "key": "field_contact_map_lat",
+            "label": "Latitude",
+            "name": "contact_map_lat",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "Carte OpenStreetMap. Laisser vide pour le campus par défaut.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 48.8446,
+            "step": "0.0001"
+        },
+        {
+            "key": "field_contact_map_lng",
+            "label": "Longitude",
+            "name": "contact_map_lng",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 2.2789,
+            "step": "0.0001"
+        },
+        {
+            "key": "field_contact_form_title",
+            "label": "Titre du formulaire",
+            "name": "contact_form_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "40",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Écrire à l’école"
+        },
+        {
+            "key": "field_contact_form_text",
+            "label": "Texte du formulaire",
+            "name": "contact_form_text",
+            "aria-label": "",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "60",
+                "class": "",
+                "id": ""
+            },
+            "tabs": "visual",
+            "toolbar": "basic",
+            "media_upload": 0,
+            "delay": 0
+        },
+        {
+            "key": "field_contact_motifs",
+            "label": "Motifs et destinataires",
+            "name": "contact_motifs",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Les adresses e-mail ne sont jamais affichées sur le site. Cochez Calendly pour le motif « Découvrir l’école ».",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "table",
+            "min": 1,
+            "button_label": "Ajouter un motif",
+            "sub_fields": [
+                {
+                    "key": "field_contact_motif_label",
+                    "label": "Motif",
+                    "name": "label",
+                    "aria-label": "",
+                    "type": "text",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "40",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_contact_motif_email",
+                    "label": "E-mail destinataire",
+                    "name": "recipient_email",
+                    "aria-label": "",
+                    "type": "email",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "40",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_contact_motif_calendly",
+                    "label": "Afficher Calendly après envoi",
+                    "name": "show_calendly",
+                    "aria-label": "",
+                    "type": "true_false",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "20",
+                        "class": "",
+                        "id": ""
+                    },
+                    "message": "",
+                    "default_value": 0,
+                    "ui": 1,
+                    "ui_on_text": "Oui",
+                    "ui_off_text": "Non"
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "page-contact.php"
+            }
+        ]
+    ],
+    "menu_order": 10,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Coordonnées, carte, motifs et destinataires de la page Contact.",
+    "show_in_rest": 0,
+    "modified": 1759930000
+}

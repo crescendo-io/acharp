@@ -11,7 +11,7 @@ $process_title = acharp_inline_html(acharp_field('admissions_process_title'));
 $process   = acharp_rows(acharp_field('admissions_process'));
 $deadline  = acharp_field('admissions_deadline') ?: '11 septembre 2026';
 $result    = acharp_field('admissions_result') ?: 'Communiqué dans un délai d’une semaine, à l’issue de l’étude du dossier ou, le cas échéant, après un entretien individuel.';
-$cta       = acharp_link(acharp_field('admissions_cta'), '#', 'Candidater');
+$cta       = acharp_link(acharp_field('admissions_cta'), '#candidature', 'Candidater');
 
 if (!$intro) {
     $intro = 'Les admissions à l’Académie Charpentier se font hors Parcoursup, sur dossier de candidature, il n’y a pas de frais de candidature.';
