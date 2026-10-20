@@ -160,21 +160,9 @@ function acharp_get_formation_cards() {
     $mode      = acharp_field('formations_mode') ?: 'auto';
     $defaults  = array(
         array(
-            'title' => 'Classe préparatoire',
-            'meta'  => 'post-bac — 1 ou 2 ans',
-            'text'  => 'Se préparer aux études supérieures en architecture intérieure, design et métiers de l’espace.',
-            'url'   => '#',
-            'image' => acharp_image_html(0, 'large', array(
-                'src'    => $theme_uri . '/images/formation-prepa.jpg',
-                'alt'    => 'Travail de maquette en classe préparatoire',
-                'width'  => 1600,
-                'height' => 1067,
-            )),
-        ),
-        array(
-            'title' => 'Bachelor',
+            'title' => 'Bachelor – Bac +3',
             'meta'  => 'post-bac — 3 ans',
-            'text'  => 'Acquérir les fondamentaux du design et de l’architecture intérieure par la pratique et les projets.',
+            'text'  => 'Acquérir les fondamentaux de l’architecture intérieure par la pratique et les projets.',
             'url'   => '#',
             'image' => acharp_image_html(0, 'large', array(
                 'src'    => $theme_uri . '/images/formation-bachelor.jpg',
@@ -184,7 +172,7 @@ function acharp_get_formation_cards() {
             )),
         ),
         array(
-            'title' => 'Master',
+            'title' => 'Formation Bac +5',
             'meta'  => 'bac+3 — 2 ans',
             'text'  => 'Se spécialiser et développer une expertise pour concevoir des projets complexes.',
             'url'   => '#',
@@ -222,17 +210,9 @@ function acharp_get_formation_cards() {
         return $cards ?: $defaults;
     }
 
-    $query = new WP_Query(array(
-        'post_type'      => 'cursus',
-        'posts_per_page' => 3,
-        'orderby'        => 'menu_order title',
-        'order'          => 'ASC',
-        'post_status'    => 'publish',
-    ));
-
     $cards = array();
 
-    foreach ($query->posts as $post) {
+    foreach (acharp_query_catalog_cursus() as $post) {
         $cards[] = acharp_cursus_card($post->ID);
     }
 

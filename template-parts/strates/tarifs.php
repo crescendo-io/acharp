@@ -5,8 +5,10 @@ $title     = acharp_field('tarifs_title') ?: 'Tarifs 2026 / 2027';
 $intro     = acharp_inline_html(acharp_field('tarifs_intro'));
 $tuition_label = acharp_field('tarifs_tuition_label') ?: 'Frais de scolarité';
 $tuition_value = acharp_field('tarifs_tuition_value') ?: '9 800€ / an';
-$fee_label = acharp_field('tarifs_fee_label') ?: 'Frais d’inscription';
+$fee_label = acharp_field('tarifs_fee_label') ?: 'Frais de dossier';
 $fee_value = acharp_field('tarifs_fee_value') ?: '490€';
+$early_bird = acharp_early_bird_active();
+$early_message = acharp_early_bird_message();
 $notice    = acharp_field('tarifs_notice') ?: 'Les frais sont indiqués pour l’année N et peuvent être révisés chaque année.';
 $subtitle  = acharp_field('tarifs_subtitle') ?: 'Plan de paiement';
 $text      = acharp_field('tarifs_text') ?: 'Les frais de scolarité sont réglés selon l’échéancier suivant :';
@@ -19,10 +21,10 @@ if (!$intro) {
 
 if (!$steps) {
     $steps = array(
-        array('num' => '01', 'title' => 'Acompte à l’inscription', 'text' => 'Un acompte de 2 000 € + 490 € pour toute inscription avant le 1er juillet.'),
-        array('num' => '02', 'title' => 'Conditions de remboursement', 'text' => 'L’acompte est remboursable uniquement en cas d’échec au baccalauréat ou de refus de visa (sur présentation d’un justificatif), avec déduction des frais d’inscription.'),
-        array('num' => '03', 'title' => 'Solde de la scolarité', 'text' => 'Le solde pour moitié au 1er juillet et pour moitié au plus tard le 1er novembre de l’année en cours.'),
-        array('num' => '04', 'title' => 'Inscriptions ultérieures', 'text' => 'Pour toute inscription ultérieure au 1er juillet, les frais de scolarité doivent être réglés selon le calendrier suivant : 50 % à la date d’inscription, 50 % au plus tard le 1er novembre de l’année en cours.'),
+        array('num' => '01', 'title' => 'Frais de dossier', 'text' => 'Les frais de dossier sont réglés à la candidature. Offre early bird : frais de dossier offerts pour toute candidature déposée avant le 15 janvier.'),
+        array('num' => '02', 'title' => 'Frais d’inscription', 'text' => 'Paiement en deux fois : 50 % au 1er septembre et 50 % au 15 novembre.'),
+        array('num' => '03', 'title' => 'Acompte à l’inscription', 'text' => 'Un acompte de 2 000 € pour toute inscription avant le 1er juillet.'),
+        array('num' => '04', 'title' => 'Solde de la scolarité', 'text' => 'Le solde pour moitié au 1er juillet et pour moitié au plus tard le 1er novembre de l’année en cours.'),
     );
 }
 
@@ -38,6 +40,9 @@ $tuition_parts = explode(' / ', $tuition_value, 2);
             <h2 class="tarifs__title"><?= esc_html($title); ?></h2>
             <?php if ($intro) : ?>
                 <p class="tarifs__intro"><?= $intro; ?></p>
+            <?php endif; ?>
+            <?php if ($early_bird && $early_message) : ?>
+                <p class="tarifs__early-bird"><?= esc_html($early_message); ?></p>
             <?php endif; ?>
         </header>
 

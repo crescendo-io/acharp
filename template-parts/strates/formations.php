@@ -8,6 +8,9 @@ $arrow  = acharp_arrow('formations__arrow');
 if (!$title) {
     $title = 'Trouvez le parcours<br> qui <strong>vous ressemble</strong>';
 }
+
+$card_count = count($cards);
+$col_lg     = 3 === $card_count ? 'col-lg-4' : 'col-lg-6';
 ?>
 
 <section id="formations" class="formations">
@@ -27,7 +30,7 @@ if (!$title) {
 
         <div class="row">
             <?php foreach ($cards as $card) : ?>
-                <div class="col-12 col-lg-4">
+                <div class="col-12 <?= esc_attr($col_lg); ?>">
                     <?php get_template_part('template-parts/general/card-cursus', null, array(
                         'card' => $card,
                     )); ?>

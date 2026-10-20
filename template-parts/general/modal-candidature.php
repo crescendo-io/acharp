@@ -44,6 +44,9 @@ $hints = array(
                 </ol>
 
                 <p class="candidature-modal__step" id="candidature-step-label">Étape 1 sur 2 — Vos informations</p>
+                <?php if (acharp_early_bird_active() && acharp_early_bird_message()) : ?>
+                    <p class="candidature-modal__early-bird"><?= esc_html(acharp_early_bird_message()); ?></p>
+                <?php endif; ?>
             </header>
 
             <div class="candidature-modal__body">
@@ -54,9 +57,9 @@ $hints = array(
                 <input type="hidden" name="issued_sig" value="">
                 <input type="hidden" name="token" value="">
 
-                <p class="candidature-modal__honeypot">
-                    <label for="candidature-fax">Fax</label>
-                    <input type="text" id="candidature-fax" name="fax_number" tabindex="-1" autocomplete="off">
+                <p class="candidature-modal__honeypot" aria-hidden="true">
+                    <label for="candidature-company">Société</label>
+                    <input type="text" id="candidature-company" name="fax_number" tabindex="-1" autocomplete="off">
                 </p>
 
                 <div data-candidature-panel="1">

@@ -9,6 +9,7 @@ get_template_part('template-parts/strates/header');
 <main class="page-academie">
     <?php
     get_template_part('template-parts/strates/hero');
+    get_template_part('template-parts/strates/mot-directrice');
     get_template_part('template-parts/strates/heritage');
 
     get_template_part('template-parts/strates/pedagogie');

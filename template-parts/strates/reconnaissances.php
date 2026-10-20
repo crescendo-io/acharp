@@ -9,6 +9,7 @@ $defaults = array(
     array('file' => '/images/logo-ministere-culture.png', 'alt' => 'Ministère de la Culture', 'width' => 85, 'height' => 62),
     array('file' => '/images/logo-diplomes-reconnus.png', 'alt' => 'Diplômes reconnus par l’État', 'width' => 58, 'height' => 67),
     array('file' => '/images/logo-campus-france.png', 'alt' => 'Campus France, établissement membre', 'width' => 109, 'height' => 41),
+    array('file' => '/images/logo-cfai.svg', 'alt' => 'CFAI — Conseil français des architectes d’intérieur', 'width' => 120, 'height' => 40),
 );
 ?>
 

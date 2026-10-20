@@ -10,9 +10,9 @@ if (!$intro) {
 
 if (!$items) {
     $items = array(
-        array('value' => '+60', 'label' => 'ans d’expérience', 'shape' => 'triangle', 'color' => 'pink'),
+        array('value' => '+80', 'label' => 'ans d’expérience', 'shape' => 'triangle', 'color' => 'pink'),
         array('value' => '≈60', 'label' => 'étudiants accueillis chaque année', 'shape' => 'half', 'color' => 'green'),
-        array('value' => '6', 'label' => 'formations diplômantes du post-bac au bac+5', 'shape' => 'triangle', 'color' => 'blue'),
+        array('value' => '2', 'label' => 'formations : Bachelor – Bac +3 et Formation Bac +5', 'shape' => 'triangle', 'color' => 'blue'),
         array('value' => '92%', 'label' => 'taux d’insertion à 6 mois *', 'shape' => 'three-quarter', 'color' => 'orange'),
     );
 }

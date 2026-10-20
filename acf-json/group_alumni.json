@@ -1,0 +1,23 @@
+{
+    "key": "group_alumni",
+    "title": "Alumni",
+    "fields": [
+        {
+            "key": "field_alumni_linkedin",
+            "label": "Profil LinkedIn",
+            "name": "alumni_linkedin",
+            "type": "url"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "alumni"
+            }
+        ]
+    ],
+    "active": true,
+    "modified": 1760851310
+}

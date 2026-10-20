@@ -53,6 +53,25 @@
             "rows": 3
         },
         {
+            "key": "field_cursus_volume_horaire",
+            "label": "Volume horaire",
+            "name": "cursus_volume_horaire",
+            "type": "text",
+            "instructions": "Ex. : 656,5 h — affiché sur la page formation.",
+            "wrapper": { "width": "50" },
+            "placeholder": "656,5 h"
+        },
+        {
+            "key": "field_cursus_hide_catalog",
+            "label": "Masquer des listes",
+            "name": "cursus_hide_catalog",
+            "type": "true_false",
+            "instructions": "Cocher pour exclure ce cursus du menu formations et des cartes (ex. prépa intégrée).",
+            "wrapper": { "width": "50" },
+            "ui": 1,
+            "default_value": 0
+        },
+        {
             "key": "field_cursus_card_link_label",
             "label": "Libellé du lien",
             "name": "cursus_card_link_label",

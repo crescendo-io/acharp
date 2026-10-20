@@ -14,7 +14,7 @@ $result    = acharp_field('admissions_result') ?: 'Communiqué dans un délai d�
 $cta       = acharp_link(acharp_field('admissions_cta'), '#candidature', 'Candidater');
 
 if (!$intro) {
-    $intro = 'Les admissions à l’Académie Charpentier se font hors Parcoursup, sur dossier de candidature, il n’y a pas de frais de candidature.';
+    $intro = 'Les admissions à l’Académie Charpentier se font hors Parcoursup, sur dossier de candidature. Des frais de dossier peuvent s’appliquer (voir le bloc tarifs).';
 }
 
 if (!$prereq) {
@@ -37,8 +37,8 @@ if (!$docs_intro) {
 if (!$docs) {
     $docs = array(
         array('icon' => 'file', 'color' => 'pink', 'title' => 'CV', 'text' => 'Présentant votre parcours scolaire et, le cas échéant, vos expériences (stages, jobs, projets, activités), ainsi que vos compétences et centres d’intérêt.'),
-        array('icon' => 'mail', 'color' => 'green', 'title' => 'Lettre de motivation', 'text' => 'Exposant votre intérêt pour le design et/ou l’architecture intérieure, les éléments de votre parcours ayant nourri votre démarche, ainsi que vos motivations à rejoindre l’Académie Charpentier.'),
-        array('icon' => 'image', 'color' => 'blue', 'title' => 'Portfolio', 'text' => '<strong>1re année / Prépa :</strong> Facultatif.<br>Si vous en possédez un, il nous permettra de mieux appréhender votre sensibilité artistique, votre créativité et votre univers personnel.<br><br><strong>Années 2 / 3 / 4 :</strong><br>Un portfolio est requis afin de vérifier les acquis fondamentaux en architecture intérieure (projets, dessin, compréhension de l’espace et démarche de projet).'),
+        array('icon' => 'mail', 'color' => 'green', 'title' => 'Lettre de motivation', 'text' => 'Exposant votre intérêt pour l’architecture intérieure, les éléments de votre parcours ayant nourri votre démarche, ainsi que vos motivations à rejoindre l’Académie Charpentier.'),
+        array('icon' => 'image', 'color' => 'blue', 'title' => 'Portfolio', 'text' => '<strong>1re année :</strong> Facultatif.<br>Si vous en possédez un, il nous permettra de mieux appréhender votre sensibilité artistique, votre créativité et votre univers personnel.<br><br><strong>Années 2 / 3 / 4 :</strong><br>Un portfolio est requis afin de vérifier les acquis fondamentaux en architecture intérieure (projets, dessin, compréhension de l’espace et démarche de projet).'),
         array('icon' => 'diploma', 'color' => 'orange', 'title' => 'Relevés de notes et diplôme(s)', 'text' => '<strong>Années 2 / 3 / 4 :</strong><br>Les relevés de notes et, le cas échéant, les diplômes des formations antérieures en lien avec l’architecture intérieure ou des disciplines connexes sont demandés.'),
     );
 }

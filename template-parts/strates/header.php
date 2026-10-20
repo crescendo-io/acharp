@@ -10,18 +10,9 @@ $fallback_image = array(
 );
 
 $get_cursus_items = static function () use ($fallback_image) {
-    $query = new WP_Query(array(
-        'post_type'      => 'cursus',
-        'posts_per_page' => -1,
-        'post_status'    => 'publish',
-        'orderby'        => 'menu_order title',
-        'order'          => 'ASC',
-        'no_found_rows'  => true,
-    ));
-
     $items = array();
 
-    foreach ($query->posts as $cursus_post) {
+    foreach (acharp_query_catalog_cursus() as $cursus_post) {
         $card = acharp_cursus_card($cursus_post->ID);
 
         if (!$card['image']) {
@@ -53,7 +44,7 @@ foreach ($menu_rows as $row) {
         foreach (acharp_rows($row['submenu_items'] ?? array()) as $subrow) {
             $sublink = acharp_link($subrow['link'] ?? array());
 
-            if (!$sublink['url'] || empty($subrow['label'])) {
+            if (!$sublink['url'] || empty($subrow['label']) || acharp_is_hidden_menu_url($sublink['url'])) {
                 continue;
             }
 
@@ -71,6 +62,10 @@ foreach ($menu_rows as $row) {
 
     if ($mode === 'cursus' && !$all['url']) {
         $all = acharp_link(array(), $cursus_archive, 'Voir toutes les formations');
+    }
+
+    if ($link['url'] && acharp_is_hidden_menu_url($link['url']) && !$submenu) {
+        continue;
     }
 
     $menu[] = array(
@@ -92,7 +87,7 @@ if (!$menu) {
             'submenu_all' => acharp_link(array(), $cursus_archive, 'Voir toutes les formations'),
         ),
         array('label' => 'Admissions', 'url' => '#'),
-        array('label' => 'International', 'url' => '#'),
+        array('label' => 'Partenariats', 'url' => home_url('/partenariats/')),
         array('label' => 'Vie de l’école', 'url' => '#'),
         array('label' => 'Actualités & évènements', 'url' => get_post_type_archive_link('actualite') ?: '#'),
         array('label' => 'Contact', 'url' => '#'),
@@ -105,6 +100,8 @@ $header_cta = acharp_link(
     'Candidater'
 );
 ?>
+
+<?php get_template_part('template-parts/general/portes-ouvertes', 'banner'); ?>
 
 <header class="site-header">
     <div class="site-header__inner">

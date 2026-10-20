@@ -1,6 +1,8 @@
 <?php
 
 require_once get_stylesheet_directory() . '/inc/content.php';
+require_once get_stylesheet_directory() . '/inc/site-settings.php';
+require_once get_stylesheet_directory() . '/inc/cpt-content.php';
 require_once get_stylesheet_directory() . '/inc/candidatures.php';
 require_once get_stylesheet_directory() . '/inc/contact.php';
 

@@ -7,11 +7,10 @@ const ACHARP_CANDIDATURE_CAP = 'manage_candidatures';
 
 function acharp_candidature_formations() {
     return array(
-        'prepa'   => 'Prépa',
-        'annee_1' => '1re année',
-        'annee_2' => '2e année',
-        'annee_3' => '3e année',
-        'annee_4' => '4e année',
+        'annee_1' => '1re année (Bachelor – Bac +3)',
+        'annee_2' => '2e année (Bachelor – Bac +3)',
+        'annee_3' => '3e année (Bachelor – Bac +3)',
+        'annee_4' => '4e année (Formation Bac +5)',
     );
 }
 

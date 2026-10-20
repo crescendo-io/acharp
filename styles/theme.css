@@ -1,15 +1,15 @@
 :root {
     --font-sans: "Inter", sans-serif;
     --font-display: "Inter Tight", "Inter", sans-serif;
-    --color-cream: #f7f3ec;
+    --color-cream: #f8f8f6;
     --color-black: #111111;
     --color-text: #1a1a1a;
     --color-muted: #3f3f3f;
     --color-white: #ffffff;
-    --color-pink: #e03d86;
-    --color-green: #2f9b63;
-    --color-blue: #2f6fe8;
-    --color-orange: #e85c32;
+    --color-pink: #ff6ec1;
+    --color-green: #00c95f;
+    --color-blue: #0080ff;
+    --color-orange: #ff4824;
     --color-terracotta: #c56b3c;
     --radius-card: 1.2rem;
     --radius-btn: 0.6rem;
@@ -2962,8 +2962,10 @@ img {
 .heritage__text {
     margin: 0 0 1.6rem;
     max-width: 62rem;
+    font-family: var(--font-sans);
     font-size: var(--text-body-size);
     letter-spacing: var(--text-body-tracking);
+    font-weight: 400;
     line-height: 1.55;
     color: var(--color-muted);
 }
@@ -6160,5 +6162,509 @@ body.has-candidature-modal {
         min-height: 28rem;
         height: 28rem;
         border-radius: 1.6rem;
+    }
+}
+
+/* Portes ouvertes */
+.po-banner {
+    position: relative;
+    z-index: 21;
+    background: var(--color-black);
+    color: var(--color-white);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.po-banner__inner {
+    display: flex;
+    align-items: center;
+    gap: 2.4rem;
+    width: 100%;
+    min-height: 5.2rem;
+    padding: 1rem 4rem 1rem 7rem;
+}
+
+.po-banner__main {
+    flex: 1 1 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.6rem 2.4rem;
+    min-width: 0;
+    text-align: center;
+}
+
+.po-banner__text {
+    margin: 0;
+    font-family: var(--font-sans);
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    line-height: 1.35;
+}
+
+.po-banner__cta.btn {
+    min-height: 3.6rem;
+    padding: 0.8rem 1.6rem;
+    font-size: 1.1rem;
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+}
+
+.po-banner__cta .btn__icon {
+    width: 1.4rem;
+    height: 1.4rem;
+}
+
+.po-banner__close {
+    flex: 0 0 auto;
+    display: grid;
+    place-items: center;
+    width: 3.6rem;
+    height: 3.6rem;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: transparent;
+    color: inherit;
+    font-size: 2.2rem;
+    line-height: 1;
+    cursor: pointer;
+    opacity: 0.85;
+    transition: background-color 0.2s ease, opacity 0.2s ease;
+}
+
+.po-banner__close:hover,
+.po-banner__close:focus {
+    opacity: 1;
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.po-popup[hidden] {
+    display: none;
+}
+
+.po-popup {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: grid;
+    place-items: center;
+    padding: 2rem;
+}
+
+.po-popup__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(17, 17, 17, 0.55);
+}
+
+.po-popup__dialog {
+    position: relative;
+    width: min(52rem, 100%);
+    padding: 3.2rem;
+    border-radius: 1.6rem;
+    background: var(--color-white);
+    overflow: hidden;
+}
+
+.po-popup__dialog--has-media {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    padding: 0;
+    width: min(72rem, 100%);
+}
+
+.po-popup__dialog--has-media .po-popup__close {
+    top: 1.2rem;
+    right: 1.2rem;
+    z-index: 2;
+    color: var(--color-white);
+    background: rgba(17, 17, 17, 0.45);
+}
+
+.po-popup__dialog--has-media .po-popup__close:hover,
+.po-popup__dialog--has-media .po-popup__close:focus {
+    background: rgba(17, 17, 17, 0.65);
+}
+
+.po-popup__media {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    height: clamp(16rem, 28vw, 24rem);
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border-radius: 1.6rem 1.6rem 0 0;
+}
+
+.po-popup__media img,
+.po-popup__img-el {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    max-width: none;
+    height: 100%;
+    object-fit: cover;
+}
+
+.po-popup__body {
+    padding: 0;
+}
+
+.po-popup__dialog--has-media .po-popup__body {
+    padding: 2.4rem 3.2rem 3.2rem;
+}
+
+.po-popup__close {
+    position: absolute;
+    top: 1.2rem;
+    right: 1.2rem;
+    border: 0;
+    background: transparent;
+    font-size: 2.4rem;
+    cursor: pointer;
+}
+
+.po-popup__kicker {
+    margin: 0 0 0.8rem;
+    font-size: 1.2rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.po-popup__title {
+    margin: 0 0 1rem;
+}
+
+.po-popup__date {
+    margin: 0 0 1.2rem;
+    font-weight: 600;
+}
+
+.po-popup__text {
+    margin: 0 0 2rem;
+    color: var(--color-muted);
+}
+
+/* Strates retours client */
+.mot-directrice,
+.equipe-pedagogique,
+.insertion-pro,
+.partenariats-hub,
+.alumni-showcase {
+    padding: 6rem 0 7rem;
+}
+
+.mot-directrice .container-fluid,
+.equipe-pedagogique .container-fluid,
+.insertion-pro .container-fluid,
+.partenariats-hub .container-fluid,
+.alumni-showcase .container-fluid {
+    max-width: var(--container-max);
+    padding-left: 7rem;
+    padding-right: 4rem;
+}
+
+.mot-directrice__header,
+.equipe-pedagogique__header,
+.insertion-pro__header,
+.partenariats-hub__header,
+.alumni-showcase__header {
+    margin-bottom: 4.8rem;
+}
+
+.mot-directrice__grid,
+.partenariats-hub__grid {
+    display: grid;
+    gap: 3.2rem;
+}
+
+@media (min-width: 992px) {
+    .mot-directrice__grid {
+        grid-template-columns: 0.9fr 1.1fr;
+        align-items: center;
+    }
+
+    .partenariats-hub__grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+.mot-directrice__media img,
+.equipe-pedagogique__photo img {
+    border-radius: var(--radius-card);
+}
+
+.mot-directrice__kicker,
+.equipe-pedagogique__kicker,
+.insertion-pro__kicker,
+.partenariats-hub__kicker,
+.alumni-showcase__kicker {
+    margin: 0 0 1.6rem;
+    font-family: var(--font-sans);
+    font-size: 1.3rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+}
+
+.mot-directrice__title,
+.equipe-pedagogique__title,
+.insertion-pro__title,
+.partenariats-hub__title,
+.alumni-showcase__title {
+    display: block;
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: clamp(4.4rem, 5.2vw, 8rem);
+    font-weight: 400;
+    letter-spacing: -0.045em;
+    line-height: 0.98;
+    color: var(--color-black);
+}
+
+.mot-directrice__title strong,
+.equipe-pedagogique__title strong,
+.insertion-pro__title strong,
+.partenariats-hub__title strong,
+.alumni-showcase__title strong {
+    font-weight: 700;
+}
+
+.mot-directrice__role {
+    margin: 0 0 1.6rem;
+    color: var(--color-muted);
+}
+
+.mot-directrice__text p,
+.equipe-pedagogique__intro,
+.insertion-pro__text,
+.partenariats-hub__intro {
+    color: var(--color-muted);
+}
+
+.equipe-pedagogique__list {
+    list-style: none;
+    margin: 3.2rem 0 0;
+    padding: 0;
+    display: grid;
+    gap: 2rem;
+}
+
+@media (min-width: 768px) {
+    .equipe-pedagogique__list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+.equipe-pedagogique__item {
+    padding: 2rem;
+    border-radius: var(--radius-card);
+    background: var(--color-white);
+}
+
+.equipe-pedagogique__name {
+    margin: 0 0 0.8rem;
+}
+
+.equipe-pedagogique__teachings {
+    margin: 0 0 0.8rem;
+    font-weight: 600;
+}
+
+.equipe-pedagogique__bio {
+    margin: 0;
+    color: var(--color-muted);
+}
+
+.insertion-pro__logos {
+    list-style: none;
+    margin: 2.4rem 0 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+}
+
+.insertion-pro__logo {
+    display: grid;
+    place-items: center;
+    min-height: 5.6rem;
+    padding: 1.2rem 2rem;
+    border-radius: var(--radius-btn);
+    background: var(--color-white);
+    font-weight: 600;
+}
+
+.partenariats-hub__card,
+.partenariats-hub__block {
+    padding: 2.4rem;
+    border-radius: var(--radius-card);
+    background: var(--color-white);
+}
+
+.partenariats-hub__blocks {
+    display: grid;
+    gap: 2rem;
+    margin: 3.2rem 0;
+}
+
+@media (min-width: 992px) {
+    .partenariats-hub__blocks {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+.partenariats-hub__cta {
+    margin-top: 2rem;
+}
+
+.alumni-showcase__profiles,
+.alumni-showcase__projects {
+    display: grid;
+    gap: 2rem;
+    margin-top: 3.2rem;
+}
+
+@media (min-width: 768px) {
+    .alumni-showcase__profiles {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .alumni-showcase__projects {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+}
+
+.alumni-showcase__profile,
+.alumni-showcase__project {
+    background: var(--color-white);
+    border-radius: var(--radius-card);
+    overflow: hidden;
+}
+
+.alumni-showcase__profile {
+    padding: 1.6rem;
+}
+
+.formation-intro__volume,
+.programme__volume {
+    margin: 0 0 1.6rem;
+}
+
+.candidature-modal__early-bird {
+    margin: 1.2rem 0 0;
+    padding: 1rem 1.2rem;
+    border-radius: var(--radius-btn);
+    background: rgba(255, 110, 193, 0.12);
+    font-size: 1.4rem;
+}
+
+.tarifs__early-bird {
+    margin: 1.6rem 0 0;
+    padding: 1.2rem 1.6rem;
+    border-radius: var(--radius-btn);
+    background: rgba(255, 110, 193, 0.12);
+    color: var(--color-black);
+}
+
+.international__text p {
+    margin: 0 0 1.2rem;
+    color: var(--color-muted);
+}
+
+.international__text p:last-child {
+    margin-bottom: 0;
+}
+
+@media (max-width: 1199.98px) {
+    .po-banner__inner {
+        padding-left: 4rem;
+        padding-right: 4rem;
+    }
+
+    .mot-directrice .container-fluid,
+    .equipe-pedagogique .container-fluid,
+    .insertion-pro .container-fluid,
+    .partenariats-hub .container-fluid,
+    .alumni-showcase .container-fluid {
+        padding-left: 4rem;
+        padding-right: 4rem;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .mot-directrice,
+    .equipe-pedagogique,
+    .insertion-pro,
+    .partenariats-hub,
+    .alumni-showcase {
+        padding: 5.6rem 0 7rem;
+    }
+
+    .mot-directrice__header,
+    .equipe-pedagogique__header,
+    .insertion-pro__header,
+    .partenariats-hub__header,
+    .alumni-showcase__header {
+        margin-bottom: 3.2rem;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .po-banner__inner {
+        align-items: flex-start;
+        padding-top: 1.2rem;
+        padding-bottom: 1.2rem;
+    }
+
+    .po-banner__main {
+        justify-content: flex-start;
+        text-align: left;
+    }
+
+    .po-banner__text {
+        font-size: 1.1rem;
+        letter-spacing: 0.02em;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .po-banner__inner {
+        flex-wrap: wrap;
+        padding-left: 2.4rem;
+        padding-right: 2.4rem;
+    }
+
+    .po-banner__close {
+        position: absolute;
+        top: 0.8rem;
+        right: 1.6rem;
+    }
+
+    .po-banner__main {
+        width: 100%;
+        padding-right: 3.2rem;
+    }
+
+    .mot-directrice .container-fluid,
+    .equipe-pedagogique .container-fluid,
+    .insertion-pro .container-fluid,
+    .partenariats-hub .container-fluid,
+    .alumni-showcase .container-fluid {
+        padding-left: 2.4rem;
+        padding-right: 2.4rem;
+    }
+
+    .mot-directrice,
+    .equipe-pedagogique,
+    .insertion-pro,
+    .partenariats-hub,
+    .alumni-showcase {
+        padding: 4rem 0 5.6rem;
     }
 }

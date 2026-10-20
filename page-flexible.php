@@ -27,6 +27,11 @@ $layout_parts = array(
     'programme'        => 'programme',
     'admissions'       => 'admissions',
     'tarifs'           => 'tarifs',
+    'mot_directrice'   => 'mot-directrice',
+    'equipe_pedagogique' => 'equipe-pedagogique',
+    'insertion_pro'    => 'insertion-professionnelle',
+    'partenariats'     => 'partenariats',
+    'alumni_showcase'  => 'alumni-showcase',
 );
 ?>
 

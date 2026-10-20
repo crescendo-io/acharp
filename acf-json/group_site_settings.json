@@ -1,0 +1,157 @@
+{
+    "key": "group_site_settings",
+    "title": "Réglages du site",
+    "fields": [
+        {
+            "key": "field_site_tab_po",
+            "label": "Portes ouvertes",
+            "name": "",
+            "type": "tab"
+        },
+        {
+            "key": "field_po_enabled",
+            "label": "Activer bandeau et pop-up",
+            "name": "po_enabled",
+            "type": "true_false",
+            "default_value": 1,
+            "ui": 1
+        },
+        {
+            "key": "field_po_banner_text",
+            "label": "Texte du bandeau",
+            "name": "po_banner_text",
+            "type": "text"
+        },
+        {
+            "key": "field_po_date_label",
+            "label": "Date affichée",
+            "name": "po_date_label",
+            "type": "text",
+            "instructions": "Ex. : Samedi 14 mars 2026"
+        },
+        {
+            "key": "field_po_popup_title",
+            "label": "Titre du pop-up",
+            "name": "po_popup_title",
+            "type": "text"
+        },
+        {
+            "key": "field_po_popup_text",
+            "label": "Texte du pop-up",
+            "name": "po_popup_text",
+            "type": "textarea",
+            "rows": 3
+        },
+        {
+            "key": "field_po_popup_image",
+            "label": "Visuel du pop-up",
+            "name": "po_popup_image",
+            "type": "image",
+            "instructions": "Image optionnelle affichée en haut de la pop-up (JPO).",
+            "return_format": "id",
+            "preview_size": "medium",
+            "library": "all"
+        },
+        {
+            "key": "field_po_cta",
+            "label": "Bouton de réservation",
+            "name": "po_cta",
+            "type": "link",
+            "return_format": "array"
+        },
+        {
+            "key": "field_site_tab_early",
+            "label": "Early bird",
+            "name": "",
+            "type": "tab"
+        },
+        {
+            "key": "field_early_bird_enabled",
+            "label": "Afficher l’offre early bird",
+            "name": "early_bird_enabled",
+            "type": "true_false",
+            "default_value": 1,
+            "ui": 1
+        },
+        {
+            "key": "field_early_bird_deadline",
+            "label": "Date limite",
+            "name": "early_bird_deadline",
+            "type": "date_picker",
+            "display_format": "d/m/Y",
+            "return_format": "Y-m-d"
+        },
+        {
+            "key": "field_early_bird_message",
+            "label": "Message",
+            "name": "early_bird_message",
+            "type": "textarea",
+            "rows": 2
+        },
+        {
+            "key": "field_site_tab_social",
+            "label": "Réseaux sociaux",
+            "name": "",
+            "type": "tab"
+        },
+        {
+            "key": "field_site_social_links",
+            "label": "Liens",
+            "name": "site_social_links",
+            "type": "repeater",
+            "layout": "table",
+            "button_label": "Ajouter un réseau",
+            "sub_fields": [
+                {
+                    "key": "field_site_social_label",
+                    "label": "Réseau",
+                    "name": "label",
+                    "type": "text"
+                },
+                {
+                    "key": "field_site_social_url",
+                    "label": "URL",
+                    "name": "url",
+                    "type": "url"
+                }
+            ]
+        },
+        {
+            "key": "field_site_tab_menu",
+            "label": "Menu",
+            "name": "",
+            "type": "tab"
+        },
+        {
+            "key": "field_site_hidden_menu_paths",
+            "label": "Pages masquées du menu",
+            "name": "site_hidden_menu_paths",
+            "type": "repeater",
+            "instructions": "Slug ou segment d’URL à exclure du menu (ex. decouvrir-larchitecture-interieure).",
+            "layout": "table",
+            "button_label": "Ajouter un slug",
+            "sub_fields": [
+                {
+                    "key": "field_site_hidden_path",
+                    "label": "Slug",
+                    "name": "path",
+                    "type": "text"
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "acharp-site-settings"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "active": true,
+    "modified": 1760852400
+}

@@ -23,7 +23,7 @@ $push          = get_field('hero_push', $acf_id);
 $push          = is_array($push) ? $push : array();
 
 if (!$kicker) {
-    $kicker = $args['kicker'] ?? 'École d’architecture intérieure & design à Paris';
+    $kicker = $args['kicker'] ?? 'École d’architecture intérieure à Paris';
 }
 
 if (!$title) {
@@ -40,7 +40,7 @@ if (!$title) {
 }
 
 if (!$text) {
-    $text = $args['text'] ?? 'Depuis plus de 60 ans, l’Académie Charpentier forme à Paris les futurs professionnels de l’architecture intérieure et du design.';
+    $text = $args['text'] ?? 'Depuis plus de 80 ans, l’Académie Charpentier forme à Paris les futurs professionnels de l’architecture intérieure.';
 }
 
 $arrow = '<span class="btn__icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 8h10M9.5 4.5 13 8l-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>';

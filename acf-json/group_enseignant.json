@@ -1,0 +1,31 @@
+{
+    "key": "group_enseignant",
+    "title": "Enseignant",
+    "fields": [
+        {
+            "key": "field_enseignant_enseignements",
+            "label": "Enseignements",
+            "name": "enseignant_enseignements",
+            "type": "textarea",
+            "rows": 3
+        },
+        {
+            "key": "field_enseignant_parcours",
+            "label": "Parcours",
+            "name": "enseignant_parcours",
+            "type": "textarea",
+            "rows": 3
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "enseignant"
+            }
+        ]
+    ],
+    "active": true,
+    "modified": 1760851300
+}

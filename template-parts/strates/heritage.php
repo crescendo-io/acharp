@@ -7,7 +7,7 @@ if (!$steps) {
         array(
             'image'   => 0,
             'archive' => true,
-            'title'   => 'L’Académie Charpentier, école d’architecture intérieure et de design depuis <strong>80 ans</strong>, tournée vers un futur durable',
+            'title'   => 'L’Académie Charpentier, école d’architecture intérieure depuis <strong>80 ans</strong>, tournée vers un futur durable',
             'texts'   => array(
                 array('text' => 'C’est après la seconde guerre mondiale, en 1945, qu’Irène Charpentier crée l’Académie Charpentier. Le succès est très vite au rendez-vous et l’académie devient l’une des principales écoles d’arts appliqués en France.'),
                 array('text' => 'En 1957, la famille Charpentier avait repris la direction de l’Académie de la Grande Chaumière, installée rue de la Grande-Chaumière à Montparnasse, un haut lieu de l’art, fréquenté par les plus grands noms de la peinture et de la sculpture du XX<sup>e</sup> siècle.'),
@@ -36,8 +36,7 @@ if (!$steps) {
             'archive' => false,
             'title'   => 'Un nouveau chapitre pour l’<strong>Académie Charpentier</strong>',
             'texts'   => array(
-                array('text' => 'En 2025, une nouvelle étape décisive s’inscrit dans cette continuité : le bâtiment historique de Montparnasse a fermé ses portes en juillet.'),
-                array('text' => 'Dès la rentrée suivante, l’Académie Charpentier s’est installée sur un nouveau campus moderne dans le XV<sup>e</sup> arrondissement. Ce déménagement symbolise une volonté de renouveau et d’adaptation aux enjeux contemporains : ateliers repensés, espaces de création lumineux et modulables, technologies intégrées et environnement propice à l’expérimentation.'),
+                array('text' => 'Depuis la rentrée 2025, l’Académie Charpentier est installée sur son campus du XV<sup>e</sup> arrondissement : des ateliers repensés, lumineux et modulables, au service de la création et de l’expérimentation.'),
             ),
             'fallback' => array(
                 'src' => $theme_uri . '/images/vie-realisations.jpg',

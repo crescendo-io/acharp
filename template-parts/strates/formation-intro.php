@@ -11,10 +11,12 @@ if (!$title) {
 
 if (!$texts) {
     $texts = array(
-        array('text' => 'Axé sur l’architecture intérieure et le design, le Bachelor forme des professionnels créatifs et opérationnels, prêts à exercer la fonction de collaborateur ou d’assistant en architecture intérieure et design.'),
+        array('text' => 'Axé sur l’architecture intérieure, le Bachelor forme des professionnels créatifs et opérationnels, prêts à exercer la fonction de collaborateur ou d’assistant en architecture intérieure.'),
         array('text' => 'À travers une approche concrète et responsable, cette formation développe les compétences nécessaires pour concevoir, transformer et valoriser les environnements intérieurs avec sens, méthode et responsabilité.'),
     );
 }
+
+$volume = is_singular('cursus') ? acharp_cursus_volume_horaire(get_the_ID()) : '';
 ?>
 
 <section id="formation-intro" class="formation-intro">
@@ -33,6 +35,10 @@ if (!$texts) {
                 <?php endif; ?>
 
                 <h2 class="formation-intro__title"><?= $title; ?></h2>
+
+                <?php if ($volume) : ?>
+                    <p class="formation-intro__volume"><strong>Volume horaire :</strong> <?= esc_html($volume); ?></p>
+                <?php endif; ?>
 
                 <?php foreach ($texts as $paragraph) : ?>
                     <?php $text = acharp_inline_html($paragraph['text'] ?? ''); ?>

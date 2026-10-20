@@ -10,7 +10,7 @@ if (!$title) {
 }
 
 if (!$text) {
-    $text = 'Fondée il y a plus de 60 ans, l’Académie Charpentier est installée au cœur du 15<sup>e</sup> arrondissement de Paris. Notre école à taille humaine place l’étudiant au centre de son projet pédagogique, avec une approche concrète, créative et professionnalisante.';
+    $text = 'Fondée il y a plus de 80 ans, l’Académie Charpentier est installée au cœur du 15<sup>e</sup> arrondissement de Paris. Notre école à taille humaine place l’étudiant au centre de son projet pédagogique, avec une approche concrète, créative et professionnalisante.';
 }
 
 ?>

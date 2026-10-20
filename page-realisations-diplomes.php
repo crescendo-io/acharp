@@ -8,7 +8,10 @@ get_template_part('template-parts/strates/hero');
 ?>
 
 <main class="page-realisations">
-    <?php get_template_part('template-parts/strates/realisations-diplomes'); ?>
+    <?php
+    get_template_part('template-parts/strates/alumni-showcase');
+    get_template_part('template-parts/strates/realisations-diplomes');
+    ?>
 </main>
 
 <?php

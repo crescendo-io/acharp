@@ -27,11 +27,16 @@ if (!$push_text) {
     $push_text = 'Un exercice phare de six semaines en 2e année, qui permet à chaque étudiant de travailler sur un thème et un lieu définis, et de réaliser un projet individuel, complet et cohérent.';
 }
 
+$default_volumes = array('656,5 h', '675 h', '604 h', '335 h', '499 h');
+
 if ($years) {
     foreach ($years as $index => &$year) {
         $year['id']     = 'annee-' . ($index + 1);
         $year['tab']    = $year['tab'] ?: ($year['title'] ?: 'Année ' . ($index + 1));
         $year['title']  = $year['title'] ?: $year['tab'];
+        if (empty($year['volume_horaire']) && isset($default_volumes[$index])) {
+            $year['volume_horaire'] = $default_volumes[$index];
+        }
         $year['blocks'] = acharp_rows($year['blocks'] ?? array());
         foreach ($year['blocks'] as &$block) {
             $block['courses'] = acharp_rows($block['courses'] ?? array());
@@ -225,6 +230,9 @@ if ($years) {
                         <h3 class="programme__panel-title"><?= esc_html($annee['title']); ?></h3>
                         <?php if (!empty($annee['subtitle'])) : ?>
                             <p class="programme__panel-subtitle"><?= esc_html($annee['subtitle']); ?></p>
+                        <?php endif; ?>
+                        <?php if (!empty($annee['volume_horaire'])) : ?>
+                            <p class="programme__volume"><strong>Volume horaire :</strong> <?= esc_html($annee['volume_horaire']); ?></p>
                         <?php endif; ?>
                         <?php if (!empty($annee['description'])) : ?>
                             <p class="programme__panel-text"><?= esc_html(wp_strip_all_tags(acharp_inline_html($annee['description']))); ?></p>

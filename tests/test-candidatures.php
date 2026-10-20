@@ -56,7 +56,7 @@ $payload = array(
 $valid = acharp_candidature_validate_step1($payload);
 acharp_test_assert(!is_wp_error($valid), 'Étape 1 acceptée avec des données valides');
 acharp_test_assert(acharp_candidature_needs_portfolio('annee_2'), 'Portfolio obligatoire en 2e année');
-acharp_test_assert(!acharp_candidature_needs_portfolio('prepa'), 'Portfolio facultatif en prépa');
+acharp_test_assert(!acharp_candidature_needs_portfolio('annee_1'), 'Portfolio facultatif en 1re année');
 acharp_test_assert(acharp_candidature_needs_calendly('annee_3'), 'Calendly affiché à partir de la 2e année');
 acharp_test_assert(!acharp_candidature_needs_calendly('annee_1'), 'Pas de Calendly en 1re année');
 acharp_test_assert(acharp_candidature_is_calendly_url('https://calendly.com/admissions-academiecharpentier/30min'), 'URL Calendly acceptée');
