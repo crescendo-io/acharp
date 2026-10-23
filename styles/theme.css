@@ -5249,6 +5249,60 @@ body.page-template-styleguide {
     padding-right: 4rem;
 }
 
+.actu-single__layout {
+    display: grid;
+    grid-template-columns: minmax(0, 70%) minmax(0, 1fr);
+    gap: clamp(3.2rem, 4vw, 5.6rem);
+    align-items: start;
+    padding-bottom: 8rem;
+}
+
+.actu-single__layout--full {
+    grid-template-columns: minmax(0, 1fr);
+}
+
+.actu-single__main {
+    width: 100%;
+    min-width: 0;
+}
+
+.actu-single__aside {
+    position: sticky;
+    top: 3.2rem;
+    width: 100%;
+    min-width: 0;
+    padding-top: 8rem;
+}
+
+.actu-single__aside-title {
+    margin: 0 0 2rem;
+    padding-bottom: 1.6rem;
+    border-bottom: 1px solid rgba(17, 17, 17, 0.08);
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    line-height: 1.2;
+    text-transform: uppercase;
+}
+
+.actu-single__aside-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.actu-single__aside .actu-card__title {
+    font-size: 1.7rem;
+}
+
+.actu-single__aside .actu-card__text {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
 .actu-single__header {
     padding: 5rem 0 3.2rem;
 }
@@ -5324,7 +5378,7 @@ body.page-template-styleguide {
 }
 
 .actu-single__content {
-    padding-bottom: 8rem;
+    padding-bottom: 0;
 }
 
 .actu-single__strates {
@@ -5534,8 +5588,18 @@ body.page-template-styleguide {
         padding: 3.2rem 0 2.4rem;
     }
 
-    .actu-single__content {
+    .actu-single__layout {
+        grid-template-columns: minmax(0, 1fr);
         padding-bottom: 5.6rem;
+    }
+
+    .actu-single__aside {
+        position: static;
+        padding-top: 2.4rem;
+    }
+
+    .actu-single__content {
+        padding-bottom: 0;
     }
 
     .actu-strate--split {

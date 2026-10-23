@@ -6,6 +6,15 @@ $archive_url = get_post_type_archive_link('actualite') ?: home_url('/');
 ?>
 
 <main class="actu-single">
+    <?php
+    $related_posts = get_posts(array(
+        'post_type'           => 'actualite',
+        'posts_per_page'      => 3,
+        'post__not_in'        => array(get_queried_object_id()),
+        'ignore_sticky_posts' => true,
+        'no_found_rows'       => true,
+    ));
+    ?>
     <?php while (have_posts()) : the_post(); ?>
         <?php
         $type      = acharp_actualite_type();
@@ -23,8 +32,10 @@ $archive_url = get_post_type_archive_link('actualite') ?: home_url('/');
         ?>
 
         <article <?php post_class('actu-single__article'); ?>>
+            <div class="container-fluid">
+                <div class="actu-single__layout<?= $related_posts ? '' : ' actu-single__layout--full'; ?>">
+                    <div class="actu-single__main">
             <header class="actu-single__header">
-                <div class="container-fluid">
                     <a href="<?= esc_url($archive_url); ?>" class="actu-single__back">Toutes les actualités</a>
 
                     <p class="actu-single__meta">
@@ -41,19 +52,15 @@ $archive_url = get_post_type_archive_link('actualite') ?: home_url('/');
                     <?php if ($chapo) : ?>
                         <p class="actu-single__chapo"><?= esc_html($chapo); ?></p>
                     <?php endif; ?>
-                </div>
             </header>
 
             <?php if (has_post_thumbnail()) : ?>
                 <figure class="actu-single__cover">
-                    <div class="container-fluid">
-                        <?php the_post_thumbnail('full'); ?>
-                    </div>
+                    <?php the_post_thumbnail('full'); ?>
                 </figure>
             <?php endif; ?>
 
             <div class="actu-single__content">
-                <div class="container-fluid">
                     <div class="actu-single__strates">
                         <?php if (function_exists('have_rows') && have_rows('actualite_strates')) : ?>
                             <?php while (have_rows('actualite_strates')) : the_row(); ?>
@@ -135,43 +142,29 @@ $archive_url = get_post_type_archive_link('actualite') ?: home_url('/');
                                     <?php endif; ?>
                         </aside>
                     <?php endif; ?>
+            </div>
+                    </div>
+
+                    <?php if ($related_posts) : ?>
+                        <aside class="actu-single__aside">
+                            <h2 class="actu-single__aside-title">Autres actualités</h2>
+
+                            <div class="actu-single__aside-list">
+                                <?php foreach ($related_posts as $related_post) : ?>
+                                    <?php
+                                    $post = $related_post;
+                                    setup_postdata($post);
+                                    ?>
+                                    <?php get_template_part('template-parts/general/card-actualite'); ?>
+                                <?php endforeach; ?>
+                                <?php wp_reset_postdata(); ?>
+                            </div>
+                        </aside>
+                    <?php endif; ?>
                 </div>
             </div>
         </article>
     <?php endwhile; ?>
-
-    <?php
-    $related = new WP_Query(array(
-        'post_type'           => 'actualite',
-        'posts_per_page'      => 3,
-        'post__not_in'        => array(get_queried_object_id()),
-        'ignore_sticky_posts' => true,
-        'no_found_rows'       => true,
-    ));
-    ?>
-
-    <?php if ($related->have_posts()) : ?>
-        <section class="actu-list actu-list--related">
-            <div class="container-fluid">
-                <div class="actu-list__header">
-                    <h2 class="actu-list__heading">Autres actualités</h2>
-                    <a href="<?= esc_url($archive_url); ?>" class="actu-list__all">
-                        Voir toutes nos actualités
-                        <?= acharp_arrow('actu-list__arrow'); ?>
-                    </a>
-                </div>
-
-                <div class="row">
-                    <?php while ($related->have_posts()) : $related->the_post(); ?>
-                        <div class="col-12 col-md-6 col-lg-4">
-                            <?php get_template_part('template-parts/general/card-actualite'); ?>
-                        </div>
-                    <?php endwhile; ?>
-                </div>
-            </div>
-        </section>
-        <?php wp_reset_postdata(); ?>
-    <?php endif; ?>
 </main>
 
 <?php
