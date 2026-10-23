@@ -136,7 +136,7 @@ function egp_custom_post_type() {
         'label'               => __( 'Actualités', 'lsd_lang' ),
         'description'         => __( 'Actualités et évènements', 'lsd_lang' ),
         'labels'              => $labels,
-        'supports'            => array( 'title', 'editor', 'excerpt', 'thumbnail', 'revisions', 'custom-fields' ),
+        'supports'            => array( 'title', 'excerpt', 'thumbnail', 'revisions', 'custom-fields' ),
         'show_in_rest'        => true,
         'menu_icon'           => 'dashicons-megaphone',
         'hierarchical'        => false,

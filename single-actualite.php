@@ -54,16 +54,49 @@ $archive_url = get_post_type_archive_link('actualite') ?: home_url('/');
 
             <div class="actu-single__content">
                 <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-12 col-lg-8">
-                            <div class="actu-single__prose">
-                                <?php the_content(); ?>
-                            </div>
-                        </div>
+                    <div class="actu-single__strates">
+                        <?php if (function_exists('have_rows') && have_rows('actualite_strates')) : ?>
+                            <?php while (have_rows('actualite_strates')) : the_row(); ?>
+                                <?php $layout = get_row_layout(); ?>
 
-                        <?php if ($has_infos) : ?>
-                            <div class="col-12 col-lg-4">
-                                <aside class="actu-infos">
+                                <?php if ($layout === 'image_centree') : ?>
+                                    <?php $image_id = get_sub_field('image'); ?>
+                                    <?php if ($image_id) : ?>
+                                        <figure class="actu-strate actu-strate--image">
+                                            <?= acharp_image_html($image_id, 'full'); ?>
+                                        </figure>
+                                    <?php endif; ?>
+                                <?php elseif ($layout === 'image_texte') : ?>
+                                    <?php
+                                    $image_id = get_sub_field('image');
+                                    $texte    = get_sub_field('texte');
+                                    ?>
+                                    <?php if ($image_id || $texte) : ?>
+                                        <div class="actu-strate actu-strate--split">
+                                            <?php if ($image_id) : ?>
+                                                <figure class="actu-strate__media">
+                                                    <?= acharp_image_html($image_id, 'large'); ?>
+                                                </figure>
+                                            <?php endif; ?>
+                                            <?php if ($texte) : ?>
+                                                <div class="actu-strate__text"><?= wp_kses_post($texte); ?></div>
+                                            <?php endif; ?>
+                                        </div>
+                                    <?php endif; ?>
+                                <?php elseif ($layout === 'texte_centre') : ?>
+                                    <?php $texte = get_sub_field('texte'); ?>
+                                    <?php if ($texte) : ?>
+                                        <div class="actu-strate actu-strate--text">
+                                            <?= wp_kses_post($texte); ?>
+                                        </div>
+                                    <?php endif; ?>
+                                <?php endif; ?>
+                            <?php endwhile; ?>
+                        <?php endif; ?>
+                    </div>
+
+                    <?php if ($has_infos) : ?>
+                        <aside class="actu-infos">
                                     <h2 class="actu-infos__title">Informations pratiques</h2>
 
                                     <dl class="actu-infos__list">
@@ -100,10 +133,8 @@ $archive_url = get_post_type_archive_link('actualite') ?: home_url('/');
                                             <?= acharp_arrow(); ?>
                                         </a>
                                     <?php endif; ?>
-                                </aside>
-                            </div>
-                        <?php endif; ?>
-                    </div>
+                        </aside>
+                    <?php endif; ?>
                 </div>
             </div>
         </article>

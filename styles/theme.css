@@ -1095,6 +1095,10 @@ img {
     background: var(--color-cream);
 }
 
+.page-accueil .reconnaissances {
+    margin-top: 4.8rem;
+}
+
 .reconnaissances__line {
     position: absolute;
     top: 3.2rem;
@@ -5323,6 +5327,76 @@ body.page-template-styleguide {
     padding-bottom: 8rem;
 }
 
+.actu-single__strates {
+    display: flex;
+    flex-direction: column;
+    gap: 4.8rem;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.actu-strate {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.actu-strate--image {
+    margin: 0;
+}
+
+.actu-strate--image img,
+.actu-strate__media img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-card);
+}
+
+.actu-strate__media {
+    margin: 0;
+}
+
+.actu-strate--split {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: clamp(2.4rem, 4vw, 5.6rem);
+    align-items: center;
+    width: 100%;
+}
+
+.actu-strate__text,
+.actu-strate--text {
+    font-size: var(--text-body-size);
+    line-height: 1.7;
+    color: var(--color-muted);
+}
+
+.actu-strate__text p,
+.actu-strate--text p {
+    margin: 0 0 1.6rem;
+}
+
+.actu-strate__text p:last-child,
+.actu-strate--text p:last-child {
+    margin-bottom: 0;
+}
+
+.actu-strate__text a,
+.actu-strate--text a {
+    color: var(--color-black);
+    text-decoration: underline;
+}
+
+.actu-strate--text {
+    text-align: center;
+}
+
+.actu-single__content .actu-infos {
+    position: static;
+    max-width: 42rem;
+    margin-top: 4.8rem;
+}
+
 .actu-single__prose {
     max-width: 78rem;
     font-size: var(--text-body-size);
@@ -5462,6 +5536,10 @@ body.page-template-styleguide {
 
     .actu-single__content {
         padding-bottom: 5.6rem;
+    }
+
+    .actu-strate--split {
+        grid-template-columns: 1fr;
     }
 
     .actu-infos {

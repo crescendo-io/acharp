@@ -119,6 +119,130 @@
                     "return_format": "array"
                 }
             ]
+        },
+        {
+            "key": "field_actualite_strates",
+            "label": "Contenu",
+            "name": "actualite_strates",
+            "aria-label": "",
+            "type": "flexible_content",
+            "instructions": "Composez l’article avec ces trois strates. Elles occupent toute la largeur du container.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layouts": {
+                "layout_actualite_image": {
+                    "key": "layout_actualite_image",
+                    "name": "image_centree",
+                    "label": "Image centrée",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_actualite_image_media",
+                            "label": "Image",
+                            "name": "image",
+                            "aria-label": "",
+                            "type": "image",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "id",
+                            "library": "all",
+                            "preview_size": "medium"
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_actualite_image_texte": {
+                    "key": "layout_actualite_image_texte",
+                    "name": "image_texte",
+                    "label": "Image à gauche, texte à droite",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_actualite_split_image",
+                            "label": "Image",
+                            "name": "image",
+                            "aria-label": "",
+                            "type": "image",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "40",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "id",
+                            "library": "all",
+                            "preview_size": "medium"
+                        },
+                        {
+                            "key": "field_actualite_split_texte",
+                            "label": "Texte",
+                            "name": "texte",
+                            "aria-label": "",
+                            "type": "wysiwyg",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "60",
+                                "class": "",
+                                "id": ""
+                            },
+                            "tabs": "visual",
+                            "toolbar": "basic",
+                            "media_upload": 0,
+                            "delay": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_actualite_texte": {
+                    "key": "layout_actualite_texte",
+                    "name": "texte_centre",
+                    "label": "Texte centré",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_actualite_texte_contenu",
+                            "label": "Texte",
+                            "name": "texte",
+                            "aria-label": "",
+                            "type": "wysiwyg",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "tabs": "visual",
+                            "toolbar": "basic",
+                            "media_upload": 0,
+                            "delay": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                }
+            },
+            "min": "",
+            "max": "",
+            "button_label": "Ajouter une strate"
         }
     ],
     "location": [
@@ -135,9 +259,11 @@
     "style": "default",
     "label_placement": "top",
     "instruction_placement": "label",
-    "hide_on_screen": "",
+    "hide_on_screen": [
+        "the_content"
+    ],
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1758620400
+    "modified": 1761216000
 }
