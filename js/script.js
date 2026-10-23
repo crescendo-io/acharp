@@ -160,48 +160,95 @@ $(function () {
 
 $(function () {
     var sections = document.querySelectorAll('[data-heritage]');
+    var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    if (!sections.length || !('IntersectionObserver' in window)) {
+    if (!sections.length) {
         return;
     }
 
     Array.prototype.forEach.call(sections, function (section) {
         var steps = section.querySelectorAll('[data-heritage-step]');
-        var visuals = section.querySelectorAll('[data-heritage-visual]');
-        var current = 0;
+        var parallaxNodes = section.querySelectorAll('[data-heritage-parallax]');
+        var progress = section.querySelector('[data-heritage-progress]');
+        var flow = section.querySelector('.heritage__frieze');
+        var ticking = false;
 
-        if (steps.length < 2) {
-            return;
-        }
-
-        function activate(index) {
-            if (index === current) {
+        function setProgress() {
+            if (!progress || !flow) {
                 return;
             }
 
-            current = index;
+            var flowRect = flow.getBoundingClientRect();
+            var viewport = window.innerHeight;
+            var total = flow.offsetHeight - viewport * 0.35;
+            var scrolled = viewport * 0.35 - flowRect.top;
 
-            Array.prototype.forEach.call(steps, function (step) {
-                step.classList.toggle('is-active', parseInt(step.getAttribute('data-heritage-step'), 10) === index);
+            if (total <= 0) {
+                return;
+            }
+
+            var ratio = Math.max(0, Math.min(1, scrolled / total));
+            progress.style.setProperty('--heritage-progress', String(ratio * 100));
+        }
+
+        function parallaxTick() {
+            setProgress();
+
+            if (reducedMotion) {
+                return;
+            }
+
+            var viewMid = window.innerHeight * 0.45;
+            var drifts = section.querySelectorAll('[data-heritage-drift]');
+
+            Array.prototype.forEach.call(parallaxNodes, function (node) {
+                var speed = parseFloat(node.getAttribute('data-parallax-speed') || '0.06');
+                var rect = node.getBoundingClientRect();
+                var center = rect.top + rect.height * 0.5;
+                var shift = Math.max(-28, Math.min(28, (viewMid - center) * speed));
+                var img = node.querySelector('img');
+
+                if (img) {
+                    img.style.transform = 'translate3d(0, calc(-10% + ' + shift + 'px), 0)';
+                }
             });
 
-            Array.prototype.forEach.call(visuals, function (visual) {
-                visual.classList.toggle('is-active', parseInt(visual.getAttribute('data-heritage-visual'), 10) === index);
+            Array.prototype.forEach.call(drifts, function (node) {
+                var speed = parseFloat(node.getAttribute('data-parallax-speed') || '0.16');
+                var rect = node.getBoundingClientRect();
+                var center = rect.top + rect.height * 0.5;
+                var shift = Math.max(-56, Math.min(56, (viewMid - center) * speed));
+                node.style.transform = 'translate3d(0, ' + shift + 'px, 0)';
             });
         }
 
-        // La ligne de bascule est le centre du viewport : l'étape qui la traverse pilote le visuel.
-        var observer = new IntersectionObserver(function (entries) {
-            Array.prototype.forEach.call(entries, function (entry) {
-                if (entry.isIntersecting) {
-                    activate(parseInt(entry.target.getAttribute('data-heritage-step'), 10));
-                }
-            });
-        }, { rootMargin: '-50% 0px -50% 0px', threshold: 0 });
+        function onScroll() {
+            if (ticking) {
+                return;
+            }
 
-        Array.prototype.forEach.call(steps, function (step) {
-            observer.observe(step);
-        });
+            ticking = true;
+            window.requestAnimationFrame(function () {
+                parallaxTick();
+                ticking = false;
+            });
+        }
+
+        if ('IntersectionObserver' in window && steps.length) {
+            var observer = new IntersectionObserver(function (entries) {
+                Array.prototype.forEach.call(entries, function (entry) {
+                    entry.target.classList.toggle('is-active', entry.isIntersecting);
+                });
+            }, { rootMargin: '-35% 0px -35% 0px', threshold: 0 });
+
+            Array.prototype.forEach.call(steps, function (step) {
+                observer.observe(step);
+            });
+        }
+
+        window.addEventListener('scroll', onScroll, { passive: true });
+        window.addEventListener('resize', onScroll);
+        onScroll();
     });
 });
 

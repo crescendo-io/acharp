@@ -1,80 +1,132 @@
 <?php
 $theme_uri = get_stylesheet_directory_uri();
+$heading   = acharp_field('heritage_heading');
 $steps     = acharp_rows(acharp_field('heritage_steps'));
+
+if (!$heading) {
+    $heading = 'L’Académie Charpentier, école d’architecture intérieure depuis 80 ans';
+}
 
 if (!$steps) {
     $steps = array(
         array(
-            'image'   => 0,
-            'archive' => true,
-            'title'   => 'L’Académie Charpentier, école d’architecture intérieure depuis <strong>80 ans</strong>, tournée vers un futur durable',
-            'texts'   => array(
-                array('text' => 'C’est après la seconde guerre mondiale, en 1945, qu’Irène Charpentier crée l’Académie Charpentier. Le succès est très vite au rendez-vous et l’académie devient l’une des principales écoles d’arts appliqués en France.'),
-                array('text' => 'En 1957, la famille Charpentier avait repris la direction de l’Académie de la Grande Chaumière, installée rue de la Grande-Chaumière à Montparnasse, un haut lieu de l’art, fréquenté par les plus grands noms de la peinture et de la sculpture du XX<sup>e</sup> siècle.'),
-                array('text' => 'Au fil des décennies, l’Académie Charpentier a connu plusieurs évolutions majeures, toujours guidées par la même exigence artistique et le souci d’accompagner les transformations du monde créatif. D’abord dédiée à un large éventail de disciplines artistiques, dessin, peinture, sculpture, arts appliqués, l’école a progressivement affirmé son expertise dans le design d’espace et l’architecture intérieure, domaines où s’expriment pleinement sa rigueur, sa créativité et son ouverture d’esprit.'),
-            ),
+            'date'     => '1945',
+            'text'     => 'Au lendemain de la guerre, Irène Charpentier fonde l’Académie Charpentier au cœur de Montparnasse. L’école s’impose rapidement comme une référence des arts appliqués.',
+            'image'    => 0,
+            'archive'  => true,
             'fallback' => array(
                 'src' => $theme_uri . '/images/hero-atelier.jpg',
-                'alt' => 'Atelier de dessin de l’Académie Charpentier dans les années 1950',
+                'alt' => 'Plaque commémorative et fondation de l’Académie Charpentier',
             ),
         ),
         array(
-            'image'   => 0,
-            'archive' => false,
-            'title'   => 'Un lien historique et artistique avec l’Académie de la <strong>Grande Chaumière.</strong>',
-            'texts'   => array(
-                array('text' => 'Aujourd’hui, la dimension « Beaux-Arts » de cet héritage historique se poursuit à travers l’Académie de la Grande Chaumière, qui incarne toujours la pratique du dessin et de la création artistique libre d’après modèle vivant.'),
-                array('text' => 'Grâce à ce lien privilégié, les étudiants de l’Académie Charpentier ont accès gratuitement à ses ateliers, prolongeant ainsi la tradition d’échanges, de créativité et d’excellence qui unit les deux institutions depuis près d’un siècle. Cette complémentarité unique offre aux étudiants une formation complète : la Grande Chaumière pour nourrir l’expression artistique et l’Académie Charpentier pour développer la conception, le projet et la pensée du design d’espace.'),
+            'date'     => '1957',
+            'text'     => 'La famille Charpentier reprend l’Académie de la Grande Chaumière, haut lieu de la vie artistique parisienne du XX<sup>e</sup> siècle.',
+            'image'    => 0,
+            'archive'  => true,
+            'fallback' => array(
+                'src' => $theme_uri . '/images/histoire-escalier.jpg',
+                'alt' => 'L’Académie de la Grande Chaumière, Montparnasse',
             ),
+        ),
+        array(
+            'date'     => 'Au fil des décennies',
+            'text'     => 'L’école fait évoluer ses enseignements vers l’architecture intérieure. Le dessin, l’observation et le sens des volumes restent au cœur de la formation.',
+            'image'    => 0,
+            'archive'  => true,
             'fallback' => array(
                 'src' => $theme_uri . '/images/vie-ateliers.jpg',
-                'alt' => 'Atelier de dessin d’après modèle vivant à l’Académie de la Grande Chaumière',
+                'alt' => 'Ateliers de l’Académie Charpentier dans les années 1960',
             ),
         ),
         array(
-            'image'   => 0,
-            'archive' => false,
-            'title'   => 'Un nouveau chapitre pour l’<strong>Académie Charpentier</strong>',
-            'texts'   => array(
-                array('text' => 'Depuis la rentrée 2025, l’Académie Charpentier est installée sur son campus du XV<sup>e</sup> arrondissement : des ateliers repensés, lumineux et modulables, au service de la création et de l’expérimentation.'),
-            ),
+            'date'     => '2025',
+            'text'     => 'L’Académie s’installe dans son nouveau campus du XV<sup>e</sup> arrondissement, fidèle à son histoire et tournée vers un avenir durable.',
+            'image'    => 0,
+            'archive'  => false,
             'fallback' => array(
-                'src' => $theme_uri . '/images/vie-realisations.jpg',
-                'alt' => 'Étudiants au travail dans le nouveau campus du 15e arrondissement',
+                'src' => $theme_uri . '/images/histoire-facade.jpg',
+                'alt' => 'Nouveau campus de l’Académie Charpentier, 15e arrondissement',
             ),
         ),
     );
+} else {
+    foreach ($steps as $index => $step) {
+        if (empty($step['text']) && !empty($step['texts'])) {
+            $parts = array();
+
+            foreach (acharp_rows($step['texts']) as $paragraph) {
+                $chunk = trim(strip_tags($paragraph['text'] ?? ''));
+                if ($chunk !== '') {
+                    $parts[] = $chunk;
+                }
+            }
+
+            $steps[$index]['text'] = implode(' ', $parts);
+        }
+
+        if (empty($step['date']) && !empty($step['title'])) {
+            $steps[$index]['date'] = wp_strip_all_tags($step['title']);
+        }
+    }
 }
+
+$layout_mods = array('a', 'b', 'c', 'd');
+$logo_marks  = array(
+    array('shape' => 'triangle', 'color' => 'pink'),
+    array('shape' => 'half-left', 'color' => 'green'),
+    array('shape' => 'triangle', 'color' => 'blue'),
+    array('shape' => 'half-right', 'color' => 'orange'),
+);
 ?>
 
 <section id="heritage" class="heritage" data-heritage>
-    <div class="heritage__inner">
-        <div class="heritage__steps">
+    <div class="container-fluid">
+        <header class="heritage__header">
+            <h2 class="heritage__heading"><?= esc_html($heading); ?></h2>
+        </header>
+
+        <div class="heritage__frieze">
+            <div class="heritage__rail" aria-hidden="true">
+                <span class="heritage__rail-line"></span>
+                <span class="heritage__rail-progress" data-heritage-progress style="--heritage-progress: 0;"></span>
+            </div>
+
             <?php foreach ($steps as $index => $step) : ?>
+                <?php
+                $date    = trim((string) ($step['date'] ?? ''));
+                $text    = acharp_inline_html($step['text'] ?? '');
+                $is_year = $date !== '' && preg_match('/^\d{4}$/', $date);
+                $mod     = $layout_mods[$index % count($layout_mods)];
+                $mark    = $logo_marks[$index % count($logo_marks)];
+                $speed   = 0.05 + ($index % 4) * 0.025;
+                ?>
                 <article
-                    class="heritage__step<?= 0 === $index ? ' is-active' : ''; ?>"
+                    class="heritage__beat heritage__beat--<?= esc_attr($mod); ?><?= 0 === $index ? ' is-active' : ''; ?>"
                     data-heritage-step="<?= (int) $index; ?>"
                 >
-                    <h2 class="heritage__title"><?= acharp_inline_html($step['title'] ?? ''); ?></h2>
+                    <span class="heritage__node" aria-hidden="true"></span>
 
-                    <?php foreach (acharp_rows($step['texts'] ?? array()) as $paragraph) : ?>
-                        <?php $text = acharp_inline_html($paragraph['text'] ?? ''); ?>
+                    <div class="heritage__copy">
+                        <?php if ($date !== '') : ?>
+                            <p class="heritage__year<?= $is_year ? '' : ' heritage__year--label'; ?>">
+                                <span class="heritage__mark heritage__mark--<?= esc_attr($mark['shape']); ?> heritage__mark--<?= esc_attr($mark['color']); ?>" data-heritage-drift data-parallax-speed="<?= esc_attr((string) (0.14 + ($index % 4) * 0.04)); ?>" aria-hidden="true"></span>
+                                <?= esc_html($date); ?>
+                            </p>
+                        <?php endif; ?>
                         <?php if ($text) : ?>
                             <p class="heritage__text"><?= $text; ?></p>
                         <?php endif; ?>
-                    <?php endforeach; ?>
-                </article>
-            <?php endforeach; ?>
-        </div>
+                    </div>
 
-        <div class="heritage__media">
-            <?php foreach ($steps as $index => $step) : ?>
-                <figure
-                    class="heritage__visual<?= 0 === $index ? ' is-active' : ''; ?><?= !empty($step['archive']) ? ' heritage__visual--archive' : ''; ?>"
-                    data-heritage-visual="<?= (int) $index; ?>"
-                >
-                    <?= acharp_image_html($step['image'] ?? 0, 'large', $step['fallback'] ?? array()); ?>
-                </figure>
+                    <figure
+                        class="heritage__frame<?= !empty($step['archive']) ? ' heritage__frame--archive' : ''; ?>"
+                        data-heritage-parallax
+                        data-parallax-speed="<?= esc_attr((string) $speed); ?>"
+                    >
+                        <?= acharp_image_html($step['image'] ?? 0, 'large', $step['fallback'] ?? array()); ?>
+                    </figure>
+                </article>
             <?php endforeach; ?>
         </div>
     </div>

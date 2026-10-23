@@ -1,14 +1,35 @@
 {
     "key": "group_heritage",
-    "title": "Strate — Héritage",
+    "title": "Strate — Héritage (frise chronologique)",
     "fields": [
         {
+            "key": "field_heritage_heading",
+            "label": "Titre de la frise",
+            "name": "heritage_heading",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Affiché au-dessus de la frise chronologique.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "L’Académie Charpentier, école d’architecture intérieure depuis 80 ans",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
             "key": "field_heritage_steps",
-            "label": "Étapes",
+            "label": "Dates de la frise",
             "name": "heritage_steps",
             "aria-label": "",
             "type": "repeater",
-            "instructions": "Chaque étape colle son titre et son texte à gauche, l’image à droite. Cochez « visuel d’archive » pour le traitement photo historique.",
+            "instructions": "Quatre étapes recommandées (date ou libellé + texte + visuel). Cochez « visuel d’archive » pour le traitement photo historique.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -19,27 +40,29 @@
             "layout": "block",
             "min": 0,
             "max": 6,
-            "button_label": "Ajouter une étape",
-            "collapsed": "field_heritage_step_title",
+            "button_label": "Ajouter une date",
+            "collapsed": "field_heritage_step_date",
             "sub_fields": [
                 {
-                    "key": "field_heritage_step_title",
-                    "label": "Titre",
-                    "name": "title",
+                    "key": "field_heritage_step_date",
+                    "label": "Date ou libellé",
+                    "name": "date",
                     "aria-label": "",
-                    "type": "wysiwyg",
-                    "instructions": "Mettez en gras les mots à mettre en avant.",
+                    "type": "text",
+                    "instructions": "Ex. : 1945, 2025 ou « Au fil des décennies ».",
                     "required": 1,
                     "conditional_logic": 0,
                     "wrapper": {
-                        "width": "",
+                        "width": "35",
                         "class": "",
                         "id": ""
                     },
-                    "tabs": "visual",
-                    "toolbar": "basic",
-                    "media_upload": 0,
-                    "delay": 0
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "1945",
+                    "prepend": "",
+                    "append": ""
                 },
                 {
                     "key": "field_heritage_step_archive",
@@ -51,11 +74,11 @@
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
-                        "width": "30",
+                        "width": "25",
                         "class": "",
                         "id": ""
                     },
-                    "message": "Appliquer le traitement photo historique",
+                    "message": "Traitement photo historique",
                     "default_value": 0,
                     "ui": 1
                 },
@@ -65,11 +88,11 @@
                     "name": "image",
                     "aria-label": "",
                     "type": "image",
-                    "instructions": "",
+                    "instructions": "Plaque, ateliers, Grande Chaumière, campus…",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
-                        "width": "70",
+                        "width": "40",
                         "class": "",
                         "id": ""
                     },
@@ -78,12 +101,12 @@
                     "library": "all"
                 },
                 {
-                    "key": "field_heritage_step_texts",
-                    "label": "Paragraphes",
-                    "name": "texts",
+                    "key": "field_heritage_step_text",
+                    "label": "Texte",
+                    "name": "text",
                     "aria-label": "",
-                    "type": "repeater",
-                    "instructions": "",
+                    "type": "wysiwyg",
+                    "instructions": "Un paragraphe par date.",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -91,30 +114,10 @@
                         "class": "",
                         "id": ""
                     },
-                    "layout": "row",
-                    "min": 0,
-                    "button_label": "Ajouter un paragraphe",
-                    "sub_fields": [
-                        {
-                            "key": "field_heritage_step_text",
-                            "label": "Texte",
-                            "name": "text",
-                            "aria-label": "",
-                            "type": "wysiwyg",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "tabs": "visual",
-                            "toolbar": "basic",
-                            "media_upload": 0,
-                            "delay": 0
-                        }
-                    ]
+                    "tabs": "visual",
+                    "toolbar": "basic",
+                    "media_upload": 0,
+                    "delay": 0
                 }
             ]
         }
@@ -137,5 +140,6 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1758468000
+    "display_title": "",
+    "modified": 1761206400
 }
