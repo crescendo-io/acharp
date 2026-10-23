@@ -19,6 +19,7 @@ $get_cursus_items = static function () use ($fallback_image) {
             $card['image'] = acharp_image_html(0, 'large', $fallback_image);
         }
 
+        $card['title'] = acharp_cursus_menu_label($cursus_post->ID);
         $items[] = $card;
     }
 

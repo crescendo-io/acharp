@@ -140,6 +140,44 @@ function acharp_is_catalog_cursus($post_id) {
     return !preg_match('/prepa|pre-pa|preparatoire|classe-preparatoire/i', (string) $slug);
 }
 
+function acharp_cursus_catalog_rank($post) {
+    $post = get_post($post);
+
+    if (!$post) {
+        return 100;
+    }
+
+    $haystack = remove_accents(strtolower($post->post_title . ' ' . $post->post_name));
+
+    if (preg_match('/bachelor|bac\s*\+\s*3|bac-3/', $haystack)) {
+        return 1;
+    }
+
+    if (preg_match('/bac\s*\+\s*5|bac-5|\bmaster\b/', $haystack)) {
+        return 2;
+    }
+
+    return 10 + (int) $post->menu_order;
+}
+
+function acharp_cursus_menu_label($post_id) {
+    $post = get_post($post_id);
+
+    if (!$post) {
+        return '';
+    }
+
+    if (acharp_cursus_catalog_rank($post) === 1) {
+        return 'Bachelor Bac +3 – option prépa';
+    }
+
+    if (acharp_cursus_catalog_rank($post) === 2) {
+        return 'Bac +5 en architecture intérieure';
+    }
+
+    return get_the_title($post);
+}
+
 function acharp_query_catalog_cursus($args = array()) {
     $query_args = wp_parse_args($args, array(
         'post_type'      => 'cursus',
@@ -158,6 +196,16 @@ function acharp_query_catalog_cursus($args = array()) {
             $posts[] = $post;
         }
     }
+
+    usort($posts, static function ($a, $b) {
+        $rank = acharp_cursus_catalog_rank($a) <=> acharp_cursus_catalog_rank($b);
+
+        if ($rank !== 0) {
+            return $rank;
+        }
+
+        return strcasecmp(remove_accents($a->post_title), remove_accents($b->post_title));
+    });
 
     return $posts;
 }
