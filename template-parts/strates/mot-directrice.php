@@ -11,23 +11,30 @@ if (!$text) {
 }
 ?>
 
-<section id="mot-directrice" class="mot-directrice">
+<section id="mot-directrice" class="mot-directrice" data-mot-directrice>
     <div class="container-fluid">
         <div class="mot-directrice__grid">
             <figure class="mot-directrice__media">
+                <span class="mot-directrice__mark mot-directrice__mark--triangle" data-mot-parallax data-parallax-speed="0.12" aria-hidden="true"></span>
+                <span class="mot-directrice__mark mot-directrice__mark--half-left" data-mot-parallax data-parallax-speed="0.18" aria-hidden="true"></span>
+                <span class="mot-directrice__mark mot-directrice__mark--half-right" data-mot-parallax data-parallax-speed="0.1" aria-hidden="true"></span>
+                <span class="mot-directrice__mark mot-directrice__mark--triangle-blue" data-mot-parallax data-parallax-speed="0.16" aria-hidden="true"></span>
                 <?= acharp_image_html($image_id, 'large', array(
                     'src' => $theme_uri . '/images/directrice-sylvie.jpg',
                     'alt' => 'Sylvie Cedrin-Felix, directrice de l’Académie Charpentier',
                 )); ?>
             </figure>
             <div class="mot-directrice__content">
-                <p class="mot-directrice__kicker"><?= esc_html($kicker); ?></p>
+                <p class="mot-directrice__kicker">
+                    <span class="mot-directrice__kicker-mark" aria-hidden="true"></span>
+                    <?= esc_html($kicker); ?>
+                </p>
                 <h2 class="mot-directrice__title"><?= esc_html($name); ?></h2>
                 <p class="mot-directrice__role"><?= esc_html($role); ?></p>
                 <div class="mot-directrice__text">
-                    <?php foreach (preg_split("/\n\s*\n/", trim($text)) as $paragraph) : ?>
+                    <?php foreach (preg_split("/\n\s*\n/", trim($text)) as $index => $paragraph) : ?>
                         <?php if ($paragraph !== '') : ?>
-                            <p><?= esc_html($paragraph); ?></p>
+                            <p<?= 0 === (int) $index ? ' class="mot-directrice__lead"' : ''; ?>><?= esc_html($paragraph); ?></p>
                         <?php endif; ?>
                     <?php endforeach; ?>
                 </div>

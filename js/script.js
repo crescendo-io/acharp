@@ -159,6 +159,45 @@ $(function () {
 });
 
 $(function () {
+    var marks = document.querySelectorAll('[data-mot-parallax]');
+    var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (!marks.length || reducedMotion) {
+        return;
+    }
+
+    var ticking = false;
+
+    function tick() {
+        var viewMid = window.innerHeight * 0.5;
+
+        Array.prototype.forEach.call(marks, function (node) {
+            var speed = parseFloat(node.getAttribute('data-parallax-speed') || '0.12');
+            var rect = node.getBoundingClientRect();
+            var center = rect.top + rect.height * 0.5;
+            var shift = Math.max(-42, Math.min(42, (viewMid - center) * speed));
+            node.style.transform = 'translate3d(0, ' + shift + 'px, 0)';
+        });
+    }
+
+    function onScroll() {
+        if (ticking) {
+            return;
+        }
+
+        ticking = true;
+        window.requestAnimationFrame(function () {
+            tick();
+            ticking = false;
+        });
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    onScroll();
+});
+
+$(function () {
     var sections = document.querySelectorAll('[data-heritage]');
     var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
