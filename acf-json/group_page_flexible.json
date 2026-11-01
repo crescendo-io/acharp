@@ -688,6 +688,38 @@
                     ],
                     "min": "",
                     "max": ""
+                },
+                "galerie_logos": {
+                    "key": "layout_galerie_logos",
+                    "name": "galerie_logos",
+                    "label": "Galerie de logos",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_flex_galerie_logos_clone",
+                            "label": "Contenu",
+                            "name": "galerie_logos_clone",
+                            "aria-label": "",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_galerie_logos"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
                 }
             },
             "min": 0,
@@ -713,5 +745,5 @@
     "active": true,
     "description": "Composition libre des strates de contenu.",
     "show_in_rest": 0,
-    "modified": 1759050000
+    "modified": 1762004000
 }

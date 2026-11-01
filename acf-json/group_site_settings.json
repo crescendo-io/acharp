@@ -89,6 +89,19 @@
             "rows": 2
         },
         {
+            "key": "field_site_tab_vae",
+            "label": "V.A.E",
+            "name": "",
+            "type": "tab"
+        },
+        {
+            "key": "field_vae_candidature_email",
+            "label": "Email candidature V.A.E",
+            "name": "vae_candidature_email",
+            "type": "email",
+            "instructions": "Sur la page V.A.E, les boutons Candidater ouvrent un e-mail vers cette adresse."
+        },
+        {
             "key": "field_site_tab_social",
             "label": "Réseaux sociaux",
             "name": "",
@@ -153,5 +166,5 @@
     "position": "normal",
     "style": "default",
     "active": true,
-    "modified": 1760852400
+    "modified": 1762005000
 }

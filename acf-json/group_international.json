@@ -101,6 +101,13 @@
                 "operator": "==",
                 "value": "page-accueil.php"
             }
+        ],
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "page-partenariats.php"
+            }
         ]
     ],
     "menu_order": 60,
@@ -112,5 +119,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1758465600
+    "modified": 1762008000
 }

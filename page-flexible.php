@@ -31,7 +31,7 @@ $layout_parts = array(
     'equipe_pedagogique' => 'equipe-pedagogique',
     'insertion_pro'    => 'insertion-professionnelle',
     'partenariats'     => 'partenariats',
-    'alumni_showcase'  => 'alumni-showcase',
+    'galerie_logos'    => 'galerie-logos',
 );
 ?>
 

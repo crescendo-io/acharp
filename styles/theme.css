@@ -584,6 +584,10 @@ img {
     object-fit: cover;
 }
 
+.hero__media video.bg {
+    pointer-events: none;
+}
+
 .hero__accent {
     position: absolute;
     z-index: 2;
@@ -4818,6 +4822,27 @@ body.page-template-styleguide {
     page-break-inside: avoid;
 }
 
+.realisations__item[data-full] {
+    cursor: zoom-in;
+}
+
+.realisations__zoom {
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: inherit;
+    text-align: left;
+    cursor: zoom-in;
+}
+
+.realisations__zoom:focus,
+.realisations__zoom:focus-visible {
+    outline: none;
+}
+
 .realisations__item img {
     width: 100%;
     height: auto;
@@ -4835,7 +4860,29 @@ body.page-template-styleguide {
     background: linear-gradient(transparent, rgba(17, 17, 17, 0.82));
     opacity: 0;
     transform: translateY(1rem);
+    pointer-events: none;
     transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.realisations__author {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.realisations__person {
+    font-size: 1.4rem;
+    line-height: 1.2;
+}
+
+.realisations__linkedin {
+    display: inline-flex;
+    flex: 0 0 auto;
+    color: var(--color-white);
+}
+
+.realisations__linkedin svg {
+    display: block;
 }
 
 .realisations__name {
@@ -4854,9 +4901,11 @@ body.page-template-styleguide {
     transform: scale(1.035);
 }
 
-.realisations__item:hover .realisations__caption {
+.realisations__item:hover .realisations__caption,
+.realisations__item:focus-within .realisations__caption {
     opacity: 1;
     transform: translateY(0);
+    pointer-events: auto;
 }
 
 @media (max-width: 1199.98px) {
@@ -4907,10 +4956,240 @@ body.page-template-styleguide {
         padding: 4rem 1.2rem 1.2rem;
         opacity: 1;
         transform: none;
+        pointer-events: auto;
     }
 
     .realisations__name {
         font-size: 1.4rem;
+    }
+}
+
+.realisation-popin[hidden] {
+    display: none;
+}
+
+body.has-realisation-popin {
+    overflow: hidden;
+}
+
+.realisation-popin {
+    position: fixed;
+    inset: 0;
+    z-index: 110;
+    display: grid;
+    place-items: center;
+    padding: 2.4rem;
+}
+
+.realisation-popin__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(17, 17, 17, 0.82);
+    opacity: 0;
+    transition: opacity 0.28s ease;
+}
+
+.realisation-popin.is-open .realisation-popin__backdrop {
+    opacity: 1;
+}
+
+.realisation-popin__dialog {
+    position: relative;
+    z-index: 1;
+    width: min(120rem, 100%);
+    max-height: calc(100vh - 4.8rem);
+    opacity: 0;
+    transform: translateY(1.6rem) scale(0.98);
+    transition: opacity 0.32s ease, transform 0.32s ease;
+}
+
+.realisation-popin.is-open .realisation-popin__dialog {
+    opacity: 1;
+    transform: none;
+}
+
+.realisation-popin__figure {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.6rem;
+    width: 100%;
+    margin: 0;
+    max-height: calc(100vh - 4.8rem);
+}
+
+.realisation-popin__img {
+    display: block;
+    width: auto;
+    max-width: 100%;
+    max-height: calc(100vh - 16rem);
+    height: auto;
+    object-fit: contain;
+}
+
+.realisation-popin__caption {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    max-width: 64rem;
+    color: var(--color-white);
+    text-align: center;
+}
+
+.realisation-popin__caption:not(:has(.is-visible)) {
+    display: none;
+}
+
+.realisation-popin__title,
+.realisation-popin__person,
+.realisation-popin__graduate,
+.realisation-popin__author,
+.realisation-popin__linkedin {
+    display: none;
+}
+
+.realisation-popin__title.is-visible,
+.realisation-popin__graduate.is-visible {
+    display: block;
+}
+
+.realisation-popin__author.is-visible {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+}
+
+.realisation-popin__person.is-visible {
+    display: inline;
+}
+
+.realisation-popin__linkedin.is-visible {
+    display: inline-flex;
+    color: var(--color-white);
+}
+
+.realisation-popin__title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 2.4vw, 3.2rem);
+    font-weight: 500;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+}
+
+.realisation-popin__person,
+.realisation-popin__graduate {
+    font-size: 1.4rem;
+}
+
+.realisation-popin__close {
+    position: absolute;
+    top: -0.4rem;
+    right: 0;
+    z-index: 2;
+    display: grid;
+    place-items: center;
+    width: 4rem;
+    height: 4rem;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.16);
+    color: var(--color-white);
+    font-size: 2.8rem;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.realisation-popin__close:hover,
+.realisation-popin__nav:hover {
+    background: rgba(255, 255, 255, 0.28);
+}
+
+.realisation-popin__close:focus,
+.realisation-popin__close:focus-visible,
+.realisation-popin__nav:focus,
+.realisation-popin__nav:focus-visible {
+    outline: none;
+}
+
+.realisation-popin__nav {
+    position: absolute;
+    top: 42%;
+    z-index: 2;
+    display: grid;
+    place-items: center;
+    width: 4.4rem;
+    height: 4.4rem;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.16);
+    color: var(--color-white);
+    cursor: pointer;
+}
+
+.realisation-popin__nav[hidden] {
+    display: none;
+}
+
+.realisation-popin__nav--prev {
+    left: 0;
+}
+
+.realisation-popin__nav--next {
+    right: 0;
+}
+
+.realisation-popin__figure {
+    padding: 0 6rem;
+    transition: opacity 0.24s ease, transform 0.24s ease;
+}
+
+.realisation-popin__figure.is-out-next,
+.realisation-popin__figure.is-in-prev {
+    opacity: 0;
+    transform: translateX(-2.4rem);
+}
+
+.realisation-popin__figure.is-out-prev,
+.realisation-popin__figure.is-in-next {
+    opacity: 0;
+    transform: translateX(2.4rem);
+}
+
+.realisation-popin__figure.is-in-next,
+.realisation-popin__figure.is-in-prev {
+    transition: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .realisation-popin__backdrop,
+    .realisation-popin__dialog,
+    .realisation-popin__figure {
+        transition: none;
+    }
+
+    .realisation-popin__dialog,
+    .realisation-popin__figure.is-out-next,
+    .realisation-popin__figure.is-out-prev,
+    .realisation-popin__figure.is-in-next,
+    .realisation-popin__figure.is-in-prev {
+        transform: none;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .realisation-popin {
+        padding: 1.6rem;
+    }
+
+    .realisation-popin__figure {
+        padding: 0 4.8rem;
+    }
+
+    .realisation-popin__nav {
+        width: 3.6rem;
+        height: 3.6rem;
     }
 }
 
@@ -6652,8 +6931,7 @@ body.has-candidature-modal {
 .mot-directrice,
 .equipe-pedagogique,
 .insertion-pro,
-.partenariats-hub,
-.alumni-showcase {
+.partenariats-hub {
     padding: 6rem 0 7rem;
 }
 
@@ -6661,17 +6939,67 @@ body.has-candidature-modal {
 .equipe-pedagogique .container-fluid,
 .insertion-pro .container-fluid,
 .partenariats-hub .container-fluid,
-.alumni-showcase .container-fluid {
+.logo-gallery .container-fluid {
     max-width: var(--container-max);
     padding-left: 7rem;
     padding-right: 4rem;
 }
 
+.logo-gallery {
+    padding: 2rem 0 8rem;
+}
+
+.logo-gallery__title {
+    margin: 0 0 3.2rem;
+    font-family: var(--font-display);
+    font-size: clamp(2.8rem, 3vw, 4rem);
+    font-weight: 400;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    text-align: center;
+    color: var(--color-black);
+}
+
+.logo-gallery__grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.logo-gallery__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 12rem;
+    margin: 0;
+    padding: 2.4rem;
+    background: var(--color-white);
+    border-radius: var(--radius-card);
+}
+
+.logo-gallery__link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.logo-gallery__item img {
+    width: auto;
+    max-width: 100%;
+    max-height: 6.4rem;
+    height: auto;
+    object-fit: contain;
+}
+
 .mot-directrice__header,
 .equipe-pedagogique__header,
 .insertion-pro__header,
-.partenariats-hub__header,
-.alumni-showcase__header {
+.partenariats-hub__header {
     margin-bottom: 4.8rem;
 }
 
@@ -6783,8 +7111,7 @@ body.has-candidature-modal {
 .mot-directrice__kicker,
 .equipe-pedagogique__kicker,
 .insertion-pro__kicker,
-.partenariats-hub__kicker,
-.alumni-showcase__kicker {
+.partenariats-hub__kicker {
     margin: 0 0 1.6rem;
     font-family: var(--font-sans);
     font-size: 1.3rem;
@@ -6796,8 +7123,7 @@ body.has-candidature-modal {
 .mot-directrice__title,
 .equipe-pedagogique__title,
 .insertion-pro__title,
-.partenariats-hub__title,
-.alumni-showcase__title {
+.partenariats-hub__title {
     display: block;
     margin: 0;
     font-family: var(--font-display);
@@ -6815,8 +7141,7 @@ body.has-candidature-modal {
 .mot-directrice__title strong,
 .equipe-pedagogique__title strong,
 .insertion-pro__title strong,
-.partenariats-hub__title strong,
-.alumni-showcase__title strong {
+.partenariats-hub__title strong {
     font-weight: 700;
 }
 
@@ -6912,34 +7237,6 @@ body.has-candidature-modal {
     margin-top: 2rem;
 }
 
-.alumni-showcase__profiles,
-.alumni-showcase__projects {
-    display: grid;
-    gap: 2rem;
-    margin-top: 3.2rem;
-}
-
-@media (min-width: 768px) {
-    .alumni-showcase__profiles {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-
-    .alumni-showcase__projects {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-    }
-}
-
-.alumni-showcase__profile,
-.alumni-showcase__project {
-    background: var(--color-white);
-    border-radius: var(--radius-card);
-    overflow: hidden;
-}
-
-.alumni-showcase__profile {
-    padding: 1.6rem;
-}
-
 .formation-intro__volume,
 .programme__volume {
     margin: 0 0 1.6rem;
@@ -6980,10 +7277,14 @@ body.has-candidature-modal {
     .equipe-pedagogique .container-fluid,
     .insertion-pro .container-fluid,
     .partenariats-hub .container-fluid,
-    .alumni-showcase .container-fluid,
-    .heritage .container-fluid {
+    .heritage .container-fluid,
+    .logo-gallery .container-fluid {
         padding-left: 4rem;
         padding-right: 4rem;
+    }
+
+    .logo-gallery__grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }
 
@@ -6999,16 +7300,14 @@ body.has-candidature-modal {
     .mot-directrice,
     .equipe-pedagogique,
     .insertion-pro,
-    .partenariats-hub,
-    .alumni-showcase {
+    .partenariats-hub {
         padding: 5.6rem 0 7rem;
     }
 
     .mot-directrice__header,
     .equipe-pedagogique__header,
     .insertion-pro__header,
-    .partenariats-hub__header,
-    .alumni-showcase__header {
+    .partenariats-hub__header {
         margin-bottom: 3.2rem;
     }
 }
@@ -7053,8 +7352,8 @@ body.has-candidature-modal {
     .equipe-pedagogique .container-fluid,
     .insertion-pro .container-fluid,
     .partenariats-hub .container-fluid,
-    .alumni-showcase .container-fluid,
-    .heritage .container-fluid {
+    .heritage .container-fluid,
+    .logo-gallery .container-fluid {
         padding-left: 2.4rem;
         padding-right: 2.4rem;
     }
@@ -7063,7 +7362,6 @@ body.has-candidature-modal {
     .equipe-pedagogique,
     .insertion-pro,
     .partenariats-hub,
-    .alumni-showcase,
     .heritage {
         padding: 4rem 0 5.6rem;
     }

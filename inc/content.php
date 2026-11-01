@@ -55,6 +55,14 @@ function acharp_link($link, $fallback_url = '', $fallback_title = '') {
         $link['title'] = $fallback_title;
     }
 
+    if (function_exists('acharp_candidature_url')) {
+        $link['url'] = acharp_candidature_url($link['url'], $link['title']);
+
+        if (strpos((string) $link['url'], 'mailto:') === 0) {
+            $link['target'] = '';
+        }
+    }
+
     return $link;
 }
 

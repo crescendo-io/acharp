@@ -123,7 +123,8 @@ $legales = array('Mentions légales', 'Politique de confidentialité', 'Gestion 
             <ul class="site-footer__shortcuts">
                 <?php foreach ($raccourcis as $raccourci) : ?>
                     <li class="site-footer__shortcut">
-                        <a href="<?= esc_url($raccourci['url'] ?? '#'); ?>" class="site-footer__shortcut-link"<?= !empty($raccourci['url']) && $raccourci['url'] === '#candidature' ? ' data-open-candidature' : ''; ?>>
+                        <?php $shortcut_url = acharp_candidature_url($raccourci['url'] ?? '#', $raccourci['title'] ?? ''); ?>
+                        <a href="<?= esc_url($shortcut_url); ?>" class="site-footer__shortcut-link"<?= $shortcut_url === '#candidature' ? ' data-open-candidature' : ''; ?>>
                             <?= $raccourci['title']; ?>
                             <?= $arrow; ?>
                         </a>
@@ -180,7 +181,7 @@ $legales = array('Mentions légales', 'Politique de confidentialité', 'Gestion 
                             <?php foreach ($colonne['links'] as $link) : ?>
                                 <?php
                                 $label = is_array($link) ? ($link['label'] ?? '') : $link;
-                                $url   = is_array($link) ? ($link['url'] ?? '#') : '#';
+                                $url   = acharp_candidature_url(is_array($link) ? ($link['url'] ?? '#') : '#', $label);
                                 ?>
                                 <li>
                                     <a

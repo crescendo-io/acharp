@@ -1,0 +1,122 @@
+{
+    "key": "group_galerie_logos",
+    "title": "Strate — Galerie de logos",
+    "fields": [
+        {
+            "key": "field_galerie_logos_title",
+            "label": "Titre",
+            "name": "galerie_logos_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Facultatif. La strate n’apparaît que si au moins un logo est ajouté.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "Ils nous font confiance",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_galerie_logos",
+            "label": "Logos",
+            "name": "galerie_logos",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Affichés sur 4 colonnes en fin de page.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "field_galerie_logo_name",
+            "button_label": "Ajouter un logo",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_galerie_logo_image",
+                    "label": "Logo",
+                    "name": "image",
+                    "aria-label": "",
+                    "type": "image",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "40",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "id",
+                    "library": "all",
+                    "preview_size": "medium"
+                },
+                {
+                    "key": "field_galerie_logo_name",
+                    "label": "Nom",
+                    "name": "name",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Utilisé comme alternative textuelle du logo.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "30",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "SNCF"
+                },
+                {
+                    "key": "field_galerie_logo_link",
+                    "label": "Lien",
+                    "name": "link",
+                    "aria-label": "",
+                    "type": "url",
+                    "instructions": "Facultatif.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "30",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "https://"
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "page-partenariats.php"
+            }
+        ]
+    ],
+    "menu_order": 80,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "display_title": "",
+    "modified": 1762003200
+}

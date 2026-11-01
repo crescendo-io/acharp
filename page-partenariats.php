@@ -19,6 +19,7 @@ get_template_part('template-parts/strates/header');
     get_template_part('template-parts/strates/partenariats');
     get_template_part('template-parts/strates/international');
     get_template_part('template-parts/strates/insertion-professionnelle');
+    get_template_part('template-parts/strates/galerie-logos');
     ?>
 </main>
 

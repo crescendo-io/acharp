@@ -17,8 +17,12 @@ $kicker        = $overrides['kicker'] ?? get_field('hero_kicker', $acf_id);
 $title         = $overrides['title'] ?? get_field('hero_title', $acf_id);
 $text          = $overrides['text'] ?? get_field('hero_text', $acf_id);
 $cta_primary   = acharp_link(get_field('hero_cta_primary', $acf_id), '#candidature', 'Candidater');
-$cta_secondary = acharp_link(get_field('hero_cta_secondary', $acf_id), '#', 'Découvrir nos formations');
+$cta_secondary = acharp_link(get_field('hero_cta_secondary', $acf_id));
 $image_id      = get_field('hero_image', $acf_id);
+$video         = get_field('hero_video', $acf_id);
+$video_url     = is_array($video) ? ($video['url'] ?? '') : '';
+$video_mime    = is_array($video) ? ($video['mime_type'] ?? 'video/mp4') : 'video/mp4';
+$video_poster  = $image_id ? wp_get_attachment_image_url($image_id, 'full') : '';
 $push          = get_field('hero_push', $acf_id);
 $push          = is_array($push) ? $push : array();
 
@@ -104,7 +108,18 @@ if (!$show_push && !$image_id && $push_fallback) {
             <div class="col-lg-7">
                 <div class="hero__visual">
                     <div class="hero__media">
-                        <?php if ($image_id) : ?>
+                        <?php if ($video_url) : ?>
+                            <video
+                                class="bg"
+                                autoplay
+                                muted
+                                loop
+                                playsinline
+                                <?= $video_poster ? 'poster="' . esc_url($video_poster) . '"' : ''; ?>
+                            >
+                                <source src="<?= esc_url($video_url); ?>" type="<?= esc_attr($video_mime); ?>">
+                            </video>
+                        <?php elseif ($image_id) : ?>
                             <?= wp_get_attachment_image($image_id, 'full', false, array('class' => 'bg')); ?>
                         <?php else : ?>
                             <img

@@ -90,6 +90,60 @@
                     "prepend": "",
                     "append": "",
                     "parent_repeater": "field_realisations_items"
+                },
+                {
+                    "key": "field_realisations_item_prenom",
+                    "label": "Prénom",
+                    "name": "prenom",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "25",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "Camille",
+                    "parent_repeater": "field_realisations_items"
+                },
+                {
+                    "key": "field_realisations_item_nom",
+                    "label": "Nom",
+                    "name": "nom",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "25",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "Dubois",
+                    "parent_repeater": "field_realisations_items"
+                },
+                {
+                    "key": "field_realisations_item_linkedin",
+                    "label": "Compte LinkedIn",
+                    "name": "linkedin",
+                    "aria-label": "",
+                    "type": "url",
+                    "instructions": "L’adresse s’affiche derrière l’icône LinkedIn.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "https://www.linkedin.com/in/",
+                    "parent_repeater": "field_realisations_items"
                 }
             ]
         }
@@ -115,5 +169,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1790155743
+    "modified": 1793495000
 }

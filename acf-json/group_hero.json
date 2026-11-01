@@ -105,7 +105,7 @@
             "name": "hero_image",
             "aria-label": "",
             "type": "image",
-            "instructions": "Sans image, le visuel par défaut du thème est utilisé.",
+            "instructions": "Visuel de repli. Ignorée si une vidéo est renseignée, sauf comme image d’attente.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -124,6 +124,27 @@
             "mime_types": "",
             "allow_in_bindings": 0,
             "preview_size": "medium"
+        },
+        {
+            "key": "field_hero_video",
+            "label": "Vidéo",
+            "name": "hero_video",
+            "aria-label": "",
+            "type": "file",
+            "instructions": "Remplace l’image du hero. Lecture automatique, en boucle, sans son. MP4 ou WebM.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "library": "all",
+            "min_size": "",
+            "max_size": "",
+            "mime_types": "mp4,webm",
+            "allow_in_bindings": 0
         },
         {
             "key": "field_hero_push",
@@ -347,5 +368,5 @@
     "description": "Hero présent sur toutes les pages.",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1759932000
+    "modified": 1761990000
 }

@@ -374,6 +374,242 @@ $('a').click(function(event){
 });
 
 
+(function () {
+    var root = document.getElementById('realisation-popin');
+
+    if (!root) {
+        return;
+    }
+
+    var dialog = root.querySelector('.realisation-popin__dialog');
+    var image = root.querySelector('.realisation-popin__img');
+    var title = root.querySelector('.realisation-popin__title');
+    var author = root.querySelector('.realisation-popin__author');
+    var person = root.querySelector('.realisation-popin__person');
+    var linkedin = root.querySelector('.realisation-popin__linkedin');
+    var graduate = root.querySelector('.realisation-popin__graduate');
+    var prevButton = root.querySelector('[data-realisation-prev]');
+    var nextButton = root.querySelector('[data-realisation-next]');
+    var figure = root.querySelector('.realisation-popin__figure');
+    var items = [];
+    var index = 0;
+    var lastFocus = null;
+    var closeTimer = null;
+    var slideTimer = null;
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function setText(node, value) {
+        node.textContent = value || '';
+        node.classList.toggle('is-visible', !!value);
+    }
+
+    function showItem(item) {
+        var src = item.getAttribute('data-full');
+
+        if (!src) {
+            return;
+        }
+
+        var personName = item.getAttribute('data-person') || '';
+        var linkedinUrl = item.getAttribute('data-linkedin') || '';
+
+        image.src = src;
+        image.alt = item.getAttribute('data-alt') || '';
+        setText(title, item.getAttribute('data-title') || '');
+        setText(person, personName);
+        setText(graduate, item.getAttribute('data-graduate') || '');
+
+        if (linkedinUrl) {
+            linkedin.href = linkedinUrl;
+            linkedin.setAttribute('aria-label', personName ? 'Profil LinkedIn de ' + personName : 'Profil LinkedIn');
+            linkedin.classList.add('is-visible');
+        } else {
+            linkedin.removeAttribute('href');
+            linkedin.classList.remove('is-visible');
+        }
+
+        author.classList.toggle('is-visible', !!(personName || linkedinUrl));
+        dialog.setAttribute('aria-label', item.getAttribute('data-title') || personName || 'Réalisation');
+    }
+
+    function updateNav() {
+        var single = items.length < 2;
+
+        if (prevButton) {
+            prevButton.hidden = single;
+        }
+
+        if (nextButton) {
+            nextButton.hidden = single;
+        }
+    }
+
+    function step(delta) {
+        if (items.length < 2) {
+            return;
+        }
+
+        index = (index + delta + items.length) % items.length;
+
+        if (reduceMotion || !figure) {
+            showItem(items[index]);
+            return;
+        }
+
+        if (slideTimer) {
+            window.clearTimeout(slideTimer);
+        }
+
+        var outClass = delta > 0 ? 'is-out-next' : 'is-out-prev';
+        var inClass = delta > 0 ? 'is-in-next' : 'is-in-prev';
+
+        figure.classList.remove('is-out-next', 'is-out-prev', 'is-in-next', 'is-in-prev');
+        figure.classList.add(outClass);
+
+        slideTimer = window.setTimeout(function () {
+            showItem(items[index]);
+            figure.classList.remove(outClass);
+            figure.classList.add(inClass);
+            figure.getBoundingClientRect();
+            window.requestAnimationFrame(function () {
+                figure.classList.remove(inClass);
+            });
+            slideTimer = null;
+        }, 180);
+    }
+
+    function openPopin(item) {
+        if (closeTimer) {
+            window.clearTimeout(closeTimer);
+            closeTimer = null;
+        }
+
+        items = Array.prototype.slice.call(document.querySelectorAll('#realisations .realisations__item[data-full]'));
+        index = Math.max(0, items.indexOf(item));
+        showItem(item);
+        updateNav();
+        lastFocus = document.activeElement;
+        root.hidden = false;
+        document.body.classList.add('has-realisation-popin');
+        window.requestAnimationFrame(function () {
+            window.requestAnimationFrame(function () {
+                root.classList.add('is-open');
+            });
+        });
+        root.querySelector('.realisation-popin__close').focus();
+    }
+
+    function finishClose() {
+        root.hidden = true;
+        root.classList.remove('is-open');
+        document.body.classList.remove('has-realisation-popin');
+        image.removeAttribute('src');
+        closeTimer = null;
+
+        if (lastFocus && typeof lastFocus.focus === 'function') {
+            lastFocus.focus();
+        }
+    }
+
+    function closePopin() {
+        if (root.hidden || closeTimer) {
+            return;
+        }
+
+        root.classList.remove('is-open');
+
+        if (reduceMotion) {
+            finishClose();
+            return;
+        }
+
+        closeTimer = window.setTimeout(finishClose, 320);
+    }
+
+    document.addEventListener('click', function (event) {
+        if (event.target.closest('.realisations__linkedin')) {
+            return;
+        }
+
+        var item = event.target.closest('.realisations__item[data-full]');
+
+        if (!item || !event.target.closest('#realisations')) {
+            return;
+        }
+
+        event.preventDefault();
+        openPopin(item);
+    });
+
+    root.querySelectorAll('[data-realisation-close]').forEach(function (node) {
+        node.addEventListener('click', closePopin);
+    });
+
+    if (prevButton) {
+        prevButton.addEventListener('click', function () {
+            step(-1);
+        });
+    }
+
+    if (nextButton) {
+        nextButton.addEventListener('click', function () {
+            step(1);
+        });
+    }
+
+    document.addEventListener('keydown', function (event) {
+        if (root.hidden) {
+            return;
+        }
+
+        if (event.key === 'Escape') {
+            event.preventDefault();
+            closePopin();
+            return;
+        }
+
+        if (event.key === 'ArrowLeft') {
+            event.preventDefault();
+            step(-1);
+            return;
+        }
+
+        if (event.key === 'ArrowRight') {
+            event.preventDefault();
+            step(1);
+            return;
+        }
+
+        if (event.key !== 'Tab' || !dialog) {
+            return;
+        }
+
+        var focusable = dialog.querySelectorAll('a[href], button:not([disabled])');
+        var list = Array.prototype.filter.call(focusable, function (el) {
+            if (el.hidden) {
+                return false;
+            }
+
+            return el.classList.contains('is-visible') || el.classList.contains('realisation-popin__close') || el.classList.contains('realisation-popin__nav');
+        });
+
+        if (!list.length) {
+            return;
+        }
+
+        var first = list[0];
+        var last = list[list.length - 1];
+
+        if (event.shiftKey && document.activeElement === first) {
+            event.preventDefault();
+            last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+            event.preventDefault();
+            first.focus();
+        }
+    });
+})();
+
 $('.beforeAfter').beforeAfter({
     movable: true,
     clickMove: true,

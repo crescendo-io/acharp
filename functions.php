@@ -47,7 +47,8 @@ add_action( 'wp_enqueue_scripts', 'wpm_enqueue_styles' );
 function wpm_enqueue_styles(){
     //wp_enqueue_style( 'parent-style', get_template_directory_uri() . '/styles/theme.css' );
     wp_enqueue_style('lightbox', get_stylesheet_directory_uri() . '/styles/lightbox.css', array(), filemtime(get_stylesheet_directory() . '/styles/lightbox.css'));
-    wp_enqueue_style('theme', get_stylesheet_directory_uri() . '/styles/theme.css', array(), filemtime(get_stylesheet_directory() . '/styles/theme.css'));
+    $theme_css = get_stylesheet_directory() . '/styles/theme.css';
+    wp_enqueue_style('theme', get_stylesheet_directory_uri() . '/styles/theme.css?t=' . filemtime($theme_css), array(), null);
     wp_enqueue_script(
         'beforeafter', // Identifiant unique du script
         get_stylesheet_directory_uri() . '/js/beforeafter.js', // URL du fichier JS
@@ -56,12 +57,13 @@ function wpm_enqueue_styles(){
         true // Charger dans le footer (true) ou dans le header (false)
     );
 
+    $script_file = get_stylesheet_directory() . '/js/script.js';
     wp_enqueue_script(
-        'script', // Identifiant unique du script
-        get_stylesheet_directory_uri() . '/js/script.js', // URL du fichier JS
-        array( 'jquery' ), // Dépendances (si besoin, ici 'jquery')
-        filemtime( get_stylesheet_directory() . '/js/script.js' ), // Version du script (cache busting)
-        true // Charger dans le footer (true) ou dans le header (false)
+        'script',
+        get_stylesheet_directory_uri() . '/js/script.js?t=' . filemtime($script_file),
+        array( 'jquery' ),
+        null,
+        true
     );
 
     if ( is_post_type_archive( 'actualite' ) || is_tax( 'type_actualite' ) ) {

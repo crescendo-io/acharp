@@ -2,6 +2,37 @@
 
 defined('ABSPATH') || exit;
 
+function acharp_is_vae_page() {
+    return (int) get_queried_object_id() === 118;
+}
+
+function acharp_vae_candidature_email() {
+    $email = sanitize_email((string) acharp_site_option('vae_candidature_email', ''));
+
+    return is_email($email) ? $email : '';
+}
+
+function acharp_candidature_url($url, $title = '') {
+    $email = acharp_vae_candidature_email();
+
+    if (!acharp_is_vae_page() || !$email) {
+        return $url;
+    }
+
+    $url      = trim((string) $url);
+    $title    = trim(wp_strip_all_tags((string) $title));
+    $fragment = (string) wp_parse_url($url, PHP_URL_FRAGMENT);
+    $is_cta   = $url === '#candidature'
+        || $fragment === 'candidature'
+        || preg_match('/^candidater$/iu', $title);
+
+    if (!$is_cta) {
+        return $url;
+    }
+
+    return 'mailto:' . $email;
+}
+
 function acharp_site_option($selector, $default = '') {
     if (!function_exists('get_field')) {
         return $default;

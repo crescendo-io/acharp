@@ -12,14 +12,6 @@ if (!$text) {
     $text = 'L’Académie Charpentier organise des conférences d’insertion professionnelle avec ses partenaires : le Théâtre de l’Odéon, la SNCF et Matériaux Archi. Des professionnels partagent leur pratique avec les étudiants, toutes années confondues.';
 }
 
-if (!$logos) {
-    $logos = array(
-        array('name' => 'Théâtre de l’Odéon'),
-        array('name' => 'SNCF'),
-        array('name' => 'ICADE'),
-        array('name' => 'Matériaux Archi'),
-    );
-}
 ?>
 
 <section id="insertion-professionnelle" class="insertion-pro">
