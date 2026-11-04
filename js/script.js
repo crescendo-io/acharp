@@ -403,21 +403,19 @@ $('a').click(function(event){
         node.classList.toggle('is-visible', !!value);
     }
 
-    function showItem(item) {
-        var src = item.getAttribute('data-full');
-
-        if (!src) {
+    function showItem(slide) {
+        if (!slide || !slide.src) {
             return;
         }
 
-        var personName = item.getAttribute('data-person') || '';
-        var linkedinUrl = item.getAttribute('data-linkedin') || '';
+        var personName = slide.person || '';
+        var linkedinUrl = slide.linkedin || '';
 
-        image.src = src;
-        image.alt = item.getAttribute('data-alt') || '';
-        setText(title, item.getAttribute('data-title') || '');
+        image.src = slide.src;
+        image.alt = slide.alt || personName;
+        setText(title, slide.title || '');
         setText(person, personName);
-        setText(graduate, item.getAttribute('data-graduate') || '');
+        setText(graduate, slide.graduate || '');
 
         if (linkedinUrl) {
             linkedin.href = linkedinUrl;
@@ -429,7 +427,7 @@ $('a').click(function(event){
         }
 
         author.classList.toggle('is-visible', !!(personName || linkedinUrl));
-        dialog.setAttribute('aria-label', item.getAttribute('data-title') || personName || 'Réalisation');
+        dialog.setAttribute('aria-label', slide.title || personName || 'Réalisation');
     }
 
     function updateNav() {
@@ -478,15 +476,43 @@ $('a').click(function(event){
         }, 180);
     }
 
-    function openPopin(item) {
+    function openPopin(item, startIndex) {
         if (closeTimer) {
             window.clearTimeout(closeTimer);
             closeTimer = null;
         }
 
-        items = Array.prototype.slice.call(document.querySelectorAll('#realisations .realisations__item[data-full]'));
-        index = Math.max(0, items.indexOf(item));
-        showItem(item);
+        var images = [];
+
+        try {
+            images = JSON.parse(item.getAttribute('data-images') || '[]');
+        } catch (error) {
+            images = [];
+        }
+
+        if (!images.length) {
+            return;
+        }
+
+        var personName = item.getAttribute('data-person') || '';
+        var linkedinUrl = item.getAttribute('data-linkedin') || '';
+        var graduateName = item.getAttribute('data-graduate') || '';
+
+        items = images.map(function (imageData) {
+            return {
+                src: imageData.src,
+                alt: imageData.alt || personName,
+                title: '',
+                person: personName,
+                linkedin: linkedinUrl,
+                graduate: graduateName
+            };
+        });
+        index = startIndex || 0;
+        if (index < 0 || index >= items.length) {
+            index = 0;
+        }
+        showItem(items[index]);
         updateNav();
         lastFocus = document.activeElement;
         root.hidden = false;
@@ -531,14 +557,15 @@ $('a').click(function(event){
             return;
         }
 
-        var item = event.target.closest('.realisations__item[data-full]');
+        var opener = event.target.closest('[data-realisation-open]');
+        var student = opener ? opener.closest('.realisations__student') : null;
 
-        if (!item || !event.target.closest('#realisations')) {
+        if (!student || !event.target.closest('#realisations')) {
             return;
         }
 
         event.preventDefault();
-        openPopin(item);
+        openPopin(student, parseInt(opener.getAttribute('data-index') || '0', 10));
     });
 
     root.querySelectorAll('[data-realisation-close]').forEach(function (node) {

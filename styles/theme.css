@@ -4805,6 +4805,45 @@ body.page-template-styleguide {
     color: var(--color-muted);
 }
 
+.realisations__student + .realisations__student {
+    margin-top: 6.4rem;
+}
+
+.realisations__student-header {
+    margin-bottom: 2.4rem;
+}
+
+.realisations__identity {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+}
+
+.realisations__student-name {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: clamp(2.8rem, 3.2vw, 4.4rem);
+    font-weight: 500;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    color: var(--color-black);
+}
+
+.realisations__student-header .realisations__linkedin {
+    display: inline-flex;
+    color: var(--color-black);
+}
+
+.realisations__student-header .realisations__linkedin svg {
+    width: 2.4rem;
+    height: 2.4rem;
+}
+
+.realisations__student-header .realisations__graduate {
+    margin: 0.6rem 0 0;
+    color: var(--color-muted);
+}
+
 .realisations__grid {
     column-count: 4;
     column-gap: 0.8rem;
@@ -4912,6 +4951,10 @@ body.page-template-styleguide {
     .realisations .container-fluid {
         padding-left: 4rem;
         padding-right: 4rem;
+    }
+
+    .realisations__student + .realisations__student {
+        margin-top: 4.8rem;
     }
 
     .realisations__grid {
@@ -5044,6 +5087,7 @@ body.has-realisation-popin {
 .realisation-popin__title,
 .realisation-popin__person,
 .realisation-popin__graduate,
+.realisation-popin__counter,
 .realisation-popin__author,
 .realisation-popin__linkedin {
     display: none;
@@ -5079,8 +5123,14 @@ body.has-realisation-popin {
 }
 
 .realisation-popin__person,
-.realisation-popin__graduate {
+.realisation-popin__graduate,
+.realisation-popin__counter {
     font-size: 1.4rem;
+}
+
+.realisation-popin__counter.is-visible {
+    display: block;
+    letter-spacing: 0.08em;
 }
 
 .realisation-popin__close {
