@@ -1,0 +1,87 @@
+{
+    "key": "group_cursus_alternance",
+    "title": "Renvoi alternance",
+    "fields": [
+        {
+            "key": "field_cursus_alt_notice",
+            "label": "",
+            "name": "",
+            "type": "message",
+            "message": "Laissez un champ vide pour conserver le texte actuellement affiché. Dès qu’une liste contient au moins une ligne, elle remplace entièrement la liste d’origine.",
+            "new_lines": "wpautop",
+            "esc_html": 0
+        },
+        {
+            "key": "field_cursus_alt_kicker",
+            "label": "Surtitre",
+            "name": "cursus_alt_kicker",
+            "type": "text"
+        },
+        {
+            "key": "field_cursus_alt_title",
+            "label": "Titre",
+            "name": "cursus_alt_title",
+            "type": "text",
+            "instructions": "Balises autorisées : strong, br."
+        },
+        {
+            "key": "field_cursus_alt_text",
+            "label": "Texte",
+            "name": "cursus_alt_text",
+            "type": "textarea",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_cursus_alt_link",
+            "label": "Bouton",
+            "name": "cursus_alt_link",
+            "type": "link",
+            "instructions": "Vide : le bouton pointe vers la page Alternance.",
+            "return_format": "array"
+        },
+        {
+            "key": "field_cursus_alt_facts",
+            "label": "Repères",
+            "name": "cursus_alt_facts",
+            "type": "repeater",
+            "layout": "table",
+            "button_label": "Ajouter un repère",
+            "sub_fields": [
+                {
+                    "key": "field_cursus_alt_fact_value",
+                    "label": "Valeur",
+                    "name": "value",
+                    "type": "text",
+                    "wrapper": { "width": "40", "class": "", "id": "" }
+                },
+                {
+                    "key": "field_cursus_alt_fact_label",
+                    "label": "Précision",
+                    "name": "label",
+                    "type": "text",
+                    "wrapper": { "width": "60", "class": "", "id": "" }
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post",
+                "operator": "==",
+                "value": "67"
+            }
+        ]
+    ],
+    "menu_order": 25,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Encart vers la page Alternance, au milieu de la page Bac +5.",
+    "show_in_rest": 0,
+    "modified": 1793825000
+}

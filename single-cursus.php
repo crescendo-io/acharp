@@ -9,6 +9,7 @@ get_template_part('template-parts/strates/header');
     get_template_part('template-parts/strates/formation-intro');
     get_template_part('template-parts/strates/debouches');
     get_template_part('template-parts/strates/diplome');
+    get_template_part('template-parts/strates/cursus-alternance');
     get_template_part('template-parts/strates/prepa');
     get_template_part('template-parts/strates/programme');
     get_template_part('template-parts/strates/admissions');

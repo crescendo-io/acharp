@@ -8006,3 +8006,547 @@ body.has-candidature-modal {
         right: -4rem;
     }
 }
+
+/* -------------------------------------------------------------------------
+   Alternance et insertion professionnelle
+   ------------------------------------------------------------------------- */
+.alternance,
+.alternance-pro {
+    padding: 8rem 0 9rem;
+    color: var(--color-text);
+}
+
+.alternance {
+    background: var(--color-white);
+}
+
+.alternance-pro {
+    background: var(--color-cream);
+}
+
+.alternance .container-fluid,
+.alternance-pro .container-fluid {
+    max-width: var(--container-max);
+    padding-left: 7rem;
+    padding-right: 7rem;
+}
+
+.alternance__chapter {
+    max-width: 92rem;
+    margin-bottom: 4rem;
+}
+
+.alternance__title,
+.alternance h3,
+.alternance-pro h3 {
+    margin: 0;
+    font-family: var(--font-display);
+    font-weight: 500;
+    letter-spacing: -0.03em;
+    color: var(--color-black);
+}
+
+.alternance__title {
+    font-size: clamp(3.2rem, 3.2vw, 4.8rem);
+    line-height: 1.05;
+}
+
+.alternance h3,
+.alternance-pro h3 {
+    margin-bottom: 1.2rem;
+    font-size: clamp(2.4rem, 2.2vw, 3.2rem);
+    line-height: 1.1;
+}
+
+.alternance p,
+.alternance-pro p,
+.alternance li,
+.alternance-pro li {
+    font-size: 1.6rem;
+    letter-spacing: 0.01rem;
+    line-height: 1.5;
+}
+
+.alternance__lead-copy p,
+.alternance__chapter p,
+.alternance__contract-copy p,
+.alternance__employer p,
+.alternance__studies p,
+.alternance__diploma p,
+.alternance-pro__hours p,
+.alternance-pro__stages p,
+.alternance-pro__events p {
+    margin: 0;
+    max-width: 76rem;
+}
+
+.alternance__advantages,
+.alternance-pro__career ul,
+.alternance-pro__outcomes ul,
+.alternance-pro__events ul,
+.alternance-pro__stages ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.alternance__lead {
+    display: grid;
+    grid-template-columns: minmax(28rem, 0.85fr) minmax(0, 1.15fr);
+    gap: 4rem 6.4rem;
+    align-items: start;
+    margin-top: 3.2rem;
+}
+
+.alternance__lead-copy p {
+    max-width: 46rem;
+}
+
+.alternance__advantages {
+    margin: 0;
+    border-top: 0.1rem solid rgba(17, 17, 17, 0.12);
+}
+
+.alternance__advantages li {
+    position: relative;
+    margin: 0;
+    padding: 1.6rem 0 1.6rem 2rem;
+    border-bottom: 0.1rem solid rgba(17, 17, 17, 0.12);
+}
+
+.alternance__advantages li::before {
+    content: "";
+    position: absolute;
+    top: 2.2rem;
+    left: 0;
+    width: 0.8rem;
+    height: 0.8rem;
+    border-radius: 50%;
+    background: var(--color-pink);
+}
+
+.alternance__advantages li:nth-child(2)::before { background: var(--color-green); }
+.alternance__advantages li:nth-child(3)::before { background: var(--color-blue); }
+.alternance__advantages li:nth-child(4)::before { background: var(--color-orange); }
+.alternance__advantages li:nth-child(5)::before { background: var(--color-black); }
+
+.alternance__studies,
+.alternance-pro__practice,
+.alternance-pro__events {
+    display: grid;
+    gap: 1.6rem;
+    margin-top: 1.6rem;
+}
+
+.alternance__studies {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    align-items: stretch;
+}
+
+.alternance__contract {
+    display: grid;
+    grid-template-columns: minmax(28rem, 0.8fr) minmax(0, 1.2fr);
+    gap: 3.2rem 4.8rem;
+    align-items: center;
+    margin-top: 5.6rem;
+    padding-top: 4.8rem;
+    border-top: 0.1rem solid rgba(17, 17, 17, 0.12);
+}
+
+.alternance__contract-copy p {
+    max-width: 46rem;
+}
+
+.alternance__employer,
+.alternance__studies > article,
+.alternance-pro__hours,
+.alternance-pro__stages,
+.alternance-pro__events article,
+.alternance-pro__career {
+    padding: 3.2rem;
+    border-radius: 2rem;
+    background: #f6f4f1;
+}
+
+.alternance-pro .alternance-pro__hours,
+.alternance-pro .alternance-pro__stages,
+.alternance-pro .alternance-pro__events article,
+.alternance-pro .alternance-pro__career {
+    background: var(--color-white);
+}
+
+.alternance__facts {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.6rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.alternance__facts li {
+    margin: 0;
+    padding-top: 1.6rem;
+    border-top: 0.3rem solid var(--color-black);
+}
+
+.alternance__facts li:nth-child(1) { border-top-color: var(--color-pink); }
+.alternance__facts li:nth-child(2) { border-top-color: var(--color-green); }
+.alternance__facts li:nth-child(3) { border-top-color: var(--color-blue); }
+
+.alternance__facts strong,
+.alternance-pro__stat {
+    display: block;
+    font-family: var(--font-display);
+    font-size: clamp(2.4rem, 2vw, 3.2rem);
+    font-weight: 500;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    color: var(--color-black);
+}
+
+.alternance__facts span {
+    display: block;
+    margin-top: 0.6rem;
+    font-size: 1.3rem;
+    line-height: 1.35;
+    color: var(--color-muted);
+}
+
+.alternance__portal {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-top: 2.4rem;
+    color: var(--color-black);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.alternance__portal:hover,
+.alternance__portal:focus {
+    text-decoration: underline;
+}
+
+.alternance-pro__stages figure {
+    margin: 0;
+    overflow: hidden;
+    border-radius: 2rem;
+}
+
+.alternance-pro__stages figure img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.alternance__employer {
+    margin-top: 1.6rem;
+}
+
+.alternance__studies {
+    margin-top: 1.6rem;
+}
+
+.alternance__studies > .alternance__diploma {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background: var(--color-black);
+    color: var(--color-white);
+}
+
+.alternance__diploma h3,
+.alternance__diploma p,
+.alternance__kicker {
+    color: var(--color-white);
+}
+
+.alternance__kicker {
+    margin: 0 0 1rem;
+    font-family: var(--font-sans);
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.alternance-pro .alternance__kicker {
+    color: var(--color-muted);
+}
+
+.alternance__diploma .btn {
+    margin-top: 2.4rem;
+}
+
+.alternance-pro__practice {
+    grid-template-columns: minmax(24rem, 0.7fr) minmax(0, 1.3fr);
+    align-items: stretch;
+}
+
+.alternance .alternance__kicker,
+.alternance-pro .alternance__kicker {
+    font-size: 1.2rem;
+    letter-spacing: 0.08em;
+}
+
+.alternance-pro .alternance-pro__stat {
+    margin: 1.2rem 0;
+    font-size: clamp(4.8rem, 5vw, 7.2rem);
+    line-height: 0.9;
+}
+
+.alternance-pro__stages {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(16rem, 0.8fr);
+    gap: 2rem;
+    align-items: center;
+}
+
+.alternance-pro__stages ul {
+    margin: 1.6rem 0;
+}
+
+.alternance-pro__stages li + li {
+    margin-top: 0.8rem;
+}
+
+.alternance-pro__stages figure {
+    aspect-ratio: 4 / 5;
+}
+
+.alternance-pro__events {
+    grid-template-columns: 1.2fr 1fr 0.8fr;
+    margin-top: 1.6rem;
+}
+
+.alternance-pro__events h4 {
+    margin: 0 0 1.2rem;
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+}
+
+.alternance-pro__events li,
+.alternance-pro__career li,
+.alternance-pro__outcomes li {
+    position: relative;
+    margin: 0 0 1rem;
+    padding-left: 1.6rem;
+}
+
+.alternance-pro__events li::before,
+.alternance-pro__career li::before,
+.alternance-pro__outcomes li::before {
+    content: "";
+    position: absolute;
+    top: 0.7rem;
+    left: 0;
+    width: 0.6rem;
+    height: 0.6rem;
+    border-radius: 50%;
+    background: var(--color-black);
+}
+
+.alternance-pro__career,
+.alternance-pro__outcomes {
+    margin-top: 1.6rem;
+}
+
+.alternance-pro__outcomes ul {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.2rem;
+}
+
+.alternance-pro__outcomes li {
+    margin: 0;
+    padding: 2rem 2rem 2rem 3.2rem;
+    border-radius: 1.4rem;
+    background: var(--color-white);
+}
+
+.alternance-pro__outcomes li::before {
+    top: 2.7rem;
+    left: 1.8rem;
+}
+
+@media (max-width: 1199.98px) {
+    .alternance .container-fluid,
+    .alternance-pro .container-fluid {
+        padding-left: 4rem;
+        padding-right: 4rem;
+    }
+
+    .alternance__lead,
+    .alternance-pro__outcomes ul,
+    .alternance-pro__events,
+    .alternance-pro__practice,
+    .alternance__studies {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .alternance__contract {
+        grid-template-columns: 1fr;
+        gap: 3.2rem;
+    }
+
+    .alternance-pro__stages {
+        grid-template-columns: 1fr;
+    }
+
+    .alternance-pro__stages figure {
+        aspect-ratio: 16 / 10;
+        max-height: 36rem;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .alternance,
+    .alternance-pro {
+        padding: 4.8rem 0 6rem;
+    }
+
+    .alternance .container-fluid,
+    .alternance-pro .container-fluid {
+        padding-left: 2.4rem;
+        padding-right: 2.4rem;
+    }
+
+    .alternance__lead,
+    .alternance__contract,
+    .alternance__facts,
+    .alternance__studies,
+    .alternance-pro__practice,
+    .alternance-pro__events,
+    .alternance-pro__outcomes ul {
+        grid-template-columns: 1fr;
+    }
+
+    .alternance__employer,
+    .alternance__studies > article,
+    .alternance-pro__hours,
+    .alternance-pro__stages,
+    .alternance-pro__events article,
+    .alternance-pro__career {
+        padding: 2.4rem;
+    }
+}
+
+/* -------------------------------------------------------------------------
+   Renvoi alternance — page Bac +5
+   ------------------------------------------------------------------------- */
+.cursus-alternance {
+    background: var(--color-cream);
+    padding: 0 0 5rem;
+}
+
+.cursus-alternance .container-fluid {
+    max-width: var(--container-max);
+    width: 100%;
+    padding-left: 7rem;
+    padding-right: 4rem;
+}
+
+.cursus-alternance__panel {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    gap: 4rem 6rem;
+    align-items: center;
+    padding: 4.8rem;
+    border-radius: 2rem;
+    background: var(--color-white);
+    color: var(--color-black);
+}
+
+.cursus-alternance__kicker {
+    margin: 0 0 1.2rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    line-height: 1.4;
+    text-transform: uppercase;
+    color: var(--color-pink);
+}
+
+.cursus-alternance__title {
+    margin: 0 0 1.6rem;
+    font-family: var(--font-display);
+    font-size: clamp(3.2rem, 3vw, 4.8rem);
+    font-weight: 500;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    color: var(--color-black);
+}
+
+.cursus-alternance__title strong {
+    font-weight: 700;
+}
+
+.cursus-alternance__copy p {
+    margin: 0;
+    max-width: 56rem;
+    font-size: 1.6rem;
+    line-height: 1.5;
+}
+
+.cursus-alternance__copy .btn {
+    margin-top: 2.8rem;
+}
+
+.cursus-alternance__facts {
+    display: grid;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.cursus-alternance__facts li {
+    margin: 0;
+    padding-top: 1.2rem;
+    border-top: 0.2rem solid var(--color-black);
+}
+
+.cursus-alternance__facts li:nth-child(1) { border-top-color: var(--color-pink); }
+.cursus-alternance__facts li:nth-child(2) { border-top-color: var(--color-green); }
+.cursus-alternance__facts li:nth-child(3) { border-top-color: var(--color-blue); }
+
+.cursus-alternance__facts strong {
+    display: block;
+    font-family: var(--font-display);
+    font-size: clamp(2.4rem, 2vw, 3.2rem);
+    font-weight: 500;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    color: var(--color-black);
+}
+
+.cursus-alternance__facts span {
+    display: block;
+    margin-top: 0.6rem;
+    font-size: 1.4rem;
+    line-height: 1.35;
+    color: var(--color-muted);
+}
+
+@media (max-width: 1199.98px) {
+    .cursus-alternance .container-fluid {
+        padding-left: 4rem;
+        padding-right: 4rem;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .cursus-alternance .container-fluid {
+        padding-left: 2.4rem;
+        padding-right: 2.4rem;
+    }
+
+    .cursus-alternance__panel {
+        grid-template-columns: 1fr;
+        gap: 3.2rem;
+        padding: 2.4rem;
+    }
+}

@@ -1,0 +1,386 @@
+{
+    "key": "group_alternance",
+    "title": "Alternance",
+    "fields": [
+        {
+            "key": "field_alt_tab_alternance",
+            "label": "Alternance",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_alt_notice",
+            "label": "",
+            "name": "",
+            "type": "message",
+            "message": "Laissez un champ vide pour conserver le texte actuellement affiché. Dès qu’une liste contient au moins une ligne, elle remplace entièrement la liste d’origine.",
+            "new_lines": "wpautop",
+            "esc_html": 0
+        },
+        {
+            "key": "field_alt_title",
+            "label": "Titre",
+            "name": "alt_title",
+            "type": "text"
+        },
+        {
+            "key": "field_alt_advantages_title",
+            "label": "Titre des avantages",
+            "name": "alt_advantages_title",
+            "type": "text"
+        },
+        {
+            "key": "field_alt_advantages_text",
+            "label": "Texte des avantages",
+            "name": "alt_advantages_text",
+            "type": "textarea",
+            "rows": 4,
+            "new_lines": ""
+        },
+        {
+            "key": "field_alt_advantages",
+            "label": "Avantages",
+            "name": "alt_advantages",
+            "type": "repeater",
+            "layout": "table",
+            "button_label": "Ajouter un avantage",
+            "sub_fields": [
+                {
+                    "key": "field_alt_advantage_text",
+                    "label": "Texte",
+                    "name": "text",
+                    "type": "text"
+                }
+            ]
+        },
+        {
+            "key": "field_alt_tab_contract",
+            "label": "Contrat",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_alt_contract_title",
+            "label": "Titre",
+            "name": "alt_contract_title",
+            "type": "text"
+        },
+        {
+            "key": "field_alt_contract_text",
+            "label": "Texte",
+            "name": "alt_contract_text",
+            "type": "textarea",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_alt_portal",
+            "label": "Lien vers le portail",
+            "name": "alt_portal",
+            "type": "link",
+            "return_format": "array"
+        },
+        {
+            "key": "field_alt_facts",
+            "label": "Repères",
+            "name": "alt_facts",
+            "type": "repeater",
+            "layout": "table",
+            "button_label": "Ajouter un repère",
+            "sub_fields": [
+                {
+                    "key": "field_alt_fact_value",
+                    "label": "Valeur",
+                    "name": "value",
+                    "type": "text",
+                    "wrapper": { "width": "40", "class": "", "id": "" }
+                },
+                {
+                    "key": "field_alt_fact_label",
+                    "label": "Précision",
+                    "name": "label",
+                    "type": "text",
+                    "wrapper": { "width": "60", "class": "", "id": "" }
+                }
+            ]
+        },
+        {
+            "key": "field_alt_tab_studies",
+            "label": "Études",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_alt_employer_title",
+            "label": "Titre employeur",
+            "name": "alt_employer_title",
+            "type": "text"
+        },
+        {
+            "key": "field_alt_employer_text",
+            "label": "Texte employeur",
+            "name": "alt_employer_text",
+            "type": "textarea",
+            "rows": 4,
+            "new_lines": ""
+        },
+        {
+            "key": "field_alt_studies_title",
+            "label": "Titre des études",
+            "name": "alt_studies_title",
+            "type": "text"
+        },
+        {
+            "key": "field_alt_studies_text",
+            "label": "Texte des études",
+            "name": "alt_studies_text",
+            "type": "textarea",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_alt_diploma_kicker",
+            "label": "Surtitre du diplôme",
+            "name": "alt_diploma_kicker",
+            "type": "text"
+        },
+        {
+            "key": "field_alt_diploma_title",
+            "label": "Titre du diplôme",
+            "name": "alt_diploma_title",
+            "type": "text"
+        },
+        {
+            "key": "field_alt_diploma_text",
+            "label": "Texte du diplôme",
+            "name": "alt_diploma_text",
+            "type": "textarea",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_alt_cta",
+            "label": "Bouton",
+            "name": "alt_cta",
+            "type": "link",
+            "instructions": "Vide : le bouton ouvre la candidature.",
+            "return_format": "array"
+        },
+        {
+            "key": "field_alt_tab_insertion",
+            "label": "Insertion",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_alt_pro_title",
+            "label": "Titre",
+            "name": "alt_pro_title",
+            "type": "text"
+        },
+        {
+            "key": "field_alt_pro_text",
+            "label": "Introduction",
+            "name": "alt_pro_text",
+            "type": "textarea",
+            "rows": 4,
+            "new_lines": ""
+        },
+        {
+            "key": "field_alt_hours_kicker",
+            "label": "Surtitre des heures",
+            "name": "alt_hours_kicker",
+            "type": "text"
+        },
+        {
+            "key": "field_alt_hours_stat",
+            "label": "Chiffre",
+            "name": "alt_hours_stat",
+            "type": "text",
+            "wrapper": { "width": "30", "class": "", "id": "" }
+        },
+        {
+            "key": "field_alt_hours_text",
+            "label": "Texte des heures",
+            "name": "alt_hours_text",
+            "type": "textarea",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_alt_stages_title",
+            "label": "Titre des stages",
+            "name": "alt_stages_title",
+            "type": "text"
+        },
+        {
+            "key": "field_alt_stages",
+            "label": "Stages",
+            "name": "alt_stages",
+            "type": "repeater",
+            "layout": "table",
+            "button_label": "Ajouter un stage",
+            "sub_fields": [
+                {
+                    "key": "field_alt_stage_accent",
+                    "label": "Durée",
+                    "name": "accent",
+                    "type": "text",
+                    "wrapper": { "width": "30", "class": "", "id": "" }
+                },
+                {
+                    "key": "field_alt_stage_text",
+                    "label": "Texte",
+                    "name": "text",
+                    "type": "text",
+                    "wrapper": { "width": "70", "class": "", "id": "" }
+                }
+            ]
+        },
+        {
+            "key": "field_alt_stages_text",
+            "label": "Texte sous les stages",
+            "name": "alt_stages_text",
+            "type": "textarea",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_alt_stages_image",
+            "label": "Image des stages",
+            "name": "alt_stages_image",
+            "type": "image",
+            "instructions": "Vide : l’image actuelle est conservée.",
+            "return_format": "id",
+            "library": "all",
+            "preview_size": "medium"
+        },
+        {
+            "key": "field_alt_tab_events",
+            "label": "Rencontres",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_alt_events_title",
+            "label": "Titre",
+            "name": "alt_events_title",
+            "type": "text"
+        },
+        {
+            "key": "field_alt_events_text",
+            "label": "Texte",
+            "name": "alt_events_text",
+            "type": "textarea",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_alt_conferences",
+            "label": "Conférences",
+            "name": "alt_conferences",
+            "type": "repeater",
+            "layout": "table",
+            "button_label": "Ajouter une conférence",
+            "sub_fields": [
+                {
+                    "key": "field_alt_conference_text",
+                    "label": "Intervenant",
+                    "name": "text",
+                    "type": "text"
+                }
+            ]
+        },
+        {
+            "key": "field_alt_workshops",
+            "label": "Workshops",
+            "name": "alt_workshops",
+            "type": "repeater",
+            "layout": "table",
+            "button_label": "Ajouter un workshop",
+            "sub_fields": [
+                {
+                    "key": "field_alt_workshop_text",
+                    "label": "Intervenant",
+                    "name": "text",
+                    "type": "text"
+                }
+            ]
+        },
+        {
+            "key": "field_alt_tab_outcomes",
+            "label": "Débouchés",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_alt_career_title",
+            "label": "Titre career service",
+            "name": "alt_career_title",
+            "type": "text"
+        },
+        {
+            "key": "field_alt_career",
+            "label": "Career service",
+            "name": "alt_career",
+            "type": "repeater",
+            "layout": "table",
+            "button_label": "Ajouter une ligne",
+            "sub_fields": [
+                {
+                    "key": "field_alt_career_text",
+                    "label": "Texte",
+                    "name": "text",
+                    "type": "text"
+                }
+            ]
+        },
+        {
+            "key": "field_alt_outcomes_title",
+            "label": "Titre des débouchés",
+            "name": "alt_outcomes_title",
+            "type": "text"
+        },
+        {
+            "key": "field_alt_outcomes",
+            "label": "Débouchés",
+            "name": "alt_outcomes",
+            "type": "repeater",
+            "layout": "table",
+            "button_label": "Ajouter un débouché",
+            "sub_fields": [
+                {
+                    "key": "field_alt_outcome_text",
+                    "label": "Texte",
+                    "name": "text",
+                    "type": "text"
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "page-alternance.php"
+            }
+        ]
+    ],
+    "menu_order": 20,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Contenus de la page Alternance.",
+    "show_in_rest": 0,
+    "modified": 1793824000
+}
