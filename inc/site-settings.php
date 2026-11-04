@@ -12,6 +12,26 @@ function acharp_vae_candidature_email() {
     return is_email($email) ? $email : '';
 }
 
+function acharp_vae_document_url($field) {
+    $file = acharp_site_option($field, null);
+
+    if (is_numeric($file)) {
+        $url = wp_get_attachment_url((int) $file);
+
+        return $url ? $url : '';
+    }
+
+    if (is_array($file) && !empty($file['url'])) {
+        return (string) $file['url'];
+    }
+
+    if (is_string($file) && filter_var($file, FILTER_VALIDATE_URL)) {
+        return $file;
+    }
+
+    return '';
+}
+
 function acharp_candidature_url($url, $title = '') {
     $email = acharp_vae_candidature_email();
 

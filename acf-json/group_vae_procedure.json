@@ -1,0 +1,1297 @@
+{
+    "key": "group_vae_procedure",
+    "title": "Procédure V.A.E",
+    "fields": [
+        {
+            "key": "field_vae_proc_tab_guide",
+            "label": "Mode d’emploi",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_vae_proc_notice",
+            "label": "",
+            "name": "",
+            "aria-label": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "Laissez un champ vide pour conserver le texte actuellement affiché. Dès qu’une liste contient au moins une ligne, elle remplace entièrement la liste d’origine.",
+            "new_lines": "wpautop",
+            "esc_html": 0
+        },
+        {
+            "key": "field_vae_proc_guide_title",
+            "label": "Titre",
+            "name": "vae_proc_guide_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_vae_proc_principles_title",
+            "label": "Titre du bloc",
+            "name": "vae_proc_principles_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_vae_proc_principles",
+            "label": "Cartes",
+            "name": "vae_proc_principles",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "min": 0,
+            "max": 0,
+            "button_label": "Ajouter une carte",
+            "collapsed": "",
+            "sub_fields": [
+                {
+                    "key": "field_vae_proc_principle_tone",
+                    "label": "Couleur",
+                    "name": "tone",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "25",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "pink": "Rose",
+                        "green": "Vert",
+                        "blue": "Bleu",
+                        "orange": "Orange"
+                    },
+                    "default_value": "pink",
+                    "return_format": "value",
+                    "allow_null": 0,
+                    "multiple": 0,
+                    "ui": 0,
+                    "ajax": 0,
+                    "placeholder": ""
+                },
+                {
+                    "key": "field_vae_proc_principle_title",
+                    "label": "Titre",
+                    "name": "title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "75",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_vae_proc_principle_text",
+                    "label": "Texte",
+                    "name": "text",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "rows": 3,
+                    "new_lines": ""
+                }
+            ]
+        },
+        {
+            "key": "field_vae_proc_rate_presentation_label",
+            "label": "Libellé présentation",
+            "name": "vae_proc_rate_presentation_label",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_vae_proc_rate_obtention_label",
+            "label": "Libellé obtention",
+            "name": "vae_proc_rate_obtention_label",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_vae_proc_rates",
+            "label": "Taux",
+            "name": "vae_proc_rates",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "min": 0,
+            "max": 0,
+            "button_label": "Ajouter une année",
+            "collapsed": "",
+            "sub_fields": [
+                {
+                    "key": "field_vae_proc_rate_year",
+                    "label": "Année",
+                    "name": "year",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "34",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_vae_proc_rate_presentation",
+                    "label": "Présentation",
+                    "name": "presentation",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "33",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_vae_proc_rate_obtention",
+                    "label": "Obtention",
+                    "name": "obtention",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "33",
+                        "class": "",
+                        "id": ""
+                    }
+                }
+            ]
+        },
+        {
+            "key": "field_vae_proc_tab_project",
+            "label": "Projet",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_vae_proc_project_title",
+            "label": "Titre",
+            "name": "vae_proc_project_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_vae_proc_project_text",
+            "label": "Texte",
+            "name": "vae_proc_project_text",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_vae_proc_project_phone_label",
+            "label": "Libellé du téléphone",
+            "name": "vae_proc_project_phone_label",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_vae_proc_project_phone",
+            "label": "Téléphone",
+            "name": "vae_proc_project_phone",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_vae_proc_fact_1_value",
+            "label": "Repère 1",
+            "name": "vae_proc_fact_1_value",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_vae_proc_fact_1_label",
+            "label": "Légende 1",
+            "name": "vae_proc_fact_1_label",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_vae_proc_fact_2_value",
+            "label": "Repère 2",
+            "name": "vae_proc_fact_2_value",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_vae_proc_fact_2_label",
+            "label": "Légende 2",
+            "name": "vae_proc_fact_2_label",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_vae_proc_steps",
+            "label": "Étapes",
+            "name": "vae_proc_steps",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "min": 0,
+            "max": 0,
+            "button_label": "Ajouter une étape",
+            "collapsed": "",
+            "sub_fields": [
+                {
+                    "key": "field_vae_proc_step_text",
+                    "label": "Texte",
+                    "name": "text",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "rows": 2,
+                    "new_lines": ""
+                }
+            ]
+        },
+        {
+            "key": "field_vae_proc_tab_livrets",
+            "label": "Livrets",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_vae_proc_livret_1_kicker",
+            "label": "Surtitre livret 1",
+            "name": "vae_proc_livret_1_kicker",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "30",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_vae_proc_livret_1_title",
+            "label": "Titre livret 1",
+            "name": "vae_proc_livret_1_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "70",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_vae_proc_livret_1_text",
+            "label": "Texte livret 1",
+            "name": "vae_proc_livret_1_text",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "rows": 4,
+            "new_lines": ""
+        },
+        {
+            "key": "field_vae_proc_livret_1_items",
+            "label": "Rubriques livret 1",
+            "name": "vae_proc_livret_1_items",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "min": 0,
+            "max": 0,
+            "button_label": "Ajouter une rubrique",
+            "collapsed": "",
+            "sub_fields": [
+                {
+                    "key": "field_vae_proc_livret_1_item_text",
+                    "label": "Texte",
+                    "name": "text",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "rows": 2,
+                    "new_lines": ""
+                }
+            ]
+        },
+        {
+            "key": "field_vae_proc_livret_1_file",
+            "label": "Fichier livret 1",
+            "name": "vae_proc_livret_1_file",
+            "aria-label": "",
+            "type": "file",
+            "instructions": "PDF proposé au téléchargement. Si vide, le fichier des paramètres du site est utilisé.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "library": "all",
+            "mime_types": "pdf"
+        },
+        {
+            "key": "field_vae_proc_livret_1_button",
+            "label": "Libellé du bouton",
+            "name": "vae_proc_livret_1_button",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_vae_proc_livret_2_kicker",
+            "label": "Surtitre livret 2",
+            "name": "vae_proc_livret_2_kicker",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "30",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_vae_proc_livret_2_title",
+            "label": "Titre livret 2",
+            "name": "vae_proc_livret_2_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "70",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_vae_proc_livret_2_text",
+            "label": "Texte livret 2",
+            "name": "vae_proc_livret_2_text",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "rows": 4,
+            "new_lines": ""
+        },
+        {
+            "key": "field_vae_proc_livret_2_items",
+            "label": "Rubriques livret 2",
+            "name": "vae_proc_livret_2_items",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "min": 0,
+            "max": 0,
+            "button_label": "Ajouter une rubrique",
+            "collapsed": "",
+            "sub_fields": [
+                {
+                    "key": "field_vae_proc_livret_2_item_text",
+                    "label": "Texte",
+                    "name": "text",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "rows": 2,
+                    "new_lines": ""
+                }
+            ]
+        },
+        {
+            "key": "field_vae_proc_livret_2_note",
+            "label": "Note livret 2",
+            "name": "vae_proc_livret_2_note",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_vae_proc_livret_2_file",
+            "label": "Fichier livret 2",
+            "name": "vae_proc_livret_2_file",
+            "aria-label": "",
+            "type": "file",
+            "instructions": "PDF proposé au téléchargement. Si vide, le fichier des paramètres du site est utilisé.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "library": "all",
+            "mime_types": "pdf"
+        },
+        {
+            "key": "field_vae_proc_livret_2_button",
+            "label": "Libellé du bouton",
+            "name": "vae_proc_livret_2_button",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_vae_proc_tab_eval",
+            "label": "Évaluation",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_vae_proc_eval_title",
+            "label": "Titre",
+            "name": "vae_proc_eval_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_vae_proc_faq",
+            "label": "Questions",
+            "name": "vae_proc_faq",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "min": 0,
+            "max": 0,
+            "button_label": "Ajouter une question",
+            "collapsed": "",
+            "sub_fields": [
+                {
+                    "key": "field_vae_proc_faq_question",
+                    "label": "Question",
+                    "name": "question",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_vae_proc_faq_answer",
+                    "label": "Réponse",
+                    "name": "answer",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "rows": 3,
+                    "new_lines": ""
+                }
+            ]
+        },
+        {
+            "key": "field_vae_proc_decisions_title",
+            "label": "Titre des décisions",
+            "name": "vae_proc_decisions_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_vae_proc_decisions",
+            "label": "Décisions",
+            "name": "vae_proc_decisions",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "min": 0,
+            "max": 0,
+            "button_label": "Ajouter une décision",
+            "collapsed": "",
+            "sub_fields": [
+                {
+                    "key": "field_vae_proc_decision_tone",
+                    "label": "Couleur",
+                    "name": "tone",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "25",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "pink": "Rose",
+                        "green": "Vert",
+                        "blue": "Bleu",
+                        "orange": "Orange"
+                    },
+                    "default_value": "pink",
+                    "return_format": "value",
+                    "allow_null": 0,
+                    "multiple": 0,
+                    "ui": 0,
+                    "ajax": 0,
+                    "placeholder": ""
+                },
+                {
+                    "key": "field_vae_proc_decision_title",
+                    "label": "Titre",
+                    "name": "title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "75",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_vae_proc_decision_text",
+                    "label": "Texte",
+                    "name": "text",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "rows": 2,
+                    "new_lines": ""
+                }
+            ]
+        },
+        {
+            "key": "field_vae_proc_skills",
+            "label": "Exemples de compétences",
+            "name": "vae_proc_skills",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_vae_proc_tab_planning",
+            "label": "Planning",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_vae_proc_planning_title",
+            "label": "Titre",
+            "name": "vae_proc_planning_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_vae_proc_phases",
+            "label": "Étapes",
+            "name": "vae_proc_phases",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "min": 0,
+            "max": 0,
+            "button_label": "Ajouter une étape",
+            "collapsed": "",
+            "sub_fields": [
+                {
+"key": "field_vae_proc_phase_index",
+            "label": "Numéro",
+            "name": "index",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Pastille affichée devant le nom. Laissez vide pour la masquer.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "20",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_vae_proc_phase_name",
+                    "label": "Nom",
+                    "name": "name",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "80",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+"key": "field_vae_proc_phase_items",
+            "label": "Dates",
+            "name": "items",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "layout": "block",
+                    "min": 0,
+                    "max": 0,
+                    "button_label": "Ajouter une date",
+                    "collapsed": "",
+                    "sub_fields": [
+                        {
+                            "key": "field_vae_proc_phase_item_date",
+                            "label": "Date",
+                            "name": "date",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "40",
+                                "class": "",
+                                "id": ""
+                            }
+                        },
+                        {
+                            "key": "field_vae_proc_phase_item_text",
+                            "label": "Détail",
+                            "name": "text",
+                            "aria-label": "",
+                            "type": "textarea",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "rows": 2,
+                            "new_lines": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "field_vae_proc_planning_note",
+            "label": "Note",
+            "name": "vae_proc_planning_note",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_vae_proc_tab_cost",
+            "label": "Coût",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_vae_proc_cost_title",
+            "label": "Titre",
+            "name": "vae_proc_cost_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_vae_proc_formulas",
+            "label": "Formules",
+            "name": "vae_proc_formulas",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Cochez « Mettre en avant » pour la formule affichée sur fond noir.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "min": 0,
+            "max": 0,
+            "button_label": "Ajouter une formule",
+            "collapsed": "",
+            "sub_fields": [
+                {
+                    "key": "field_vae_proc_formula_featured",
+                    "label": "Mettre en avant",
+                    "name": "featured",
+                    "aria-label": "",
+                    "type": "true_false",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "20",
+                        "class": "",
+                        "id": ""
+                    },
+                    "ui": 1,
+                    "default_value": 0,
+                    "message": "Fond noir"
+                },
+                {
+                    "key": "field_vae_proc_formula_name",
+                    "label": "Nom",
+                    "name": "name",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "30",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_vae_proc_formula_detail",
+                    "label": "Précision",
+                    "name": "detail",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_vae_proc_formula_total",
+                    "label": "Total",
+                    "name": "total",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "30",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_vae_proc_formula_lines",
+                    "label": "Lignes",
+                    "name": "lines",
+                    "aria-label": "",
+                    "type": "repeater",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "layout": "block",
+                    "min": 0,
+                    "max": 0,
+                    "button_label": "Ajouter une ligne",
+                    "collapsed": "",
+                    "sub_fields": [
+                        {
+                            "key": "field_vae_proc_formula_line_label",
+                            "label": "Libellé",
+                            "name": "label",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "70",
+                                "class": "",
+                                "id": ""
+                            }
+                        },
+                        {
+                            "key": "field_vae_proc_formula_line_value",
+                            "label": "Montant",
+                            "name": "value",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "30",
+                                "class": "",
+                                "id": ""
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "field_vae_proc_tab_contact",
+            "label": "Contact",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_vae_proc_contact_title",
+            "label": "Titre",
+            "name": "vae_proc_contact_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_vae_proc_contact_address_label",
+            "label": "Libellé adresse",
+            "name": "vae_proc_contact_address_label",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "30",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_vae_proc_contact_address",
+            "label": "Adresse",
+            "name": "vae_proc_contact_address",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "rows": 4,
+            "new_lines": ""
+        },
+        {
+            "key": "field_vae_proc_contact_phone_label",
+            "label": "Libellé téléphone",
+            "name": "vae_proc_contact_phone_label",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "30",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_vae_proc_contact_phone",
+            "label": "Téléphone",
+            "name": "vae_proc_contact_phone",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "70",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_vae_proc_contact_email_label",
+            "label": "Libellé e-mail",
+            "name": "vae_proc_contact_email_label",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "30",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_vae_proc_contact_email",
+            "label": "E-mail",
+            "name": "vae_proc_contact_email",
+            "aria-label": "",
+            "type": "email",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "70",
+                "class": "",
+                "id": ""
+            }
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page",
+                "operator": "==",
+                "value": "118"
+            }
+        ]
+    ],
+    "menu_order": 30,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Contenus de la procédure VAE affichés après les strates de la page.",
+    "show_in_rest": 0,
+    "modified": 1793822000
+}

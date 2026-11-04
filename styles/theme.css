@@ -7416,3 +7416,593 @@ body.has-candidature-modal {
         padding: 4rem 0 5.6rem;
     }
 }
+
+/* -------------------------------------------------------------------------
+   VAE — mode d’emploi, planning, coût
+   ------------------------------------------------------------------------- */
+.vae-guide {
+    position: relative;
+    overflow: hidden;
+    background: var(--color-white);
+    padding: 8rem 0 9rem;
+    color: var(--color-text);
+}
+
+.vae-guide .container-fluid {
+    position: relative;
+    z-index: 1;
+    max-width: var(--container-max);
+    padding-left: 7rem;
+    padding-right: 7rem;
+}
+
+.vae-guide__shape {
+    position: absolute;
+    pointer-events: none;
+}
+
+.vae-guide__shape--circle {
+    top: -8rem;
+    right: -8rem;
+    width: 16rem;
+    height: 16rem;
+    border-radius: 50%;
+    background: var(--color-pink);
+}
+
+.vae-guide__shape--triangle {
+    top: 6.4rem;
+    left: -4.5rem;
+    width: 7rem;
+    height: 9rem;
+    background: var(--color-blue);
+    clip-path: polygon(50% 0, 100% 100%, 0 100%);
+}
+
+.vae-guide__chapter {
+    margin: 8rem 0 3.2rem;
+}
+
+.vae-guide__chapter:first-child {
+    margin-top: 0;
+}
+
+.vae-guide__title {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: clamp(3.2rem, 3.2vw, 4.8rem);
+    font-weight: 500;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    color: var(--color-black);
+}
+
+.vae-guide__subtitle,
+.vae-guide__label,
+.vae-guide__livret h3,
+.vae-guide__formula h3 {
+    margin: 0;
+    font-family: var(--font-display);
+    font-weight: 500;
+    letter-spacing: -0.03em;
+    color: var(--color-black);
+}
+
+.vae-guide__subtitle {
+    margin-bottom: 2rem;
+    font-size: clamp(2.4rem, 2.2vw, 3.2rem);
+    line-height: 1.1;
+}
+
+.vae-guide__label {
+    margin: 3.2rem 0 1.6rem;
+    font-size: 2rem;
+}
+
+.vae-guide__principle-grid,
+.vae-guide__rates,
+.vae-guide__livrets,
+.vae-guide__faq,
+.vae-guide__decisions,
+.vae-guide__formulas,
+.vae-guide__contact-grid {
+    display: grid;
+    gap: 1.6rem;
+}
+
+.vae-guide__principle-grid,
+.vae-guide__livrets,
+.vae-guide__faq,
+.vae-guide__formulas {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.vae-guide__rates,
+.vae-guide__decisions,
+.vae-guide__contact-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.vae-guide__principle,
+.vae-guide__rate,
+.vae-guide__livret,
+.vae-guide__faq article,
+.vae-guide__decision,
+.vae-guide__note {
+    border-radius: 1.6rem;
+    background: #f6f4f1;
+}
+
+.vae-guide__principle,
+.vae-guide__livret,
+.vae-guide__faq article,
+.vae-guide__decision {
+    padding: 2.4rem;
+}
+
+.vae-guide__principle {
+    border-top: 0.4rem solid var(--color-black);
+}
+
+.vae-guide__principle--pink { border-top-color: var(--color-pink); }
+.vae-guide__principle--green { border-top-color: var(--color-green); }
+.vae-guide__principle--blue { border-top-color: var(--color-blue); }
+.vae-guide__principle--orange { border-top-color: var(--color-orange); }
+
+.vae-guide__principle h4,
+.vae-guide__faq h4,
+.vae-guide__decision h5,
+.vae-guide__livret-kicker,
+.vae-guide__formula-name,
+.vae-guide__contact span,
+.vae-guide__rate-year {
+    margin: 0 0 0.8rem;
+    font-family: var(--font-sans);
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    line-height: 1.3;
+    text-transform: uppercase;
+}
+
+.vae-guide__principle h4,
+.vae-guide__faq h4,
+.vae-guide__decision h5 {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    text-transform: none;
+    color: var(--color-black);
+}
+
+.vae-guide__principle p,
+.vae-guide__faq p,
+.vae-guide__decision p,
+.vae-guide__livret p,
+.vae-guide__project-intro p,
+.vae-guide__skills,
+.vae-guide__note,
+.vae-guide__steps p,
+.vae-guide__milestones p {
+    margin: 0;
+    font-size: 1.5rem;
+    letter-spacing: 0.01rem;
+    line-height: 1.5;
+}
+
+.vae-guide__rates {
+    margin-top: 1.6rem;
+}
+
+.vae-guide__rate {
+    padding: 2.4rem 2.4rem 2rem;
+}
+
+.vae-guide__rate-year {
+    color: var(--color-muted);
+}
+
+.vae-guide__rate-figures {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.2rem;
+}
+
+.vae-guide__rate-figures p {
+    margin: 0;
+}
+
+.vae-guide__rate-figures strong,
+.vae-guide__fact strong,
+.vae-guide__formula-total {
+    display: block;
+    font-family: var(--font-display);
+    font-weight: 500;
+    letter-spacing: -0.04em;
+    line-height: 0.95;
+    color: var(--color-black);
+}
+
+.vae-guide__rate-figures strong {
+    font-size: clamp(3.2rem, 3vw, 4.4rem);
+}
+
+.vae-guide__rate-figures span,
+.vae-guide__fact span {
+    display: block;
+    margin-top: 0.6rem;
+    font-size: 1.2rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+}
+
+.vae-guide__project {
+    margin-top: 4.8rem;
+    padding: 3.2rem;
+    border-radius: 2rem;
+    background: var(--color-black);
+    color: var(--color-white);
+}
+
+.vae-guide__project-intro {
+    max-width: 72rem;
+}
+
+.vae-guide__project .vae-guide__subtitle,
+.vae-guide__project-intro p,
+.vae-guide__fact strong,
+.vae-guide__fact span {
+    color: var(--color-white);
+}
+
+.vae-guide__phone {
+    margin-top: 1.6rem;
+}
+
+.vae-guide__phone a,
+.vae-guide__contact a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.vae-guide__phone a {
+    display: block;
+    width: fit-content;
+    margin-top: 0.8rem;
+    padding-bottom: 0.2rem;
+    border-bottom: 1px solid currentColor;
+    font-weight: 600;
+}
+
+.vae-guide__facts {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.2rem;
+    margin-top: 2.8rem;
+}
+
+.vae-guide__fact {
+    margin: 0;
+    padding: 2rem 2.2rem;
+    border-radius: 1.4rem;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.vae-guide__fact strong {
+    font-size: clamp(3rem, 3vw, 4rem);
+}
+
+.vae-guide__steps {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.6rem;
+    margin: 2.8rem 0 0;
+    padding: 2.8rem 0 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.16);
+    list-style: none;
+}
+
+.vae-guide__steps li {
+    min-width: 0;
+}
+
+.vae-guide__steps span {
+    display: block;
+    margin-bottom: 0.8rem;
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    letter-spacing: -0.04em;
+    color: var(--color-pink);
+}
+
+.vae-guide__livrets {
+    margin-top: 1.6rem;
+}
+
+.vae-guide__livret {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.vae-guide__livret-kicker {
+    color: var(--color-pink);
+}
+
+.vae-guide__livret h3 {
+    margin-bottom: 1.2rem;
+    font-size: clamp(2.8rem, 2.6vw, 3.6rem);
+    line-height: 1;
+}
+
+.vae-guide__livret ol {
+    margin: 1.6rem 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: vae-rubric;
+}
+
+.vae-guide__livret li {
+    display: grid;
+    grid-template-columns: 2.4rem minmax(0, 1fr);
+    gap: 0.8rem;
+    margin-top: 1rem;
+    font-size: 1.5rem;
+    line-height: 1.45;
+}
+
+.vae-guide__livret li::before {
+    counter-increment: vae-rubric;
+    content: counter(vae-rubric, decimal-leading-zero);
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--color-muted);
+}
+
+.vae-guide__download {
+    align-self: flex-start;
+    margin-top: auto;
+}
+
+.vae-guide__evaluation {
+    margin-top: 4.8rem;
+}
+
+.vae-guide__decision--pink { background: #ffe8f6; }
+.vae-guide__decision--green { background: #e7f8ef; }
+.vae-guide__decision--blue { background: #e7f2ff; }
+.vae-guide__decision--orange { background: #fff0ec; }
+
+.vae-guide__skills,
+.vae-guide__note {
+    margin-top: 1.6rem;
+    padding: 2rem 2.4rem;
+}
+
+.vae-guide__timeline {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.vae-guide__phase {
+    display: grid;
+    grid-template-columns: 24rem minmax(0, 1fr);
+    gap: 3.2rem;
+    padding: 2.8rem 0;
+    border-top: 1px solid rgba(17, 17, 17, 0.1);
+}
+
+.vae-guide__phase-name {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: 2.4rem;
+    font-weight: 500;
+    letter-spacing: -0.03em;
+    color: var(--color-black);
+}
+
+.vae-guide__phase-name span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.6rem;
+    height: 3.6rem;
+    border-radius: 50%;
+    background: var(--color-black);
+    color: var(--color-white);
+    font-size: 1.6rem;
+}
+
+.vae-guide__milestones article + article {
+    margin-top: 1.6rem;
+    padding-top: 1.6rem;
+    border-top: 1px solid rgba(17, 17, 17, 0.08);
+}
+
+.vae-guide__milestones time {
+    display: block;
+    margin-bottom: 0.3rem;
+    font-size: 1.3rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+}
+
+.vae-guide__formula {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    padding: 3.2rem;
+    border-radius: 2rem;
+    background: #f6f4f1;
+}
+
+.vae-guide__formula--featured {
+    background: var(--color-black);
+    color: var(--color-white);
+}
+
+.vae-guide__formula-name {
+    color: var(--color-pink);
+}
+
+.vae-guide__formula h3 {
+    font-size: clamp(2.6rem, 2.4vw, 3.4rem);
+    line-height: 1.05;
+}
+
+.vae-guide__formula--featured h3,
+.vae-guide__formula--featured .vae-guide__formula-total,
+.vae-guide__formula--featured strong {
+    color: var(--color-white);
+}
+
+.vae-guide__formula-total {
+    margin: 2rem 0 2.4rem;
+    font-size: clamp(4rem, 4vw, 5.6rem);
+}
+
+.vae-guide__formula ul {
+    margin: auto 0 0;
+    padding: 2rem 0 0;
+    border-top: 1px solid rgba(17, 17, 17, 0.12);
+    list-style: none;
+}
+
+.vae-guide__formula--featured ul {
+    border-top-color: rgba(255, 255, 255, 0.16);
+}
+
+.vae-guide__formula li {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1.6rem;
+    padding: 1.1rem 0;
+    font-size: 1.5rem;
+    line-height: 1.35;
+}
+
+.vae-guide__formula li span {
+    min-width: 0;
+}
+
+.vae-guide__formula li + li {
+    border-top: 1px solid rgba(17, 17, 17, 0.08);
+}
+
+.vae-guide__formula--featured li + li {
+    border-top-color: rgba(255, 255, 255, 0.12);
+}
+
+.vae-guide__formula strong {
+    flex: 0 0 auto;
+    font-weight: 600;
+    color: var(--color-black);
+}
+
+.vae-guide__formula--featured strong {
+    color: var(--color-white);
+}
+
+.vae-guide__contact {
+    margin-top: 4.8rem;
+    padding: 3.6rem;
+    border-radius: 2rem;
+    background: #f6f4f1;
+}
+
+.vae-guide__contact h2 {
+    margin: 0 0 2.4rem;
+    font-family: var(--font-display);
+    font-size: 3.2rem;
+    font-weight: 500;
+    letter-spacing: -0.03em;
+    color: var(--color-black);
+}
+
+.vae-guide__contact p,
+.vae-guide__contact a {
+    margin: 0;
+    font-size: 1.7rem;
+    line-height: 1.45;
+    color: var(--color-black);
+}
+
+.vae-guide__contact span {
+    display: block;
+    color: var(--color-muted);
+}
+
+.vae-guide__contact strong {
+    font-weight: 500;
+}
+
+.vae-guide__contact a:hover strong,
+.vae-guide__contact a:focus strong {
+    text-decoration: underline;
+}
+
+@media (max-width: 1199.98px) {
+    .vae-guide .container-fluid {
+        padding-left: 4rem;
+        padding-right: 4rem;
+    }
+
+    .vae-guide__steps,
+    .vae-guide__decisions {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .vae-guide__phase {
+        grid-template-columns: 1fr;
+        gap: 1.6rem;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .vae-guide {
+        padding: 4.8rem 0 6rem;
+    }
+
+    .vae-guide .container-fluid {
+        padding-left: 2.4rem;
+        padding-right: 2.4rem;
+    }
+
+    .vae-guide__chapter {
+        margin-top: 5.6rem;
+    }
+
+    .vae-guide__principle-grid,
+    .vae-guide__rates,
+    .vae-guide__steps,
+    .vae-guide__livrets,
+    .vae-guide__faq,
+    .vae-guide__decisions,
+    .vae-guide__formulas,
+    .vae-guide__contact-grid,
+    .vae-guide__facts {
+        grid-template-columns: 1fr;
+    }
+
+    .vae-guide__project,
+    .vae-guide__formula,
+    .vae-guide__contact {
+        padding: 2.4rem;
+    }
+
+    .vae-guide__shape--circle {
+        width: 10rem;
+        height: 10rem;
+        right: -4rem;
+    }
+}

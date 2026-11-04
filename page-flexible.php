@@ -50,6 +50,10 @@ $layout_parts = array(
             }
         }
     }
+
+    if (function_exists('acharp_is_vae_page') && acharp_is_vae_page()) {
+        get_template_part('template-parts/strates/vae-procedure');
+    }
     ?>
 </main>
 

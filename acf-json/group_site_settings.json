@@ -102,6 +102,26 @@
             "instructions": "Sur la page V.A.E, les boutons Candidater ouvrent un e-mail vers cette adresse."
         },
         {
+            "key": "field_vae_livret_1",
+            "label": "Livret 1",
+            "name": "vae_livret_1",
+            "type": "file",
+            "instructions": "PDF proposé au téléchargement dans le mode d’emploi de la page V.A.E.",
+            "return_format": "array",
+            "library": "all",
+            "mime_types": "pdf"
+        },
+        {
+            "key": "field_vae_livret_2",
+            "label": "Livret 2",
+            "name": "vae_livret_2",
+            "type": "file",
+            "instructions": "PDF proposé au téléchargement dans le mode d’emploi de la page V.A.E.",
+            "return_format": "array",
+            "library": "all",
+            "mime_types": "pdf"
+        },
+        {
             "key": "field_site_tab_social",
             "label": "Réseaux sociaux",
             "name": "",
@@ -166,5 +186,5 @@
     "position": "normal",
     "style": "default",
     "active": true,
-    "modified": 1762005000
+    "modified": 1793810000
 }
