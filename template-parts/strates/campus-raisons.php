@@ -2,7 +2,7 @@
 $kicker  = acharp_field('campus_raisons_kicker') ?: 'Le campus';
 $title   = acharp_inline_html(acharp_field('campus_raisons_title'));
 $items   = acharp_rows(acharp_field('campus_raisons_items'));
-$archive = get_post_type_archive_link('cursus') ?: '#';
+$archive = get_post_type_archive_link('cursus') ?: '';
 
 if (!$title) {
     $title = 'Pourquoi ce nouveau <strong>campus</strong> ?';
@@ -41,14 +41,15 @@ if (!$items) {
         <div class="row">
             <?php foreach ($items as $item) : ?>
                 <?php
-                $related = $item['cursus'] ?? null;
-                $id      = $related ? (is_object($related) ? $related->ID : (int) $related) : 0;
-                $card    = $id ? acharp_cursus_card($id) : array();
-                $link    = acharp_link(
-                    $item['link'] ?? array(),
-                    $card['url'] ?? $archive,
-                    $card['link_label'] ?? 'Découvrir nos formations'
-                );
+                $related   = $item['cursus'] ?? null;
+                $id        = $related ? (is_object($related) ? $related->ID : (int) $related) : 0;
+                $card      = $id ? acharp_cursus_card($id) : array();
+                $raw_link  = $item['link'] ?? array();
+                $has_link  = (is_array($raw_link) && !empty($raw_link['url'])) || (is_string($raw_link) && $raw_link !== '');
+                $has_cursus = !empty($card['url']);
+                $link      = ($has_link || $has_cursus)
+                    ? acharp_link($raw_link, $card['url'] ?? '', $card['link_label'] ?? '')
+                    : array('url' => '', 'title' => '');
                 ?>
                 <div class="col-12 col-lg-4">
                     <article class="campus-raisons__item">
@@ -56,10 +57,12 @@ if (!$items) {
                         <?php if (!empty($item['text'])) : ?>
                             <p class="campus-raisons__text"><?= esc_html($item['text']); ?></p>
                         <?php endif; ?>
-                        <a <?= acharp_link_attrs($link); ?> class="campus-raisons__link">
-                            <?= esc_html($link['title']); ?>
-                            <?= acharp_arrow('campus-raisons__arrow'); ?>
-                        </a>
+                        <?php if (!empty($link['url'])) : ?>
+                            <a <?= acharp_link_attrs($link); ?> class="campus-raisons__link">
+                                <?= esc_html($link['title']); ?>
+                                <?= acharp_arrow('campus-raisons__arrow'); ?>
+                            </a>
+                        <?php endif; ?>
                     </article>
                 </div>
             <?php endforeach; ?>
