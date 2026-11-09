@@ -1,6 +1,6 @@
 <?php
 $cookie_policy_url = home_url('/politique-de-cookies/');
-$cookie_info_page  = is_page_template('page-politique-cookies.php');
+$cookie_info_page  = is_page_template('page-politique-cookies.php') || is_page_template('page-politique-confidentialite.php');
 ?>
 <div class="cookie-banner" data-cookie-banner<?= $cookie_info_page ? ' data-cookie-info' : ''; ?> hidden>
     <div class="cookie-banner__dialog" role="dialog" aria-modal="true" aria-labelledby="cookie-banner-title" aria-describedby="cookie-banner-text" tabindex="-1">
@@ -14,7 +14,8 @@ $cookie_info_page  = is_page_template('page-politique-cookies.php');
             </p>
             <p class="cookie-banner__note">
                 Le choix est conservé six mois sur cet appareil. Il se modifie à tout moment avec « Gestion des cookies », en bas de page.
-                <a href="<?= esc_url($cookie_policy_url); ?>">Lire la politique de cookies</a>
+                <a href="<?= esc_url($cookie_policy_url); ?>">Lire la politique de cookies</a>.
+                <a href="<?= esc_url(home_url('/politique-de-confidentialite/')); ?>">Politique de confidentialité</a>
             </p>
             <div class="cookie-banner__actions">
                 <button type="button" class="btn cookie-banner__btn" data-cookie-refuse-all>Tout refuser</button>

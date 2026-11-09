@@ -106,8 +106,8 @@ $reseaux = array(
 );
 
 $legales = array(
-    array('label' => 'Mentions légales'),
-    array('label' => 'Politique de confidentialité'),
+    array('label' => 'Mentions légales', 'url' => home_url('/mentions-legales/')),
+    array('label' => 'Politique de confidentialité', 'url' => home_url('/politique-de-confidentialite/')),
     array('label' => 'Politique de cookies', 'url' => home_url('/politique-de-cookies/')),
     array('label' => 'Gestion des cookies', 'cookies' => true),
     array('label' => 'Plan du site'),
