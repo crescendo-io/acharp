@@ -3758,10 +3758,16 @@ img {
 }
 
 .site-footer__nav {
-    display: grid;
-    grid-template-columns: repeat(6, minmax(0, 1fr));
-    gap: 2.4rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 3.2rem;
     flex: 1 1 auto;
+    min-width: 0;
+}
+
+.site-footer__col {
+    flex: 0 1 auto;
+    min-width: 0;
 }
 
 .site-footer__col-title {
@@ -4747,6 +4753,7 @@ body.page-template-styleguide {
     }
 
     .site-footer__nav {
+        display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 2.8rem 2.4rem;
     }

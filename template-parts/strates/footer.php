@@ -44,22 +44,14 @@ $colonnes = array(
     array(
         'title' => 'L’école',
         'links' => array(
-            array('label' => 'L’Académie', 'url' => home_url('/lacademie/')),
-            array('label' => 'Pédagogie', 'url' => home_url('/lacademie/#pedagogie')),
-            array('label' => 'Campus', 'url' => home_url('/lacademie/#campus')),
+            array('label' => 'L’Académie', 'url' => home_url('/academie/')),
+            array('label' => 'Pédagogie', 'url' => home_url('/academie/#pedagogie')),
+            array('label' => 'Campus', 'url' => home_url('/academie/#campus')),
         ),
     ),
     array(
         'title' => 'Formations',
         'links' => $formation_links,
-    ),
-    array(
-        'title' => 'Admissions',
-        'links' => array(
-            array('label' => 'Candidater', 'url' => '#candidature'),
-            array('label' => 'Frais de scolarité', 'url' => home_url('/admissions/#tarifs')),
-            array('label' => 'Contact', 'url' => home_url('/contact/')),
-        ),
     ),
     array(
         'title' => 'Partenariats',
@@ -72,13 +64,8 @@ $colonnes = array(
         'title' => 'Vie de l’école',
         'links' => array(
             array('label' => 'Vie de l’école', 'url' => home_url('/vie-de-lecole/')),
-            array('label' => 'Alumni', 'url' => home_url('/realisations-diplomes/')),
-        ),
-    ),
-    array(
-        'title' => 'Actualités<br>&amp; évènements',
-        'links' => array(
-            array('label' => 'Actualités', 'url' => get_post_type_archive_link('actualite') ?: '#'),
+            array('label' => 'Projets des diplômés', 'url' => home_url('/galerie-diplomes/')),
+            array('label' => 'Actualité de l’école', 'url' => home_url('/actualites/')),
         ),
     ),
 );
@@ -110,7 +97,6 @@ $legales = array(
     array('label' => 'Politique de confidentialité', 'url' => home_url('/politique-de-confidentialite/')),
     array('label' => 'Politique de cookies', 'url' => home_url('/politique-de-cookies/')),
     array('label' => 'Gestion des cookies', 'cookies' => true),
-    array('label' => 'Plan du site'),
 );
 ?>
 
@@ -215,12 +201,6 @@ $legales = array(
                     </li>
                 <?php endforeach; ?>
             </ul>
-
-            <a href="#" class="site-footer__top" aria-label="Revenir en haut de page">
-                <svg width="18" height="12" viewBox="0 0 18 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                    <path d="M1 6h15M11.5 1.5 16.5 6l-5 4.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-            </a>
         </div>
     </div>
 </footer>
