@@ -6,7 +6,7 @@ $theme_uri = get_stylesheet_directory_uri();
  *   post_id           : source ACF (page d’options, autre contenu…)
  *   kicker/title/text : contenus de repli propres au contexte
  *   overrides         : mêmes clés, mais prioritaires sur les valeurs ACF
- *   push_fallback     : autorise la carte actualité de démonstration
+ *   push_fallback     : carte de démonstration tant que l’interrupteur n’a pas été enregistré
  */
 $args          = isset($args) && is_array($args) ? $args : array();
 $acf_id        = $args['post_id'] ?? false;
@@ -49,8 +49,12 @@ if (!$text) {
 
 $arrow = '<span class="btn__icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 8h10M9.5 4.5 13 8l-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>';
 
+$push_source_id = $acf_id ?: get_queried_object_id();
+$push_choice_saved = is_numeric($push_source_id)
+    && metadata_exists('post', (int) $push_source_id, 'hero_push_show');
+
 $show_push = !empty($push['show']);
-if (!$show_push && !$image_id && $push_fallback) {
+if (!$show_push && !$push_choice_saved && !$image_id && $push_fallback) {
     $show_push = true;
     $push = array(
         'link'    => array('url' => '#', 'title' => '', 'target' => ''),
