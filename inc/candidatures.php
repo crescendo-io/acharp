@@ -182,11 +182,12 @@ function acharp_candidature_unschedule_cron() {
 add_action('switch_theme', 'acharp_candidature_unschedule_cron');
 
 function acharp_candidature_assets() {
+    $candidature_js = get_stylesheet_directory() . '/js/candidature.js';
     wp_enqueue_script(
         'acharp-candidature',
-        get_stylesheet_directory_uri() . '/js/candidature.js',
-        array(),
-        filemtime(get_stylesheet_directory() . '/js/candidature.js'),
+        get_stylesheet_directory_uri() . '/js/candidature.js?t=' . filemtime($candidature_js),
+        array('acharp-cookies'),
+        null,
         true
     );
 

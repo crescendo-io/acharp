@@ -270,11 +270,12 @@ function acharp_contact_assets() {
         return;
     }
 
+    $contact_js = get_stylesheet_directory() . '/js/contact.js';
     wp_enqueue_script(
         'acharp-contact',
-        get_stylesheet_directory_uri() . '/js/contact.js',
-        array(),
-        filemtime(get_stylesheet_directory() . '/js/contact.js'),
+        get_stylesheet_directory_uri() . '/js/contact.js?t=' . filemtime($contact_js),
+        array('acharp-cookies'),
+        null,
         true
     );
 

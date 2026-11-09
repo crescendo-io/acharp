@@ -75,13 +75,12 @@
             }
 
             calendlyBox.hidden = false;
-            calendlyBox.innerHTML = '';
 
-            var frame = document.createElement('iframe');
-            frame.src = url;
-            frame.title = 'Planifier une visite';
-            frame.setAttribute('loading', 'lazy');
-            calendlyBox.appendChild(frame);
+            if (!window.acharpCookies) {
+                return;
+            }
+
+            window.acharpCookies.frame(calendlyBox, url, 'Calendrier Calendly');
         }
 
         form.addEventListener('submit', function (event) {

@@ -42,22 +42,11 @@
         </footer> -->
 
 
-        <?php
-        $cookieConsent = $_COOKIE["cookieyes-consent"] ?? '';
-
-        $searchConsent = strpos($cookieConsent, 'analytics:yes');
-
-        if($searchConsent !== false && get_field('option_ga_code', 'option')):
-            echo get_field('option_ga_code', 'option');
-        endif;
-        ?>
-
-
-
-
         <?php if(get_field('option_structured_datas', 'option')): ?>
             <?= get_field('option_structured_datas', 'option'); ?>
         <?php endif; ?>
+
+        <?php get_template_part('template-parts/general/cookie-consent'); ?>
 
         <?php wp_footer(); ?>
     </body>

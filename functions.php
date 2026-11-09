@@ -43,6 +43,12 @@ function add_self_canonical_tag() {
 }
 add_action( 'wp_head', 'add_self_canonical_tag' );
 
+add_action( 'wp_head', function () {
+    $favicon = get_stylesheet_directory_uri() . '/images/favicon.png';
+    echo '<link rel="icon" type="image/png" href="' . esc_url( $favicon ) . '">' . "\n";
+    echo '<link rel="shortcut icon" type="image/png" href="' . esc_url( $favicon ) . '">' . "\n";
+}, 1 );
+
 add_action( 'wp_enqueue_scripts', 'wpm_enqueue_styles' );
 function wpm_enqueue_styles(){
     //wp_enqueue_style( 'parent-style', get_template_directory_uri() . '/styles/theme.css' );
@@ -62,6 +68,15 @@ function wpm_enqueue_styles(){
         'script',
         get_stylesheet_directory_uri() . '/js/script.js?t=' . filemtime($script_file),
         array( 'jquery' ),
+        null,
+        true
+    );
+
+    $cookies_file = get_stylesheet_directory() . '/js/cookies.js';
+    wp_enqueue_script(
+        'acharp-cookies',
+        get_stylesheet_directory_uri() . '/js/cookies.js?t=' . filemtime( $cookies_file ),
+        array(),
         null,
         true
     );

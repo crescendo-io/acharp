@@ -203,20 +203,6 @@ $header_cta = acharp_link(
         </nav>
 
         <div class="site-header__actions">
-            <button type="button" class="site-header__lang" aria-expanded="false">
-                <span class="site-header__flag" aria-hidden="true">
-                    <svg width="18" height="12" viewBox="0 0 18 12" xmlns="http://www.w3.org/2000/svg">
-                        <rect width="6" height="12" fill="#0055a4"/>
-                        <rect x="6" width="6" height="12" fill="#ffffff"/>
-                        <rect x="12" width="6" height="12" fill="#ef4135"/>
-                    </svg>
-                </span>
-                FR
-                <svg class="site-header__chevron" width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                    <path d="m2.5 4 2.5 2.5L7.5 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-            </button>
-
             <a <?= acharp_link_attrs($header_cta); ?> class="btn btn--primary site-header__cta">
                 <?= esc_html($header_cta['title']); ?>
                 <span class="btn__icon" aria-hidden="true">

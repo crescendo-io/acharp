@@ -200,13 +200,16 @@ if ($phone_href && strpos($phone_href, '0') === 0) {
             </div>
         </div>
 
-        <div class="contact__map">
-            <iframe
-                title="Carte de l’Académie Charpentier"
-                src="<?= esc_url($map_src); ?>"
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"
-            ></iframe>
+        <div
+            class="contact__map"
+            data-cookie-embed="media"
+            data-cookie-src="<?= esc_url($map_src); ?>"
+            data-cookie-title="Carte OpenStreetMap de l’Académie Charpentier"
+        >
+            <div class="cookie-embed" data-cookie-placeholder>
+                <p>La carte OpenStreetMap peut déposer des cookies. Elle reste masquée tant que les contenus externes ne sont pas acceptés.</p>
+                <button type="button" class="btn btn--primary" data-cookie-embed-accept>Afficher la carte</button>
+            </div>
         </div>
     </div>
 </section>

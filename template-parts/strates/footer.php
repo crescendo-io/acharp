@@ -105,7 +105,13 @@ $reseaux = array(
     ),
 );
 
-$legales = array('Mentions légales', 'Politique de confidentialité', 'Gestion des cookies', 'Plan du site');
+$legales = array(
+    array('label' => 'Mentions légales'),
+    array('label' => 'Politique de confidentialité'),
+    array('label' => 'Politique de cookies', 'url' => home_url('/politique-de-cookies/')),
+    array('label' => 'Gestion des cookies', 'cookies' => true),
+    array('label' => 'Plan du site'),
+);
 ?>
 
 <footer class="site-footer">
@@ -200,7 +206,13 @@ $legales = array('Mentions légales', 'Politique de confidentialité', 'Gestion 
         <div class="site-footer__inner site-footer__legal">
             <ul class="site-footer__legal-list">
                 <?php foreach ($legales as $legale) : ?>
-                    <li><a href="#" class="site-footer__legal-link"><?= $legale; ?></a></li>
+                    <li>
+                        <?php if (!empty($legale['cookies'])) : ?>
+                            <a href="#cookies" class="site-footer__legal-link" data-open-cookies><?= esc_html($legale['label']); ?></a>
+                        <?php else : ?>
+                            <a href="<?= esc_url($legale['url'] ?? '#'); ?>" class="site-footer__legal-link"><?= esc_html($legale['label']); ?></a>
+                        <?php endif; ?>
+                    </li>
                 <?php endforeach; ?>
             </ul>
 
