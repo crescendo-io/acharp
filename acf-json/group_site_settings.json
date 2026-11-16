@@ -122,6 +122,22 @@
             "mime_types": "pdf"
         },
         {
+            "key": "field_site_tab_footer",
+            "label": "Pied de page",
+            "name": "",
+            "type": "tab"
+        },
+        {
+            "key": "field_site_footer_brochure",
+            "label": "Brochure",
+            "name": "site_footer_brochure",
+            "type": "file",
+            "instructions": "PDF ouvert par le lien « Télécharger la brochure » du pied de page. Sans fichier, ce lien n’est pas affiché.",
+            "return_format": "array",
+            "library": "all",
+            "mime_types": "pdf"
+        },
+        {
             "key": "field_site_tab_social",
             "label": "Réseaux sociaux",
             "name": "",
@@ -186,5 +202,5 @@
     "position": "normal",
     "style": "default",
     "active": true,
-    "modified": 1793810000
+    "modified": 1793900000
 }

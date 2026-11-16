@@ -13,15 +13,24 @@ $raccourcis = array(
         'text'  => 'Rejoignez-nous dès maintenant',
         'url'   => '#candidature',
     ),
-    array(
-        'title' => 'Recevoir la brochure',
-        'text'  => 'Toutes les infos dans votre boîte mail',
-    ),
-    array(
-        'title' => 'Nous contacter',
-        'text'  => 'Une question ? Écrivez-nous.',
-        'url'   => home_url('/contact/'),
-    ),
+);
+
+$brochure = function_exists('get_field') ? get_field('site_footer_brochure', 'site_options') : null;
+
+if (is_array($brochure) && !empty($brochure['url'])) {
+    $raccourcis[] = array(
+        'title'    => 'Télécharger la brochure',
+        'text'     => 'Toutes les infos sur les formations',
+        'url'      => $brochure['url'],
+        'target'   => '_blank',
+        'download' => true,
+    );
+}
+
+$raccourcis[] = array(
+    'title' => 'Nous contacter',
+    'text'  => 'Une question ? Écrivez-nous.',
+    'url'   => home_url('/contact/'),
 );
 
 $formation_links = array();
@@ -113,14 +122,27 @@ $legales = array(
             </p>
 
             <ul class="site-footer__shortcuts">
-                <?php foreach ($raccourcis as $raccourci) : ?>
+                <?php foreach ($raccourcis as $raccourci) :
+                    $shortcut_url = acharp_candidature_url($raccourci['url'] ?? '', $raccourci['title'] ?? '');
+
+                    if (!$shortcut_url) {
+                        continue;
+                    }
+
+                    $shortcut_target = $raccourci['target'] ?? '';
+                    ?>
                     <li class="site-footer__shortcut">
-                        <?php $shortcut_url = acharp_candidature_url($raccourci['url'] ?? '#', $raccourci['title'] ?? ''); ?>
-                        <a href="<?= esc_url($shortcut_url); ?>" class="site-footer__shortcut-link"<?= $shortcut_url === '#candidature' ? ' data-open-candidature' : ''; ?>>
-                            <?= $raccourci['title']; ?>
+                        <a
+                            href="<?= esc_url($shortcut_url); ?>"
+                            class="site-footer__shortcut-link"
+                            <?= $shortcut_url === '#candidature' ? ' data-open-candidature' : ''; ?>
+                            <?= $shortcut_target ? ' target="' . esc_attr($shortcut_target) . '" rel="noopener"' : ''; ?>
+                            <?= !empty($raccourci['download']) ? ' download' : ''; ?>
+                        >
+                            <?= esc_html($raccourci['title']); ?>
                             <?= $arrow; ?>
                         </a>
-                        <p class="site-footer__shortcut-text"><?= $raccourci['text']; ?></p>
+                        <p class="site-footer__shortcut-text"><?= esc_html($raccourci['text']); ?></p>
                     </li>
                 <?php endforeach; ?>
             </ul>

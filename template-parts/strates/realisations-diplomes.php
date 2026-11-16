@@ -12,7 +12,7 @@ if (!$title) {
 if (!$items) {
     $demo = array(
         'formation-prepa.jpg',
-        'histoire-facade.jpg',
+        'histoire-facade.png',
         'formation-master.jpg',
         'vie-realisations.jpg',
         'histoire-salon.jpg',
@@ -29,7 +29,7 @@ if (!$items) {
         'formation-master.jpg',
         'hero-atelier.jpg',
         'vie-ateliers.jpg',
-        'histoire-facade.jpg',
+        'histoire-facade.png',
         'vie-evenements.jpg',
     );
 

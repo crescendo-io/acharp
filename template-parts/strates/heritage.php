@@ -45,7 +45,7 @@ if (!$steps) {
             'image'    => 0,
             'archive'  => false,
             'fallback' => array(
-                'src' => $theme_uri . '/images/histoire-facade.jpg',
+                'src' => $theme_uri . '/images/histoire-facade.png',
                 'alt' => 'Nouveau campus de l’Académie Charpentier, 15e arrondissement',
             ),
         ),
