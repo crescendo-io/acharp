@@ -53,6 +53,59 @@
                     "return_format": "id",
                     "preview_size": "thumbnail",
                     "library": "all"
+                },
+                {
+                    "key": "field_reco_logo_link",
+                    "label": "Lien du logo",
+                    "name": "link",
+                    "aria-label": "",
+                    "type": "link",
+                    "instructions": "Optionnel. Le logo devient cliquable.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array"
+                },
+                {
+                    "key": "field_reco_logo_caption",
+                    "label": "Légende",
+                    "name": "caption",
+                    "aria-label": "",
+                    "type": "wysiwyg",
+                    "instructions": "Texte sous le logo. Le bouton lien de l’éditeur sert à poser un ou plusieurs liens, y compris vers un fichier.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "tabs": "visual",
+                    "toolbar": "basic",
+                    "media_upload": 0,
+                    "delay": 0
+                },
+                {
+                    "key": "field_reco_logo_file",
+                    "label": "Fichier à télécharger",
+                    "name": "file",
+                    "aria-label": "",
+                    "type": "file",
+                    "instructions": "PDF. Il enveloppe toute la légende seulement si celle-ci ne contient pas déjà un lien.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "library": "all",
+                    "mime_types": "pdf"
                 }
             ]
         }
@@ -89,5 +142,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1758465600
+    "modified": 1763654400
 }
