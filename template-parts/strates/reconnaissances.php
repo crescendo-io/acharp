@@ -27,7 +27,7 @@ foreach ($logos as $logo) {
     }
 
     $items[] = array(
-        'html'     => wp_get_attachment_image((int) $logo['image'], 'medium'),
+        'html'     => wp_get_attachment_image((int) $logo['image'], 'large'),
         'link'     => acharp_link($logo['link'] ?? array()),
         'caption'  => $caption,
         'download' => !empty($file['url']) && !str_contains($caption, '<a') ? $file['url'] : '',
@@ -38,11 +38,9 @@ foreach ($logos as $logo) {
 if (!$items) {
     foreach ($defaults as $logo) {
         $items[] = array(
-            'html' => acharp_image_html(0, 'medium', array(
-                'src'    => $theme_uri . $logo['file'],
-                'alt'    => $logo['alt'],
-                'width'  => $logo['width'],
-                'height' => $logo['height'],
+            'html' => acharp_image_html(0, 'large', array(
+                'src' => $theme_uri . $logo['file'],
+                'alt' => $logo['alt'],
             )),
             'link'     => acharp_link(array()),
             'caption'  => '',
