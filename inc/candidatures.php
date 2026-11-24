@@ -689,21 +689,130 @@ function acharp_candidature_success_payload($post_id, $formation) {
     return $payload;
 }
 
+function acharp_candidature_admin_mail_body($post_id, $status) {
+    $formations = acharp_candidature_formations();
+    $statuses   = acharp_candidature_statuses();
+    $fields     = acharp_candidature_file_fields();
+    $formation  = (string) get_post_meta($post_id, '_candidature_formation', true);
+    $bac        = (string) get_post_meta($post_id, '_candidature_bac', true);
+    $bac_label  = $bac === 'oui' ? 'Oui' : ($bac === 'non' ? 'Non' : ($bac !== '' ? $bac : '—'));
+    $files      = get_post_meta($post_id, '_candidature_files', true);
+
+    $lines = array(
+        'Nouvelle candidature.',
+        '',
+        'Prénom : ' . (get_post_meta($post_id, '_candidature_first_name', true) ?: '—'),
+        'Nom : ' . (get_post_meta($post_id, '_candidature_last_name', true) ?: '—'),
+        'E-mail : ' . (get_post_meta($post_id, '_candidature_email', true) ?: '—'),
+        'Téléphone : ' . (get_post_meta($post_id, '_candidature_phone', true) ?: '—'),
+        'Établissement actuel : ' . (get_post_meta($post_id, '_candidature_school', true) ?: '—'),
+        'Bac obtenu : ' . $bac_label,
+        'Formation : ' . ($formations[$formation] ?? ($formation !== '' ? $formation : '—')),
+        'Statut : ' . ($statuses[$status] ?? $status),
+        '',
+    );
+
+    if (is_array($files) && $files) {
+        $lines[] = 'Pièces jointes :';
+
+        foreach ($files as $field => $items) {
+            $label = $fields[$field]['label'] ?? $field;
+
+            foreach ((array) $items as $item) {
+                $lines[] = '- ' . $label . ' : ' . ($item['original'] ?? 'fichier');
+            }
+        }
+    } else {
+        $lines[] = 'Pièces jointes : aucune pour le moment.';
+    }
+
+    $lines[] = '';
+    $lines[] = 'Fiche : ' . admin_url('post.php?post=' . (int) $post_id . '&action=edit');
+
+    return implode("\n", $lines);
+}
+
+function acharp_candidature_mail_attachments($post_id) {
+    $files  = get_post_meta($post_id, '_candidature_files', true);
+    $fields = acharp_candidature_file_fields();
+    $root   = realpath(acharp_candidature_storage_root());
+    $dir    = acharp_candidature_storage_dir($post_id);
+    $copies = array();
+    $used   = array();
+
+    if (!$root || !is_array($files) || !is_dir($dir)) {
+        return $copies;
+    }
+
+    foreach ($files as $field => $items) {
+        $label = sanitize_file_name($fields[$field]['label'] ?? (string) $field);
+
+        foreach ((array) $items as $item) {
+            if (empty($item['file'])) {
+                continue;
+            }
+
+            $path = realpath($dir . '/' . basename($item['file']));
+
+            if (!$path || !str_starts_with($path, $root . DIRECTORY_SEPARATOR) || !is_file($path)) {
+                continue;
+            }
+
+            $original = sanitize_file_name($item['original'] ?? basename($path));
+
+            if ($original === '') {
+                $original = basename($path);
+            }
+
+            $name = $label . '-' . $original;
+            $try  = 2;
+
+            while (isset($used[$name])) {
+                $name = $label . '-' . $try . '-' . $original;
+                $try++;
+            }
+
+            $used[$name] = true;
+            $dest        = trailingslashit(get_temp_dir()) . 'acharp-' . wp_generate_password(8, false) . '-' . $name;
+
+            if (copy($path, $dest)) {
+                $copies[] = $dest;
+            }
+        }
+    }
+
+    return $copies;
+}
+
 function acharp_candidature_notify_admin($post_id, $status) {
-    $settings = acharp_candidature_settings();
-    $labels   = acharp_candidature_statuses();
-    $subject  = sprintf(
+    $settings    = acharp_candidature_settings();
+    $labels      = acharp_candidature_statuses();
+    $subject     = sprintf(
         '[Candidature] %s — %s',
         get_the_title($post_id),
         $labels[$status] ?? $status
     );
-    $body     = sprintf(
-        "Une candidature a été mise à jour.\n\nStatut : %s\nFiche : %s\n",
-        $labels[$status] ?? $status,
-        admin_url('post.php?post=' . (int) $post_id . '&action=edit')
+    $email       = sanitize_email((string) get_post_meta($post_id, '_candidature_email', true));
+    $headers     = array('Content-Type: text/plain; charset=UTF-8');
+    $attachments = acharp_candidature_mail_attachments($post_id);
+
+    if (is_email($email)) {
+        $headers[] = 'Reply-To: ' . $email;
+    }
+
+    wp_mail(
+        $settings['notify_email'],
+        $subject,
+        acharp_candidature_admin_mail_body($post_id, $status),
+        $headers,
+        $attachments
     );
 
-    wp_mail($settings['notify_email'], $subject, $body);
+    foreach ($attachments as $copy) {
+        if (is_file($copy)) {
+            unlink($copy);
+        }
+    }
 }
 
 function acharp_candidature_notify_user($post_id, $status) {
