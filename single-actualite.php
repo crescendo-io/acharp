@@ -54,12 +54,6 @@ $archive_url = get_post_type_archive_link('actualite') ?: home_url('/');
                     <?php endif; ?>
             </header>
 
-            <?php if (has_post_thumbnail()) : ?>
-                <figure class="actu-single__cover">
-                    <?php the_post_thumbnail('full'); ?>
-                </figure>
-            <?php endif; ?>
-
             <div class="actu-single__content">
                     <div class="actu-single__strates">
                         <?php if (function_exists('have_rows') && have_rows('actualite_strates')) : ?>

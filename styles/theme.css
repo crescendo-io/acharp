@@ -3154,7 +3154,7 @@ a.reconnaissances__logo-mark:focus-visible img {
     margin: 0;
     overflow: hidden;
     width: min(100%, 52rem);
-    aspect-ratio: 5 / 4;
+    aspect-ratio: 16 / 10;
     border-radius: 0.2rem;
     background: rgba(17, 17, 17, 0.04);
 }
@@ -3173,24 +3173,11 @@ a.reconnaissances__logo-mark:focus-visible img {
     filter: grayscale(1) contrast(1.05);
 }
 
-.heritage__beat--a .heritage__frame {
-    width: 92%;
-    justify-self: end;
-}
-
-.heritage__beat--b .heritage__frame {
-    width: 72%;
-    aspect-ratio: 1 / 1;
-}
-
-.heritage__beat--c .heritage__frame {
-    width: 100%;
-    aspect-ratio: 16 / 10;
-}
-
+.heritage__beat--a .heritage__frame,
+.heritage__beat--b .heritage__frame,
+.heritage__beat--c .heritage__frame,
 .heritage__beat--d .heritage__frame {
-    width: 64%;
-    aspect-ratio: 4 / 5;
+    width: min(100%, 52rem);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -5621,7 +5608,6 @@ body.has-realisation-popin {
    Actualité — fiche
    ------------------------------------------------------------------------- */
 .actu-single__header,
-.actu-single__cover,
 .actu-single__content {
     background: var(--color-cream);
 }
@@ -5745,19 +5731,6 @@ body.has-realisation-popin {
     font-size: 2rem;
     line-height: 1.5;
     color: var(--color-muted);
-}
-
-.actu-single__cover {
-    margin: 0;
-    padding-bottom: 4rem;
-}
-
-.actu-single__cover img {
-    width: 100%;
-    height: auto;
-    max-height: 62rem;
-    object-fit: cover;
-    border-radius: var(--radius-card);
 }
 
 .actu-single__content {

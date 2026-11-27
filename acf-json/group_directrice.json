@@ -3,6 +3,27 @@
     "title": "Strate — Mot de la directrice",
     "fields": [
         {
+            "key": "field_directrice_hide",
+            "label": "Masquer le bloc",
+            "name": "directrice_hide",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Cocher pour ne plus afficher le mot de la directrice sur la page.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 1,
+            "ui_on_text": "Masqué",
+            "ui_off_text": "Visible",
+            "allow_in_bindings": 0
+        },
+        {
             "key": "field_directrice_kicker",
             "label": "Surtitre",
             "name": "directrice_kicker",
@@ -132,5 +153,7 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1760966400
+    "allow_ai_access": false,
+    "ai_description": "",
+    "modified": 1795781222
 }

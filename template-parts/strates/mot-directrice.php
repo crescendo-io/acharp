@@ -1,4 +1,8 @@
 <?php
+if (acharp_field('directrice_hide')) {
+    return;
+}
+
 $theme_uri = get_stylesheet_directory_uri();
 $kicker    = acharp_field('directrice_kicker') ?: 'Mot de la directrice';
 $name      = acharp_field('directrice_name') ?: 'Sylvie Cedrin-Felix';

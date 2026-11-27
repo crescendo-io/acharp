@@ -760,6 +760,106 @@ function acharp_contact_render_metabox($post) {
     <?php
 }
 
+function acharp_contact_export_button($post_type, $which) {
+    if ($which !== 'top' || $post_type !== ACHARP_CONTACT_CPT || !acharp_contact_user_can_manage()) {
+        return;
+    }
+
+    $url = wp_nonce_url(
+        admin_url('admin-post.php?action=acharp_contact_export'),
+        'acharp_contact_export'
+    );
+
+    echo '<a href="' . esc_url($url) . '" class="button">Exporter en CSV</a>';
+}
+add_action('restrict_manage_posts', 'acharp_contact_export_button', 10, 2);
+
+function acharp_contact_csv_cell($value) {
+    $value = (string) $value;
+
+    if ($value !== '' && preg_match('/^[=+\-@]/', $value)) {
+        return "'" . $value;
+    }
+
+    return $value;
+}
+
+function acharp_contact_csv_rows() {
+    $headers = array(
+        'ID',
+        'Prénom',
+        'Nom',
+        'E-mail',
+        'Téléphone',
+        'Motif',
+        'Destinataire',
+        'Calendly',
+        'Date',
+        'Conservation jusqu’au',
+        'Message',
+    );
+    $rows = array($headers);
+
+    $ids = get_posts(array(
+        'post_type'      => ACHARP_CONTACT_CPT,
+        'post_status'    => array('private', 'publish', 'draft', 'pending'),
+        'posts_per_page' => -1,
+        'orderby'        => 'date',
+        'order'          => 'DESC',
+        'fields'         => 'ids',
+        'no_found_rows'  => true,
+    ));
+
+    foreach ($ids as $post_id) {
+        $until = (int) get_post_meta($post_id, '_contact_retention_until', true);
+
+        $rows[] = array(
+            (string) $post_id,
+            (string) get_post_meta($post_id, '_contact_first_name', true),
+            (string) get_post_meta($post_id, '_contact_last_name', true),
+            (string) get_post_meta($post_id, '_contact_email', true),
+            (string) get_post_meta($post_id, '_contact_phone', true),
+            (string) get_post_meta($post_id, '_contact_motif_label', true),
+            (string) get_post_meta($post_id, '_contact_recipient', true),
+            ((int) get_post_meta($post_id, '_contact_show_calendly', true) === 1) ? 'Oui' : 'Non',
+            get_the_date('d/m/Y H:i', $post_id),
+            $until ? wp_date('d/m/Y', $until) : '',
+            (string) get_post_meta($post_id, '_contact_message', true),
+        );
+    }
+
+    return $rows;
+}
+
+function acharp_contact_export_csv() {
+    if (!acharp_contact_user_can_manage()) {
+        wp_die(esc_html__('Accès refusé.', 'lsd_lang'), '', array('response' => 403));
+    }
+
+    check_admin_referer('acharp_contact_export');
+
+    nocache_headers();
+    header('Content-Type: text/csv; charset=utf-8');
+    header('Content-Disposition: attachment; filename="demandes-de-contact-' . wp_date('Y-m-d') . '.csv"');
+    header('X-Content-Type-Options: nosniff');
+
+    $output = fopen('php://output', 'w');
+
+    if ($output === false) {
+        wp_die(esc_html__('Impossible de générer le fichier.', 'lsd_lang'), '', array('response' => 500));
+    }
+
+    fwrite($output, "\xEF\xBB\xBF");
+
+    foreach (acharp_contact_csv_rows() as $row) {
+        fputcsv($output, array_map('acharp_contact_csv_cell', $row), ';', '"', '\\');
+    }
+
+    fclose($output);
+    exit;
+}
+add_action('admin_post_acharp_contact_export', 'acharp_contact_export_csv');
+
 function acharp_contact_privacy_exporters($exporters) {
     $exporters['acharp-contact'] = array(
         'exporter_friendly_name' => 'Demandes de contact',
